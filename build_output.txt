@@ -1,0 +1,220 @@
+
+> temp_app@0.1.0 build
+> next build
+
+   Γû▓ Next.js 16.0.4 (Turbopack)
+
+   Creating an optimized production build ...
+(node:62460) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///I:/AntigravityCode/SWv2Prod/tailwind.config.ts?id=1764125127593 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to I:\AntigravityCode\SWv2Prod\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Found 2 warnings while optimizing generated CSS:
+
+Issue #1:
+Γöé }
+Γöé @layer utilities {
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap') layer(base);
+Γöå          ^-- Unknown at rule: @import
+Γöå
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap') layer(base);
+Γöé   @layer theme, base, components, utilities;
+
+Issue #2:
+Γöé @layer utilities {
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap') layer(base);
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap') layer(base);
+Γöå          ^-- Unknown at rule: @import
+Γöå
+Γöé   @layer theme, base, components, utilities;
+Γöé   @layer theme;
+
+
+> Build error occurred
+Error: Turbopack build failed with 9 errors:
+./node_modules/@esbuild/win32-x64/README.md
+Unknown module type
+This module doesn't have an associated type. Use a known file extension, or register a loader for it.
+
+Read more: https://nextjs.org/docs/app/api-reference/next-config-js/turbo#webpack-loaders
+
+Import trace:
+  App Route:
+    ./node_modules/@esbuild/win32-x64/README.md
+    ./node_modules/esbuild/lib/main.js
+    ./node_modules/@remotion/bundler/dist/index.js
+    ./src/app/api/latest/ssr/lib/remotion-renderer.ts
+    ./src/app/api/latest/ssr/render/route.ts
+
+
+./node_modules/@esbuild/win32-x64/esbuild.exe
+Unknown module type
+This module doesn't have an associated type. Use a known file extension, or register a loader for it.
+
+Read more: https://nextjs.org/docs/app/api-reference/next-config-js/turbo#webpack-loaders
+
+Import trace:
+  App Route:
+    ./node_modules/@esbuild/win32-x64/esbuild.exe
+    ./node_modules/esbuild/lib/main.js
+    ./node_modules/@remotion/bundler/dist/index.js
+    ./src/app/api/latest/ssr/lib/remotion-renderer.ts
+    ./src/app/api/latest/ssr/render/route.ts
+
+
+./src/app/blog/page.tsx:4:10
+Ecmascript file had an error
+  2 | import Link from 'next/link';
+  3 | import { ArrowRight, Calendar, User, Copy, Check } from 'lucide-react';
+> 4 | import { useState } from 'react';
+    |          ^^^^^^^^
+  5 |
+  6 | export default function BlogIndex() {
+  7 |     const posts = [
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+./node_modules/@remotion/renderer/dist/esm/index.mjs:3897:18
+Module not found: Can't resolve '@remotion/compositor-darwin-arm64'
+  3895 |           return __require("@remotion/compositor-darwin-x64").dir;
+  3896 |         case "arm64":
+> 3897 |           return __require("@remotion/compositor-darwin-arm64").dir;
+       |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3898 |         default:
+  3899 |           throw new Error(`Unsupported architecture on macOS: ${process.arch}`);
+  3900 |       }
+
+
+
+Import trace:
+  App Route:
+    ./node_modules/@remotion/renderer/dist/esm/index.mjs
+    ./src/app/api/latest/ssr/lib/remotion-renderer.ts
+    ./src/app/api/latest/ssr/render/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/@remotion/renderer/dist/esm/index.mjs:3895:18
+Module not found: Can't resolve '@remotion/compositor-darwin-x64'
+  3893 |       switch (process.arch) {
+  3894 |         case "x64":
+> 3895 |           return __require("@remotion/compositor-darwin-x64").dir;
+       |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3896 |         case "arm64":
+  3897 |           return __require("@remotion/compositor-darwin-arm64").dir;
+  3898 |         default:
+
+
+
+Import trace:
+  App Route:
+    ./node_modules/@remotion/renderer/dist/esm/index.mjs
+    ./src/app/api/latest/ssr/lib/remotion-renderer.ts
+    ./src/app/api/latest/ssr/render/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/@remotion/renderer/dist/esm/index.mjs:3913:18
+Module not found: Can't resolve '@remotion/compositor-linux-arm64-gnu'
+  3911 |             return __require("@remotion/compositor-linux-arm64-musl").dir;
+  3912 |           }
+> 3913 |           return __require("@remotion/compositor-linux-arm64-gnu").dir;
+       |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3914 |         default:
+  3915 |           throw new Error(`Unsupported architecture on Linux: ${process.arch}`);
+  3916 |       }
+
+
+
+Import trace:
+  App Route:
+    ./node_modules/@remotion/renderer/dist/esm/index.mjs
+    ./src/app/api/latest/ssr/lib/remotion-renderer.ts
+    ./src/app/api/latest/ssr/render/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/@remotion/renderer/dist/esm/index.mjs:3911:20
+Module not found: Can't resolve '@remotion/compositor-linux-arm64-musl'
+  3909 |         case "arm64":
+  3910 |           if (musl) {
+> 3911 |             return __require("@remotion/compositor-linux-arm64-musl").dir;
+       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3912 |           }
+  3913 |           return __require("@remotion/compositor-linux-arm64-gnu").dir;
+  3914 |         default:
+
+
+
+Import trace:
+  App Route:
+    ./node_modules/@remotion/renderer/dist/esm/index.mjs
+    ./src/app/api/latest/ssr/lib/remotion-renderer.ts
+    ./src/app/api/latest/ssr/render/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/@remotion/renderer/dist/esm/index.mjs:3908:18
+Module not found: Can't resolve '@remotion/compositor-linux-x64-gnu'
+  3906 |             return __require("@remotion/compositor-linux-x64-musl").dir;
+  3907 |           }
+> 3908 |           return __require("@remotion/compositor-linux-x64-gnu").dir;
+       |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3909 |         case "arm64":
+  3910 |           if (musl) {
+  3911 |             return __require("@remotion/compositor-linux-arm64-musl").dir;
+
+
+
+Import trace:
+  App Route:
+    ./node_modules/@remotion/renderer/dist/esm/index.mjs
+    ./src/app/api/latest/ssr/lib/remotion-renderer.ts
+    ./src/app/api/latest/ssr/render/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+./node_modules/@remotion/renderer/dist/esm/index.mjs:3906:20
+Module not found: Can't resolve '@remotion/compositor-linux-x64-musl'
+  3904 |         case "x64":
+  3905 |           if (musl) {
+> 3906 |             return __require("@remotion/compositor-linux-x64-musl").dir;
+       |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3907 |           }
+  3908 |           return __require("@remotion/compositor-linux-x64-gnu").dir;
+  3909 |         case "arm64":
+
+
+
+Import trace:
+  App Route:
+    ./node_modules/@remotion/renderer/dist/esm/index.mjs
+    ./src/app/api/latest/ssr/lib/remotion-renderer.ts
+    ./src/app/api/latest/ssr/render/route.ts
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/app/blog/page.tsx:4:10)
+    at ./node_modules/ (remotion/renderer/dist/esm/index.mjs:3897:18)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at ./node_modules/ (remotion/renderer/dist/esm/index.mjs:3895:18)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at ./node_modules/ (remotion/renderer/dist/esm/index.mjs:3913:18)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at ./node_modules/ (remotion/renderer/dist/esm/index.mjs:3911:20)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at ./node_modules/ (remotion/renderer/dist/esm/index.mjs:3908:18)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at ./node_modules/ (remotion/renderer/dist/esm/index.mjs:3906:20)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

@@ -1,0 +1,2 @@
+.next/types/validator.ts(206,39): error TS2307: Cannot find module '../../src/app/api/latest/lambda/progress/route.js' or its corresponding type declarations.
+.next/types/validator.ts(215,39): error TS2307: Cannot find module '../../src/app/api/latest/lambda/render/route.js' or its corresponding type declarations.

@@ -1,0 +1,22 @@
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(112,28): error TS2304: Cannot find name 'isAutoRemoveEnabled'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(124,61): error TS2304: Cannot find name 'timelineStoreDragging'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(148,5): error TS18004: No value exists in scope for the shorthand property 'zoomScale'. Either declare one or provide an initializer.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(149,5): error TS18004: No value exists in scope for the shorthand property 'setZoomScale'. Either declare one or provide an initializer.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(173,5): error TS18004: No value exists in scope for the shorthand property 'zoomScale'. Either declare one or provide an initializer.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(299,5): error TS2552: Cannot find name 'handleToggleAutoRemoveEmptyTracks'. Did you mean 'handleEnhancedToggleAutoRemoveEmptyTracks'?
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(311,7): error TS2552: Cannot find name 'handleToggleAutoRemoveEmptyTracks'. Did you mean 'handleEnhancedToggleAutoRemoveEmptyTracks'?
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(323,39): error TS2304: Cannot find name 'handleWheelZoom'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(324,55): error TS2304: Cannot find name 'handleWheelZoom'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(325,7): error TS2304: Cannot find name 'handleWheelZoom'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(336,20): error TS2304: Cannot find name 'zoomScale'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(337,23): error TS2304: Cannot find name 'setZoomScale'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(346,32): error TS2304: Cannot find name 'isAutoRemoveEnabled'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(348,27): error TS2304: Cannot find name 'isSplittingEnabled'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(349,28): error TS2304: Cannot find name 'handleToggleSplitting'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(391,24): error TS2304: Cannot find name 'zoomScale'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(403,34): error TS2304: Cannot find name 'ghostMarkerPosition'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(404,25): error TS2304: Cannot find name 'isDragging'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(406,26): error TS2304: Cannot find name 'handleMouseMove'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(407,27): error TS2304: Cannot find name 'handleMouseLeave'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(413,31): error TS2304: Cannot find name 'isSplittingEnabled'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(414,30): error TS2304: Cannot find name 'effectiveHideItemsOnDrag'.

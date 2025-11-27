@@ -1,0 +1,106 @@
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,7): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,13): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,15): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,23): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,26): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,31): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,35): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,56): error TS1003: Identifier expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(1,58): error TS1135: Argument expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(2,8): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(2,14): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(2,18): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(2,32): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,10): error TS1005: ':' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,14): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,20): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,24): error TS1435: Unknown keyword or identifier. Did you mean 'out'?
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,30): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,38): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,42): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,50): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,53): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(3,58): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,12): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,20): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,24): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,33): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,37): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,44): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,50): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,53): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,64): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,68): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(5,14): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(5,17): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(5,76): error TS1002: Unterminated string literal.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(7,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(7,4): error TS1127: Invalid character.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(7,5): error TS1127: Invalid character.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(7,7): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(8,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(8,8): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(8,13): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(8,16): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(8,26): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(8,31): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(8,52): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(9,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(9,36): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(9,38): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(9,43): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(9,52): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(10,25): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(10,27): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(10,32): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(10,36): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(10,44): error TS1005: '(' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(10,64): error TS1005: ',' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(10,71): error TS1005: ',' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(11,46): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(11,48): error TS1435: Unknown keyword or identifier. Did you mean 'set'?
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(11,52): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(11,62): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(11,65): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(11,78): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(13,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(13,8): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(13,12): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(13,18): error TS1228: A type predicate is only allowed in return type position for functions and methods.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(13,21): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(15,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(15,4): error TS1127: Invalid character.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(15,5): error TS1127: Invalid character.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(15,7): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(15,16): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(15,20): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(16,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(28,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(28,4): error TS1127: Invalid character.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(28,5): error TS1127: Invalid character.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(28,7): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(29,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(38,56): error TS1351: An identifier or keyword cannot immediately follow a numeric literal.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(38,72): error TS1351: An identifier or keyword cannot immediately follow a numeric literal.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,2): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,10): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,11): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,28): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,31): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,35): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,39): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,49): error TS1434: Unexpected keyword or identifier.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(41,61): error TS1003: Identifier expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(42,11): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(42,12): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(42,32): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(42,39): error TS1005: '(' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(42,48): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(43,15): error TS1109: Expression expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(43,16): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(43,23): error TS1005: ')' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(43,51): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(43,66): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(43,77): error TS1005: ';' expected.
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(44,8): error TS1161: Unterminated regular expression literal.

@@ -1,0 +1,1 @@
+src/components/post-production/editor-core/hooks/use-project-state-from-url.tsx(4,10): error TS2305: Module '"@/app/constants"' has no exported member 'DEFAULT_OVERLAYS'.

@@ -1,0 +1,76 @@
+.next/dev/types/validator.ts(198,31): error TS2344: Type 'typeof import("I:/AntigravityCode/SWv2Prod/src/app/api/fonts/[name]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/fonts/[name]">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: NextRequest, { params }: { params: { name: string; }; }) => Promise<NextResponse<any>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ name: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ name: string; }>; }' is not assignable to type '{ params: { name: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'name' is missing in type 'Promise<{ name: string; }>' but required in type '{ name: string; }'.
+.next/dev/types/validator.ts(234,31): error TS2344: Type 'typeof import("I:/AntigravityCode/SWv2Prod/src/app/api/latest/local-media/serve/[...path]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/latest/local-media/serve/[...path]">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: NextRequest, { params }: { params: { path: string[]; }; }) => Promise<NextResponse<unknown>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ path: string[]; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ path: string[]; }>; }' is not assignable to type '{ params: { path: string[]; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'path' is missing in type 'Promise<{ path: string[]; }>' but required in type '{ path: string[]; }'.
+.next/dev/types/validator.ts(252,31): error TS2344: Type 'typeof import("I:/AntigravityCode/SWv2Prod/src/app/api/latest/ssr/download/[id]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/latest/ssr/download/[id]">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: NextRequest, { params }: { params: { id: string; }; }) => Promise<NextResponse<unknown>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+.next/types/validator.ts(198,31): error TS2344: Type 'typeof import("I:/AntigravityCode/SWv2Prod/src/app/api/fonts/[name]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/fonts/[name]">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: NextRequest, { params }: { params: { name: string; }; }) => Promise<NextResponse<any>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ name: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ name: string; }>; }' is not assignable to type '{ params: { name: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'name' is missing in type 'Promise<{ name: string; }>' but required in type '{ name: string; }'.
+.next/types/validator.ts(234,31): error TS2344: Type 'typeof import("I:/AntigravityCode/SWv2Prod/src/app/api/latest/local-media/serve/[...path]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/latest/local-media/serve/[...path]">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: NextRequest, { params }: { params: { path: string[]; }; }) => Promise<NextResponse<unknown>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ path: string[]; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ path: string[]; }>; }' is not assignable to type '{ params: { path: string[]; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'path' is missing in type 'Promise<{ path: string[]; }>' but required in type '{ path: string[]; }'.
+.next/types/validator.ts(252,31): error TS2344: Type 'typeof import("I:/AntigravityCode/SWv2Prod/src/app/api/latest/ssr/download/[id]/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/latest/ssr/download/[id]">'.
+  Types of property 'GET' are incompatible.
+    Type '(request: NextRequest, { params }: { params: { id: string; }; }) => Promise<NextResponse<unknown>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+src/app/api/fonts/[name]/route.ts(8,39): error TS2307: Cannot find module '../../../reactvideoeditor/pro/data/google-fonts' or its corresponding type declarations.
+src/app/api/fonts/[name]/route.ts(23,8): error TS7006: Parameter 'font' implicitly has an 'any' type.
+src/app/api/latest/lambda/helpers/api.ts(3,84): error TS2307: Cannot find module '../../../../reactvideoeditor/pro/types' or its corresponding type declarations.
+src/app/api/latest/lambda/progress/route.ts(6,8): error TS2307: Cannot find module '../../../../reactvideoeditor/pro/types' or its corresponding type declarations.
+src/app/api/latest/lambda/progress/route.ts(9,3): error TS2305: Module '"../../../../constants"' has no exported member 'LAMBDA_FUNCTION_NAME'.
+src/app/api/latest/lambda/progress/route.ts(10,3): error TS2305: Module '"../../../../constants"' has no exported member 'REGION'.
+src/app/api/latest/lambda/render/route.ts(3,31): error TS2307: Cannot find module '../../../../reactvideoeditor/pro/types' or its corresponding type declarations.
+src/app/api/latest/lambda/render/route.ts(5,45): error TS2307: Cannot find module '../../../../reactvideoeditor/pro/utils/text/collect-font-info-from-items' or its corresponding type declarations.
+src/app/api/latest/lambda/render/route.ts(8,3): error TS2305: Module '"../../../../constants"' has no exported member 'LAMBDA_FUNCTION_NAME'.
+src/app/api/latest/lambda/render/route.ts(9,3): error TS2305: Module '"../../../../constants"' has no exported member 'REGION'.
+src/app/api/latest/lambda/render/route.ts(10,3): error TS2305: Module '"../../../../constants"' has no exported member 'SITE_NAME'.
+src/app/api/latest/ssr/lib/remotion-renderer.ts(17,28): error TS2307: Cannot find module '../../../../reactvideoeditor/pro/utils/general/url-helper' or its corresponding type declarations.
+src/app/api/latest/ssr/render/route.ts(4,45): error TS2307: Cannot find module '../../../../reactvideoeditor/pro/utils/text/collect-font-info-from-items' or its corresponding type declarations.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(111,31): error TS2345: Argument of type 'RefObject<HTMLDivElement | null>' is not assignable to parameter of type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(428,13): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+src/components/reactvideoeditor/pro/components/overlay/captions/caption-timeline.tsx(68,7): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+src/components/reactvideoeditor/pro/components/overlay/captions/caption-timeline.tsx(69,7): error TS2322: Type 'RefObject<HTMLDivElement | null>' is not assignable to type 'RefObject<HTMLDivElement>'.
+  Type 'HTMLDivElement | null' is not assignable to type 'HTMLDivElement'.
+    Type 'null' is not assignable to type 'HTMLDivElement'.
+src/components/reactvideoeditor/pro/components/react-video-editor.tsx(108,7): error TS2322: Type 'RefObject<PlayerRef | null>' is not assignable to type 'RefObject<PlayerRef>'.
+  Type 'PlayerRef | null' is not assignable to type 'PlayerRef'.
+    Type 'null' is not assignable to type 'PlayerRef'.
+      Type 'null' is not assignable to type 'PlayerEmitter'.
+src/components/reactvideoeditor/pro/components/react-video-editor.tsx(119,24): error TS2322: Type 'RefObject<PlayerRef | null>' is not assignable to type 'RefObject<PlayerRef>'.
+  Type 'PlayerRef | null' is not assignable to type 'PlayerRef'.
+    Type 'null' is not assignable to type 'PlayerRef'.
+      Type 'null' is not assignable to type 'PlayerEmitter'.
+src/components/reactvideoeditor/pro/hooks/use-project-state-from-url.tsx(4,34): error TS2307: Cannot find module 'app/constants' or its corresponding type declarations.

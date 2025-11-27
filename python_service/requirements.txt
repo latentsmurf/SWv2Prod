@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+google-cloud-storage
+google-cloud-aiplatform
+ffmpeg-python
+requests
+python-multipart
+python-dotenv
+motor
+google-auth
+google-auth-httplib2
+stripe
+stripe
+pydantic
+cryptography

@@ -1,0 +1,73 @@
+
+> temp_app@0.1.0 build
+> next build
+
+   Γû▓ Next.js 16.0.4 (Turbopack)
+
+   Creating an optimized production build ...
+(node:87316) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///I:/AntigravityCode/SWv2Prod/tailwind.config.ts?id=1764125262936 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to I:\AntigravityCode\SWv2Prod\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Found 2 warnings while optimizing generated CSS:
+
+Issue #1:
+Γöé }
+Γöé @layer utilities {
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap') layer(base);
+Γöå          ^-- Unknown at rule: @import
+Γöå
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap') layer(base);
+Γöé   @layer theme, base, components, utilities;
+
+Issue #2:
+Γöé @layer utilities {
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap') layer(base);
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap') layer(base);
+Γöå          ^-- Unknown at rule: @import
+Γöå
+Γöé   @layer theme, base, components, utilities;
+Γöé   @layer theme;
+
+ Γ£ô Compiled successfully in 9.2s
+   Running TypeScript ...
+   Collecting page data using 63 workers ...
+   Generating static pages using 63 workers (0/23) ...
+   Generating static pages using 63 workers (5/23) 
+   Generating static pages using 63 workers (11/23) 
+   Generating static pages using 63 workers (17/23) 
+ Γ£ô Generating static pages using 63 workers (23/23) in 3.2s
+   Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ ╞Æ /api/ai/captions
+Γö£ ╞Æ /api/auth/[...nextauth]
+Γö£ ╞Æ /api/fonts/[name]
+Γö£ ╞Æ /api/latest/local-media/delete
+Γö£ ╞Æ /api/latest/local-media/serve/[...path]
+Γö£ ╞Æ /api/latest/local-media/upload
+Γö£ ╞Æ /api/latest/ssr/download/[id]
+Γö£ ╞Æ /api/latest/ssr/progress
+Γö£ ╞Æ /api/latest/ssr/render
+Γö£ ╞Æ /api/projects
+Γö£ Γùï /blog
+Γö£ Γùï /blog/sample-post
+Γö£ Γùï /dashboard
+Γö£ Γùï /director
+Γö£ Γùï /new-project
+Γö£ Γùï /production
+Γö£ Γùï /production/library
+Γö£ Γùï /production/post
+Γö£ Γùï /production/pre-production
+Γö£ Γùï /production/repair
+Γö£ ╞Æ /review/[token]
+Γö£ Γùï /settings/engine
+Γö£ Γùï /studio/editor
+Γöö Γùï /vault
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+

@@ -1,0 +1,65 @@
+
+> temp_app@0.1.0 build
+> next build
+
+   Γû▓ Next.js 16.0.4 (Turbopack)
+
+   Creating an optimized production build ...
+(node:84996) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///I:/AntigravityCode/SWv2Prod/tailwind.config.ts?id=1764125207887 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to I:\AntigravityCode\SWv2Prod\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Found 2 warnings while optimizing generated CSS:
+
+Issue #1:
+Γöé }
+Γöé @layer utilities {
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap') layer(base);
+Γöå          ^-- Unknown at rule: @import
+Γöå
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap') layer(base);
+Γöé   @layer theme, base, components, utilities;
+
+Issue #2:
+Γöé @layer utilities {
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap') layer(base);
+Γöé   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap') layer(base);
+Γöå          ^-- Unknown at rule: @import
+Γöå
+Γöé   @layer theme, base, components, utilities;
+Γöé   @layer theme;
+
+
+> Build error occurred
+Error: Turbopack build failed with 2 errors:
+./src/app/blog/page.tsx:2:1
+Ecmascript file had an error
+  1 | import React from 'react';
+> 2 | "use client";
+    | ^^^^^^^^^^^^^
+  3 |
+  4 | import Link from 'next/link';
+  5 | import { ArrowRight, Calendar, User, Copy, Check } from 'lucide-react';
+
+The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+
+
+./src/app/blog/page.tsx:6:10
+Ecmascript file had an error
+  4 | import Link from 'next/link';
+  5 | import { ArrowRight, Calendar, User, Copy, Check } from 'lucide-react';
+> 6 | import { useState } from 'react';
+    |          ^^^^^^^^
+  7 |
+  8 | export default function BlogIndex() {
+  9 |     const posts = [
+
+You're importing a component that needs `useState`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+
+ Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+
+
+
+
+    at <unknown> (./src/app/blog/page.tsx:2:1)
+    at <unknown> (./src/app/blog/page.tsx:6:10)

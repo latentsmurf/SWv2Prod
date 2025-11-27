@@ -1,0 +1,6 @@
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(105,3): error TS1109: Expression expected.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(105,5): error TS2809: Declaration or statement expected. This '=' follows a block of statements, so if you intended to write a destructuring assignment, you might need to wrap the whole assignment in parentheses.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(105,7): error TS1005: ',' expected.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(108,5): error TS1005: ')' expected.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(433,1): error TS1128: Declaration or statement expected.
+src/components/reactvideoeditor/pro/components/advanced-timeline/timeline.tsx(433,2): error TS1128: Declaration or statement expected.
