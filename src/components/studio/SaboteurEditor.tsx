@@ -9,15 +9,21 @@ import { CustomTheme } from '@/components/reactvideoeditor/pro/hooks/use-extende
 import { MobileWarningModal } from '@/components/reactvideoeditor/pro/components/shared/mobile-warning-modal';
 import { ProjectLoadConfirmModal } from '@/components/reactvideoeditor/pro/components/shared/project-load-confirm-modal';
 import { useProjectStateFromUrl } from '@/components/reactvideoeditor/pro/hooks/use-project-state-from-url';
+import { useEditorPanel } from '@/components/layout/ProductionLayout';
+import { IntegratedEditorSidebar } from './IntegratedEditorSidebar';
 
 // Constants
 const SHOW_MOBILE_WARNING = true;
 
 interface SaboteurEditorProps {
     projectId: string;
+    /** Whether to show the RVE sidebar (default: false for integrated mode) */
+    showSidebar?: boolean;
 }
 
-export default function SaboteurEditor({ projectId }: SaboteurEditorProps) {
+export default function SaboteurEditor({ projectId, showSidebar = false }: SaboteurEditorProps) {
+    const editorPanelContext = useEditorPanel();
+
     /**
      * Load project state from API via URL parameter or prop.
      */
@@ -29,16 +35,15 @@ export default function SaboteurEditor({ projectId }: SaboteurEditorProps) {
         console.log('Theme changed to:', themeId);
     };
 
-    // Define available themes
+    // Define SceneWeaver theme
     const availableThemes: CustomTheme[] = [
         {
-            id: 'rve',
-            name: 'RVE',
-            className: 'rve',
-            color: '#3E8AF5'
+            id: 'sceneweaver',
+            name: 'SceneWeaver',
+            className: 'sceneweaver',
+            color: '#EBFF00'
         },
     ];
-
 
     // Default renderer uses NextJS API routes
     const ssrRenderer = React.useMemo(() =>
@@ -48,8 +53,13 @@ export default function SaboteurEditor({ projectId }: SaboteurEditorProps) {
         }), []
     );
 
+    // If we have an editor panel context (integrated mode), use the IntegratedEditorSidebar
+    const customSidebar = editorPanelContext ? (
+        <IntegratedEditorSidebar activePanel={editorPanelContext.activePanel} />
+    ) : undefined;
+
     return (
-        <div className="w-full h-full relative">
+        <div className="w-full h-full relative bg-[#050505]">
             <MobileWarningModal show={SHOW_MOBILE_WARNING} />
             <ProjectLoadConfirmModal
                 isVisible={showModal}
@@ -66,14 +76,17 @@ export default function SaboteurEditor({ projectId }: SaboteurEditorProps) {
                 disabledPanels={[]}
                 availableThemes={availableThemes}
                 defaultTheme="dark"
+                hideThemeToggle={true}
+                showSidebar={editorPanelContext ? !!editorPanelContext.activePanel : showSidebar}
+                customSidebar={customSidebar}
                 adaptors={{
                     video: [createPexelsVideoAdaptor('CEOcPegZJRoNztih7auwNoFZmIFTmlYoZTI0NgTRCUxkFhXORBhERORM')],
                     images: [createPexelsImageAdaptor('CEOcPegZJRoNztih7auwNoFZmIFTmlYoZTI0NgTRCUxkFhXORBhERORM')],
                 }}
                 onThemeChange={handleThemeChange}
-                showDefaultThemes={true}
-                sidebarWidth="clamp(350px, 25vw, 500px)"
-                sidebarIconWidth="57.6px"
+                showDefaultThemes={false}
+                sidebarWidth="clamp(280px, 22vw, 380px)"
+                sidebarIconWidth="0px"
                 showIconTitles={false}
             />
         </div>

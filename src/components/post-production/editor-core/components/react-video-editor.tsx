@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import { DefaultSidebar } from "./shared/default-sidebar";
+import { EditorToolbar } from "./shared/editor-toolbar";
 import { SidebarInset } from "./ui/sidebar";
 import { Editor } from "./core/editor";
 import { VideoPlayer } from "./core/video-player";
@@ -11,6 +12,8 @@ import { ReactVideoEditorProvider, ReactVideoEditorProviderProps } from "./provi
 import { PlayerRef } from "@remotion/player";
 
 export interface ReactVideoEditorProps extends Omit<ReactVideoEditorProviderProps, 'children'> {
+  /** Layout mode: "sidebar" for side navigation, "toolbar" for top navigation */
+  layout?: "sidebar" | "toolbar";
   showSidebar?: boolean;
   showAutosaveStatus?: boolean;
   className?: string;
@@ -42,6 +45,7 @@ export interface ReactVideoEditorProps extends Omit<ReactVideoEditorProviderProp
 }
 
 export const ReactVideoEditor: React.FC<ReactVideoEditorProps> = ({
+  layout = "sidebar",
   showSidebar = true,
   showAutosaveStatus = true,
   className,
@@ -118,8 +122,32 @@ export const ReactVideoEditor: React.FC<ReactVideoEditorProps> = ({
         >
           <VideoPlayer playerRef={playerRef} isPlayerOnly={true} />
         </div>
+      ) : layout === "toolbar" ? (
+        // Toolbar layout: Top navigation bar with expandable panels
+        <div className="flex flex-col h-screen bg-[#050505]">
+          <EditorToolbar 
+            disabledPanels={disabledPanels || []} 
+            logo={sidebarLogo}
+          />
+          <div className="flex-1 overflow-hidden">
+            <Editor
+              availableThemes={availableThemes}
+              selectedTheme={selectedTheme}
+              onThemeChange={onThemeChange}
+              showDefaultThemes={showDefaultThemes}
+              hideThemeToggle={true}
+              defaultTheme={defaultTheme}
+            />
+          </div>
+          {showAutosaveStatus && (
+            <AutosaveStatus
+              isSaving={isSaving}
+              lastSaveTime={lastSaveTime}
+            />
+          )}
+        </div>
       ) : (
-        // Editor mode: Full editor interface with sidebar
+        // Sidebar layout: Side navigation with content panels
         <>
           {showSidebar && (customSidebar || <DefaultSidebar logo={sidebarLogo} footerText={sidebarFooterText || "RVE"} disabledPanels={disabledPanels || []} showIconTitles={showIconTitles} />)}
           <SidebarInset className={className}>

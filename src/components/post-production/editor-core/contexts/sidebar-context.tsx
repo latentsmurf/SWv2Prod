@@ -1,11 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 import { OverlayType } from "../types";
-import { useSidebar } from "../components/ui/sidebar";
 
 // Define the shape of our context data
 type EditorSidebarContextType = {
   activePanel: OverlayType; // Stores the currently active panel name
   setActivePanel: (panel: OverlayType) => void; // Function to update the active panel
+  isOpen: boolean; // Whether the panel is open
   setIsOpen: (open: boolean) => void;
 };
 
@@ -28,15 +28,12 @@ export const SidebarProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   const [activePanel, setActivePanel] = useState<OverlayType>(OverlayType.VIDEO);
-  const uiSidebar = useSidebar();
-
-  const setIsOpen = (open: boolean) => {
-    uiSidebar.setOpen(open);
-  };
+  const [isOpen, setIsOpen] = useState(false);
 
   const value = {
     activePanel,
     setActivePanel,
+    isOpen,
     setIsOpen,
   };
 

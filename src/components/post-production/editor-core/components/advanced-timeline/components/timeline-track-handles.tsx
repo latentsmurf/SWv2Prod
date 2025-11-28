@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { TimelineTrack as TimelineTrackType } from '../types';
 import { TIMELINE_CONSTANTS } from '../constants';
 import { GripVertical, Trash2, Magnet } from 'lucide-react';
@@ -19,12 +19,13 @@ export const TimelineTrackHandles: React.FC<TimelineTrackHandlesProps> = ({
   onTrackDelete,
   onToggleMagnetic,
 }) => {
-  const dragIndexRef = useRef<number | null>(null);
+  // Use state instead of ref for drag index to ensure proper re-renders
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
 
   const handleDragStart = useCallback((index: number) => (e: React.DragEvent<HTMLDivElement>) => {
-    dragIndexRef.current = index;
+    setDragIndex(index);
     setIsDragging(true);
     e.dataTransfer.effectAllowed = 'move';
     // For Firefox compatibility
@@ -43,19 +44,19 @@ export const TimelineTrackHandles: React.FC<TimelineTrackHandlesProps> = ({
 
   const handleDrop = useCallback((toIndex: number) => (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
-    const fromIndex = dragIndexRef.current ?? parseInt(e.dataTransfer.getData('text/plain'), 10);
+    const fromIndex = dragIndex ?? parseInt(e.dataTransfer.getData('text/plain'), 10);
     if (!Number.isNaN(fromIndex) && fromIndex !== toIndex) {
       onTrackReorder?.(fromIndex, toIndex);
     }
-    dragIndexRef.current = null;
+    setDragIndex(null);
     setIsDragging(false);
     setDragOverIndex(null);
-  }, [onTrackReorder]);
+  }, [onTrackReorder, dragIndex]);
 
   const handleDragEnd = useCallback(() => {
     setIsDragging(false);
     setDragOverIndex(null);
-    dragIndexRef.current = null;
+    setDragIndex(null);
   }, []);
 
   return (
@@ -75,8 +76,8 @@ export const TimelineTrackHandles: React.FC<TimelineTrackHandlesProps> = ({
       {/* Track handles - scrollable, matches TimelineTrack structure */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide track-handles-scroll">
         {tracks.map((track, index) => {
-          const isBeingDragged = isDragging && dragIndexRef.current === index;
-          const isDropTarget = dragOverIndex === index && dragIndexRef.current !== index;
+          const isBeingDragged = isDragging && dragIndex === index;
+          const isDropTarget = dragOverIndex === index && dragIndex !== index;
           
           // Enhanced visual feedback classes
           const getTrackClasses = () => {

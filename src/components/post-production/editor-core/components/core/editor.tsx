@@ -163,7 +163,7 @@ export const Editor: React.FC<EditorProps> = ({
    */
   return (
     <div
-      className="flex flex-col overflow-hidden"
+      className="flex flex-col overflow-hidden bg-[#0a0a0a]"
       style={{
         height: "calc(var(--vh, 1vh) * 100)",
         maxHeight: "-webkit-fill-available" /* Safari fix */,
@@ -177,7 +177,7 @@ export const Editor: React.FC<EditorProps> = ({
         hideThemeToggle={hideThemeToggle}
         defaultTheme={defaultTheme}
       />
-      <div className="grow flex flex-col lg:flex-row overflow-hidden">
+      <div className="grow flex flex-col lg:flex-row overflow-hidden bg-[#0a0a0a]">
         <VideoPlayer playerRef={playerRef} />
       </div>
 

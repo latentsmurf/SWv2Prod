@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Play, Loader2, Film, RefreshCw, AlertCircle } from 'lucide-react';
+import { Play, Loader2, Film, RefreshCw, AlertCircle, Camera, Image as ImageIcon } from 'lucide-react';
 import { Shot } from '@/types';
+import { SHOT_TYPE_LABELS } from '@/lib/coverage-presets';
 
 interface ShotListProps {
     projectId?: string;
@@ -115,63 +116,89 @@ export default function ShotList({ projectId }: ShotListProps) {
                         <p className="text-sm mt-2">Go to Pre-Production to breakdown your script.</p>
                     </div>
                 )}
-                {shots.map((shot) => (
-                    <div key={shot.id} className="bg-[#1a1a1a] border border-white/5 rounded-lg p-4 flex items-start gap-4 hover:border-white/10 transition-colors">
-                        {/* Thumbnail / Status */}
-                        <div className="w-40 aspect-video bg-black rounded overflow-hidden flex items-center justify-center relative group">
-                            {shot.status === 'completed' && shot.proxy_path ? (
-                                <>
-                                    <video src={shot.proxy_path} className="w-full h-full object-cover" />
-                                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer">
-                                        <Play className="text-white fill-white" />
-                                    </div>
-                                </>
-                            ) : shot.status === 'processing' ? (
-                                <div className="flex flex-col items-center gap-2 text-yellow-500">
-                                    <Loader2 className="animate-spin" />
-                                    <span className="text-xs">Rendering...</span>
-                                </div>
-                            ) : shot.status === 'failed' ? (
-                                <div className="flex flex-col items-center gap-2 text-red-500">
-                                    <AlertCircle />
-                                    <span className="text-xs">Failed</span>
-                                </div>
-                            ) : (
-                                <div className="text-gray-600 text-xs">Pending</div>
-                            )}
-                        </div>
+                {shots.map((shot, index) => {
+                    const shotTypeInfo = SHOT_TYPE_LABELS[shot.shot_type || 'medium'];
+                    return (
+                        <div key={shot.id} className="bg-[#1a1a1a] border border-white/5 rounded-lg p-4 flex items-start gap-4 hover:border-white/10 transition-colors">
+                            {/* Shot Number */}
+                            <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-500 font-mono text-sm">
+                                {shot.shot_number || index + 1}
+                            </div>
 
-                        {/* Info */}
-                        <div className="flex-1">
-                            <p className="text-sm text-gray-300 font-mono mb-2 line-clamp-2">{shot.prompt}</p>
+                            {/* Thumbnail / Status */}
+                            <div className="w-40 aspect-video bg-black rounded overflow-hidden flex items-center justify-center relative group">
+                                {shot.status === 'completed' && shot.proxy_path ? (
+                                    <>
+                                        <img src={shot.proxy_path} alt={`Shot ${index + 1}`} className="w-full h-full object-cover" />
+                                        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer">
+                                            <Play className="text-white fill-white" />
+                                        </div>
+                                    </>
+                                ) : shot.status === 'processing' ? (
+                                    <div className="flex flex-col items-center gap-2 text-yellow-500">
+                                        <Loader2 className="animate-spin" />
+                                        <span className="text-xs">Rendering...</span>
+                                    </div>
+                                ) : shot.status === 'failed' ? (
+                                    <div className="flex flex-col items-center gap-2 text-red-500">
+                                        <AlertCircle />
+                                        <span className="text-xs">Failed</span>
+                                    </div>
+                                ) : (
+                                    <div className="flex flex-col items-center gap-1 text-gray-600">
+                                        <ImageIcon size={20} />
+                                        <span className="text-xs">Pending</span>
+                                    </div>
+                                )}
+                                
+                                {/* Shot Type Badge */}
+                                <div className="absolute top-1 left-1 px-1.5 py-0.5 bg-black/70 rounded text-[10px] font-mono text-white">
+                                    {shotTypeInfo?.abbrev || 'MED'}
+                                </div>
+                            </div>
+
+                            {/* Info */}
+                            <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-2 mb-1">
+                                    <span className="text-sm font-medium text-white">
+                                        {shotTypeInfo?.label || 'Medium Shot'}
+                                    </span>
+                                    <span className={`text-[10px] px-2 py-0.5 rounded uppercase font-bold
+                                        ${shot.status === 'completed' ? 'bg-green-500/20 text-green-400' :
+                                            shot.status === 'processing' ? 'bg-yellow-500/20 text-yellow-400' :
+                                                shot.status === 'failed' ? 'bg-red-500/20 text-red-400' :
+                                                    'bg-gray-500/20 text-gray-400'
+                                        }
+                                    `}>
+                                        {shot.status}
+                                    </span>
+                                </div>
+                                <p className="text-sm text-gray-400 line-clamp-2">
+                                    {shot.description || shot.prompt}
+                                </p>
+                                {shot.notes && (
+                                    <p className="text-xs text-gray-600 mt-1 italic">
+                                        Note: {shot.notes}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Actions */}
                             <div className="flex items-center gap-2">
-                                <span className={`text-[10px] px-2 py-0.5 rounded uppercase font-bold
-                                    ${shot.status === 'completed' ? 'bg-green-500/20 text-green-400' :
-                                        shot.status === 'processing' ? 'bg-yellow-500/20 text-yellow-400' :
-                                            shot.status === 'failed' ? 'bg-red-500/20 text-red-400' :
-                                                'bg-gray-500/20 text-gray-400'
-                                    }
-                                `}>
-                                    {shot.status}
-                                </span>
+                                {(shot.status === 'pending' || shot.status === 'failed') && (
+                                    <button
+                                        onClick={() => handleGenerate(shot)}
+                                        disabled={generatingId === shot.id}
+                                        className="p-2 bg-yellow-600 hover:bg-yellow-500 text-white rounded-lg transition-colors disabled:opacity-50"
+                                        title="Generate Storyboard"
+                                    >
+                                        {generatingId === shot.id ? <Loader2 size={18} className="animate-spin" /> : <Camera size={18} />}
+                                    </button>
+                                )}
                             </div>
                         </div>
-
-                        {/* Actions */}
-                        <div>
-                            {shot.status === 'pending' || shot.status === 'failed' ? (
-                                <button
-                                    onClick={() => handleGenerate(shot)}
-                                    disabled={generatingId === shot.id}
-                                    className="p-2 bg-yellow-600 hover:bg-yellow-500 text-white rounded-lg transition-colors disabled:opacity-50"
-                                    title="Generate Video"
-                                >
-                                    {generatingId === shot.id ? <Loader2 size={18} className="animate-spin" /> : <RefreshCw size={18} />}
-                                </button>
-                            ) : null}
-                        </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

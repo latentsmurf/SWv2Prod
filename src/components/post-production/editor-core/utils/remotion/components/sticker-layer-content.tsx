@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useMemo } from "react";
 import { StickerOverlay } from "../../../types";
 import { templateMap } from "../../../templates/sticker-templates/sticker-helpers";
 
@@ -13,21 +13,26 @@ export const StickerLayerContent: React.FC<StickerLayerContentProps> = memo(
   ({ overlay, isSelected, onUpdate }) => {
     const template = templateMap[overlay.content];
 
-    if (!template) {
+    // Memoize props to prevent unnecessary re-renders
+    const props = useMemo(() => {
+      if (!template) return null;
+      return {
+        ...template.config.defaultProps,
+        overlay,
+        isSelected,
+        ...(onUpdate && { onUpdate }),
+      };
+    }, [template, overlay, isSelected, onUpdate]);
+
+    if (!template || !props) {
       console.warn(`No sticker template found for id: ${overlay.content}`);
       return null;
     }
 
+    // Use the Component directly - parent is already memoized
     const { Component } = template;
-    const MemoizedComponent = memo(Component);
-    const props = {
-      ...template.config.defaultProps,
-      overlay,
-      isSelected,
-      ...(onUpdate && { onUpdate }),
-    };
 
-    return <MemoizedComponent {...props} />;
+    return <Component {...props} />;
   },
   (prevProps, nextProps) => {
     // Only re-render if these props change

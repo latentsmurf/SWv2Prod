@@ -22,12 +22,12 @@ async function getLibraryAssets(token: string, category: string) {
     }
 }
 
-export default async function LibraryCategoryPage({ params }: { params: { category: string } }) {
+export default async function LibraryCategoryPage({ params }: { params: Promise<{ category: string }> }) {
     await verifyAdminAccess();
     const session = await getServerSession();
     const token = session?.id_token;
 
-    const category = params.category;
+    const { category } = await params;
     const validCategories = ["cast", "wardrobe", "locations", "props", "styles"];
 
     if (!validCategories.includes(category)) {

@@ -106,7 +106,7 @@ export default function ReferenceLibrary() {
                 <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6 pb-20">
                     {images.length === 0 && (
                         <div className="text-center text-gray-500 py-10 col-span-full">
-                            No references found. Try searching for "cinematic", "noir", or "sci-fi".
+                            No references found. Try searching for &quot;cinematic&quot;, &quot;noir&quot;, or &quot;sci-fi&quot;.
                         </div>
                     )}
                     {images.map((img) => (

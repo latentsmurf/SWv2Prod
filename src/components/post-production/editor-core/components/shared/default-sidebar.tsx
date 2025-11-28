@@ -202,26 +202,21 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
   return (
     <Sidebar
       collapsible="icon"
-      className="overflow-hidden *:data-[sidebar=sidebar]:flex-row"
+      className="overflow-hidden *:data-[sidebar=sidebar]:flex-row bg-[#050505]"
     >
-      {/* First sidebar */}
+      {/* First sidebar - Icon navigation */}
       <Sidebar
         collapsible="none"
-        className="w-[calc(var(--sidebar-width-icon)+1px)]! border-r border-border "
+        className="w-[calc(var(--sidebar-width-icon)+1px)]! border-r border-white/5 bg-[#050505]"
       >
-        <SidebarHeader>
+        <SidebarHeader className="py-4">
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild className="md:h-8 md:pb-4 md:pt-4 ">
-                <a href="#">
-                  <div className="flex aspect-square size-9 items-center justify-center rounded-lg">
+              <SidebarMenuButton size="lg" asChild className="md:h-10 md:pb-2 md:pt-2">
+                <a href="/" className="flex items-center justify-center">
+                  <div className="flex aspect-square size-9 items-center justify-center rounded-full bg-[#EBFF00]/20 border border-[#EBFF00]/50">
                     {logo || (
-                      <img
-                        src="/icons/logo-rve.png"
-                        alt="RVE Logo"
-                        width={27}
-                        height={27}
-                      />
+                      <span className="text-[#EBFF00] font-bold text-sm">S</span>
                     )}
                   </div>
                 </a>
@@ -229,8 +224,8 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarHeader>
-        <SidebarContent className="border-t border-border">
-          <SidebarGroup className="pt-3">
+        <SidebarContent className="border-t border-white/5">
+          <SidebarGroup className="pt-2 px-1">
             {navigationItems.map((item) => (
               <TooltipProvider key={item.title} delayDuration={0}>
                 <Tooltip>
@@ -241,24 +236,30 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
                         setIsOpen(true);
                       }}
                       size="lg"
-                      className="flex flex-col items-center gap-2 px-1.5 py-2.5"
+                      className={`flex flex-col items-center gap-1.5 px-2 py-3 rounded-lg transition-all ${
+                        activePanel === item.panel 
+                          ? "bg-[#EBFF00] text-black" 
+                          : "text-zinc-400 hover:text-white hover:bg-white/5"
+                      }`}
                       data-active={activePanel === item.panel}
                     >
-                      <item.icon className="h-4 w-4" strokeWidth={1.25} />
+                      <item.icon className="h-5 w-5" strokeWidth={1.5} />
                       {showIconTitles && (
-                        <span className="text-[8px] leading-none">
+                        <span className="text-[9px] font-medium leading-none">
                           {item.title}
                         </span>
                       )}
                     </SidebarMenuButton>
                   </TooltipTrigger>
-                  <TooltipContent side="right">{item.title}</TooltipContent>
+                  <TooltipContent side="right" className="bg-zinc-900 border-white/10 text-white">
+                    {item.title}
+                  </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             ))}
           </SidebarGroup>
         </SidebarContent>
-        <SidebarFooter className="border-t border-border  ">
+        <SidebarFooter className="border-t border-white/5 py-2 px-1">
           <SidebarMenu>
             <div className="flex items-center justify-center">
               <TooltipProvider delayDuration={0}>
@@ -270,18 +271,24 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
                         setIsOpen(true);
                       }}
                       size="lg"
-                      className="flex flex-col items-center gap-2 px-1.5 py-2.5"
+                      className={`flex flex-col items-center gap-1.5 px-2 py-3 rounded-lg transition-all ${
+                        activePanel === OverlayType.SETTINGS 
+                          ? "bg-[#EBFF00] text-black" 
+                          : "text-zinc-400 hover:text-white hover:bg-white/5"
+                      }`}
                       data-active={activePanel === OverlayType.SETTINGS}
                     >
-                      <Settings className="h-4 w-4" strokeWidth={1.25} />
+                      <Settings className="h-5 w-5" strokeWidth={1.5} />
                       {showIconTitles && (
-                        <span className="text-[8px] leading-none">
+                        <span className="text-[9px] font-medium leading-none">
                           Settings
                         </span>
                       )}
                     </SidebarMenuButton>
                   </TooltipTrigger>
-                  <TooltipContent side="right">Settings</TooltipContent>
+                  <TooltipContent side="right" className="bg-zinc-900 border-white/10 text-white">
+                    Settings
+                  </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             </div>
@@ -289,19 +296,19 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
         </SidebarFooter>
       </Sidebar>
 
-      {/* Second sidebar */}
-      <Sidebar collapsible="none" className="hidden flex-1 md:flex bg-background">
-      <SidebarHeader className="gap-3.5 border-b border-border px-4 py-3">
+      {/* Second sidebar - Panel content */}
+      <Sidebar collapsible="none" className="hidden flex-1 md:flex bg-[#0a0a0a] border-r border-white/5">
+        <SidebarHeader className="gap-3.5 border-b border-white/5 px-4 py-3 bg-[#050505]">
           <div className="flex w-full items-center justify-between">
             <div className="flex items-center justify-between w-full">
-              <h3 className="font-extralight text-sidebar-foreground">
+              <h3 className="font-medium text-white text-sm">
                 {activePanel ? getPanelTitle(activePanel) : ""} 
               </h3>
               {shouldShowBackButton && (
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="h-6 w-6"
+                  className="h-6 w-6 text-zinc-400 hover:text-white hover:bg-white/5"
                   onClick={() => setSelectedOverlayId(null)}
                   aria-label="Back"
                 >
@@ -311,7 +318,7 @@ export const DefaultSidebar: React.FC<DefaultSidebarProps> = ({
             </div>
           </div>
         </SidebarHeader>
-        <SidebarContent className="bg-background px-2 pt-1">
+        <SidebarContent className="bg-[#0a0a0a] px-2 pt-2">
           {renderActivePanel()}
         </SidebarContent>
       </Sidebar>

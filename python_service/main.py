@@ -26,9 +26,14 @@ app = FastAPI()
 
 # Import Routers
 from routers import admin, users
+from routers.scenes import router as scenes_router, batch_router
+from routers.exports import router as exports_router
 
 app.include_router(admin.router)
 app.include_router(users.router)
+app.include_router(scenes_router)
+app.include_router(batch_router)
+app.include_router(exports_router)
 
 # Initialize Services
 storage_manager = StorageManager()

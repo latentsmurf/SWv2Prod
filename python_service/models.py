@@ -42,14 +42,42 @@ class Asset(MongoBaseModel):
     public_url: Optional[str] = None
     definition: Dict[str, Any] = {} # Flexible JSON storage
 
-# --- Scenes Collection ---
+# --- Coverage Presets ---
+class CoveragePreset(BaseModel):
+    id: str  # minimal, standard, heavy, commercial, documentary
+    name: str
+    description: str
+    shot_count_min: int
+    shot_count_max: int
+    shot_types: List[str]
+
+# --- Scenes Collection (Enhanced) ---
 class Scene(MongoBaseModel):
     project_id: PyObjectId
     order_index: int
+    slug_line: str = ""  # e.g., "INT. KITCHEN - DAY"
     script_text: str
-    linked_assets: List[PyObjectId] = [] # References to Assets
+    synopsis: Optional[str] = None
+    # Linked production assets
+    linked_cast_ids: List[PyObjectId] = []
+    linked_location_id: Optional[PyObjectId] = None
+    linked_wardrobe_ids: List[PyObjectId] = []
+    linked_prop_ids: List[PyObjectId] = []
+    # Coverage settings
+    coverage_preset: str = "standard"  # minimal, standard, heavy, commercial, documentary
+    # Visual style
+    style_mode: str = "storyboard"  # storyboard, cinematic
+    style_preset_id: Optional[str] = None
+    # Metadata
+    estimated_duration: Optional[int] = None  # in seconds
+    page_count: Optional[float] = None
+    characters: List[str] = []  # Character names detected from script
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+    # Legacy field for backwards compatibility
+    linked_assets: List[PyObjectId] = []
 
-# --- Shots Collection ---
+# --- Shots Collection (Enhanced) ---
 class ShotUrls(BaseModel):
     high_res: Optional[str] = None
     proxy: Optional[str] = None
@@ -61,9 +89,36 @@ class ShotPromptData(BaseModel):
 class Shot(MongoBaseModel):
     scene_id: PyObjectId
     project_id: PyObjectId
-    status: str = "queued" # queued, processing, done
+    status: str = "queued"  # pending, queued, processing, completed, failed, ready
     urls: ShotUrls = Field(default_factory=ShotUrls)
     prompt_data: ShotPromptData
+    # Enhanced shot metadata
+    shot_type: str = "medium"  # wide, establishing, master, medium, close_up, etc.
+    shot_number: int = 0
+    description: Optional[str] = None
+    duration: float = 3.0  # in seconds
+    notes: Optional[str] = None
+    camera_movement: Optional[str] = None
+    lens: Optional[str] = None
+    # Linked assets for this specific shot
+    linked_cast_ids: List[PyObjectId] = []
+    linked_prop_ids: List[PyObjectId] = []
+    # GCS paths (for backwards compatibility)
+    gcs_path: Optional[str] = None
+    proxy_path: Optional[str] = None
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+# --- Batch Generation Job ---
+class BatchGenerationJob(MongoBaseModel):
+    project_id: PyObjectId
+    shot_ids: List[PyObjectId] = []
+    total: int = 0
+    completed: int = 0
+    failed: int = 0
+    current_shot_id: Optional[PyObjectId] = None
+    status: str = "idle"  # idle, running, completed, failed
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
 
 # --- Reference Vault ---
 class ReferenceImage(MongoBaseModel):

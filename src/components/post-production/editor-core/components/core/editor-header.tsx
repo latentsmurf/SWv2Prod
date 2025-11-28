@@ -103,17 +103,16 @@ export function EditorHeader({
   return (
     <header
       className="sticky top-0 flex shrink-0 items-center gap-2.5 
-      bg-background
-      border-l
-      p-2.5 px-4.5"
+      bg-[#050505] border-b border-white/5
+      p-2.5 px-4"
     >
       {/* Sidebar toggle button with theme-aware styling */}
-      <SidebarTrigger className="hidden sm:block text-foreground" />
+      <SidebarTrigger className="hidden sm:block text-zinc-400 hover:text-white" />
 
       {/* Vertical separator for visual organization */}
       <Separator
         orientation="vertical"
-        className="hidden sm:block mr-2.5 h-5"
+        className="hidden sm:block mr-2.5 h-5 bg-white/10"
       />
 
       {/* Theme dropdown for switching between available themes - only show if not hidden */}

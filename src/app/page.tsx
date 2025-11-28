@@ -6,7 +6,7 @@ import { useState } from "react";
 import {
   Clapperboard, Users, Shirt, MapPin, Box, Video, Wand2, Layers,
   Film, Camera, Music, Settings, Check, ChevronDown, ChevronUp,
-  Play, ArrowRight, Sparkles, MonitorPlay
+  Play, ArrowRight, Sparkles, MonitorPlay, Smartphone, Zap, Clock
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
@@ -238,7 +238,70 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 7. Who it is for */}
+        {/* 7. Micro Drama / Vertical Series */}
+        <section className="w-full py-12 px-6">
+          <div className="max-w-7xl mx-auto rounded-3xl bg-gradient-to-br from-pink-900/20 to-rose-900/20 border border-pink-500/20 p-8 md:p-16 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-pink-500/5 to-transparent pointer-events-none" />
+            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="flex flex-col md:flex-row gap-12 items-start">
+                <div className="flex-1">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 mb-6">
+                    <Smartphone className="h-3 w-3 text-pink-400" />
+                    <span className="text-xs font-medium text-pink-300">Vertical Series Mode</span>
+                    <span className="text-[10px] font-bold text-pink-400 bg-pink-500/20 px-1.5 py-0.5 rounded">9:16</span>
+                  </div>
+
+                  <h2 className="text-3xl sm:text-5xl font-bold mb-6">
+                    Built for <span className="text-pink-400">Micro Dramas</span> & Vertical Series
+                  </h2>
+                  <p className="text-lg text-zinc-300 mb-8 leading-relaxed">
+                    Create binge-worthy vertical content like RealShort, ReelShort, and DramaBox. 
+                    SceneWeaver understands the 9:16 format with cliffhanger-optimized script tools, 
+                    fast-paced shot presets, and episode-to-episode character continuity.
+                  </p>
+
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    {['CEO Romance', 'Revenge Drama', 'Secret Billionaire', 'Werewolf Fantasy', 'Contract Marriage'].map((genre) => (
+                      <span key={genre} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm text-zinc-300">
+                        {genre}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link href="/new-project">
+                    <Button className="bg-pink-500 text-white hover:bg-pink-400 rounded-full px-8 py-6 font-bold">
+                      Start a Micro Drama
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Feature Cards */}
+                <div className="w-full md:w-80 space-y-4">
+                  {[
+                    { icon: Smartphone, title: "9:16 Native", desc: "All presets optimized for vertical mobile viewing" },
+                    { icon: Zap, title: "Cliffhanger AI", desc: "Script assistant trained on viral micro drama hooks" },
+                    { icon: Clock, title: "Episode Batching", desc: "Generate 10-100 episode series with consistent characters" },
+                    { icon: Users, title: "Character Lock", desc: "Same faces, same style across every episode" },
+                  ].map((feature, i) => (
+                    <div key={i} className="flex items-start gap-3 p-4 bg-black/30 rounded-xl border border-white/5">
+                      <div className="p-2 bg-pink-500/10 rounded-lg">
+                        <feature.icon className="h-4 w-4 text-pink-400" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-white text-sm">{feature.title}</h4>
+                        <p className="text-xs text-zinc-500">{feature.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 8. Who it is for */}
         <section className="w-full py-24 max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-5xl font-bold">Built for creative teams of all sizes</h2>
