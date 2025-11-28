@@ -166,3 +166,67 @@ class AIProviderConfig(MongoBaseModel):
     enabled_models: List[str] = []
     is_active: bool = True
     updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+# --- Comments Collection (for Review) ---
+class DrawingPoint(BaseModel):
+    x: float
+    y: float
+
+class DrawingStroke(BaseModel):
+    points: List[DrawingPoint]
+    color: str = "#ff0000"
+    width: float = 2.0
+
+class Comment(MongoBaseModel):
+    project_id: PyObjectId
+    shot_id: Optional[PyObjectId] = None
+    content: str
+    timestamp: float = 0.0  # Video timestamp in seconds
+    is_resolved: bool = False
+    drawing_data: Optional[List[DrawingStroke]] = None  # Canvas drawing annotations
+    author_id: Optional[PyObjectId] = None
+    author_name: Optional[str] = None
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+# --- Request/Response Models for Comments ---
+class CommentCreate(BaseModel):
+    project_id: str
+    shot_id: Optional[str] = None
+    content: str
+    timestamp: float = 0.0
+    drawing_data: Optional[List[Dict[str, Any]]] = None
+
+class CommentUpdate(BaseModel):
+    content: Optional[str] = None
+    is_resolved: Optional[bool] = None
+    drawing_data: Optional[List[Dict[str, Any]]] = None
+
+# --- Episodes Collection (for Micro Drama Series) ---
+class Episode(MongoBaseModel):
+    project_id: PyObjectId
+    episode_number: int
+    title: str
+    synopsis: Optional[str] = None
+    scene_ids: List[PyObjectId] = []  # Scenes in this episode
+    duration: Optional[float] = None  # in seconds
+    status: str = "draft"  # draft, in_production, rendered, published
+    cliffhanger_note: Optional[str] = None  # Note about episode ending hook
+    hook_note: Optional[str] = None  # Note about opening hook
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+class EpisodeCreate(BaseModel):
+    project_id: str
+    episode_number: int
+    title: str
+    synopsis: Optional[str] = None
+    scene_ids: List[str] = []
+
+class EpisodeUpdate(BaseModel):
+    title: Optional[str] = None
+    synopsis: Optional[str] = None
+    scene_ids: Optional[List[str]] = None
+    status: Optional[str] = None
+    cliffhanger_note: Optional[str] = None
+    hook_note: Optional[str] = None

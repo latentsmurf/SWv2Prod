@@ -1,72 +1,193 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
-  try {
-    const { videoSrc, language = 'en' } = await request.json();
+const PYTHON_API_URL = process.env.PYTHON_API_URL || 'http://localhost:8000';
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-    if (!videoSrc) {
-      return NextResponse.json(
-        { error: 'Video source is required' },
-        { status: 400 }
-      );
-    }
+interface WhisperWord {
+    word: string;
+    start: number;
+    end: number;
+}
 
-    // For now, we'll return demo captions
-    // TODO: Implement actual OpenAI Whisper integration when ready
-    // This would involve:
-    // 1. Extract audio from video
-    // 2. Send to OpenAI Whisper API
-    // 3. Process response into caption format
+interface WhisperSegment {
+    id: number;
+    seek: number;
+    start: number;
+    end: number;
+    text: string;
+    tokens: number[];
+    temperature: number;
+    avg_logprob: number;
+    compression_ratio: number;
+    no_speech_prob: number;
+    words?: WhisperWord[];
+}
 
-    // Demo captions with realistic timing
-    const demoCaptions = [
-      {
-        text: "Welcome to React Video Editor Pro.",
-        startMs: 0,
-        endMs: 3000,
+interface WhisperResponse {
+    text: string;
+    segments: WhisperSegment[];
+    language: string;
+}
+
+// Convert Whisper response to our caption format
+function convertWhisperToCaption(segment: WhisperSegment) {
+    return {
+        text: segment.text.trim(),
+        startMs: Math.round(segment.start * 1000),
+        endMs: Math.round(segment.end * 1000),
         timestampMs: null,
-        confidence: 0.98,
-        words: [
-          { word: "Welcome", startMs: 0, endMs: 600, confidence: 0.98 },
-          { word: "to", startMs: 600, endMs: 800, confidence: 0.98 },
-          { word: "React", startMs: 800, endMs: 1200, confidence: 0.98 },
-          { word: "Video", startMs: 1200, endMs: 1600, confidence: 0.98 },
-          { word: "Editor", startMs: 1600, endMs: 2200, confidence: 0.98 },
-          { word: "Pro.", startMs: 2200, endMs: 3000, confidence: 0.98 },
-        ]
-      },
-      {
-        text: "This AI-powered caption generation is working!",
-        startMs: 3500,
-        endMs: 6500,
-        timestampMs: null,
-        confidence: 0.95,
-        words: [
-          { word: "This", startMs: 3500, endMs: 3800, confidence: 0.95 },
-          { word: "AI-powered", startMs: 3800, endMs: 4500, confidence: 0.95 },
-          { word: "caption", startMs: 4500, endMs: 5000, confidence: 0.95 },
-          { word: "generation", startMs: 5000, endMs: 5600, confidence: 0.95 },
-          { word: "is", startMs: 5600, endMs: 5800, confidence: 0.95 },
-          { word: "working!", startMs: 5800, endMs: 6500, confidence: 0.95 },
-        ]
-      }
+        confidence: segment.avg_logprob ? Math.exp(segment.avg_logprob) : 0.95,
+        words: segment.words?.map(w => ({
+            word: w.word,
+            startMs: Math.round(w.start * 1000),
+            endMs: Math.round(w.end * 1000),
+            confidence: 0.95
+        })) || []
+    };
+}
+
+// Generate demo captions for fallback
+function generateDemoCaptions(duration: number = 10000) {
+    const captions = [];
+    const phrases = [
+        "Welcome to SceneWeaver Production Studio.",
+        "Create stunning AI-powered videos with ease.",
+        "Generate captions automatically for any video.",
+        "Professional quality results in seconds.",
+        "Perfect for micro dramas and vertical content."
     ];
+    
+    let currentTime = 0;
+    const segmentDuration = Math.min(3000, duration / phrases.length);
+    
+    for (let i = 0; i < phrases.length && currentTime < duration; i++) {
+        const text = phrases[i];
+        const words = text.split(' ');
+        const wordDuration = segmentDuration / words.length;
+        
+        captions.push({
+            text,
+            startMs: currentTime,
+            endMs: currentTime + segmentDuration,
+            timestampMs: null,
+            confidence: 0.95 + Math.random() * 0.05,
+            words: words.map((word, idx) => ({
+                word,
+                startMs: currentTime + idx * wordDuration,
+                endMs: currentTime + (idx + 1) * wordDuration,
+                confidence: 0.95 + Math.random() * 0.05
+            }))
+        });
+        
+        currentTime += segmentDuration + 500; // 500ms gap between segments
+    }
+    
+    return captions;
+}
 
-    // Simulate processing time
-    await new Promise(resolve => setTimeout(resolve, 1000));
+export async function POST(request: NextRequest) {
+    try {
+        const { videoSrc, audioUrl, language = 'en', duration } = await request.json();
 
-    return NextResponse.json({
-      success: true,
-      captions: demoCaptions,
-      language,
-      processingTime: 1000
-    });
+        if (!videoSrc && !audioUrl) {
+            return NextResponse.json(
+                { error: 'Video source or audio URL is required' },
+                { status: 400 }
+            );
+        }
 
-  } catch (error) {
-    console.error('Caption generation error:', error);
-    return NextResponse.json(
-      { error: 'Failed to generate captions' },
-      { status: 500 }
-    );
-  }
+        const startTime = Date.now();
+
+        // Try Python backend first (which may have Whisper or other transcription)
+        try {
+            const pythonResponse = await fetch(`${PYTHON_API_URL}/api/ai/transcribe`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': request.headers.get('Authorization') || '',
+                },
+                body: JSON.stringify({
+                    video_url: videoSrc,
+                    audio_url: audioUrl,
+                    language
+                }),
+            });
+
+            if (pythonResponse.ok) {
+                const data = await pythonResponse.json();
+                return NextResponse.json({
+                    success: true,
+                    captions: data.segments?.map(convertWhisperToCaption) || data.captions,
+                    language: data.language || language,
+                    processingTime: Date.now() - startTime,
+                    source: 'python-backend'
+                });
+            }
+        } catch (backendError) {
+            console.log('Python backend not available, trying OpenAI directly...');
+        }
+
+        // Try OpenAI Whisper API directly if we have the API key
+        if (OPENAI_API_KEY && audioUrl) {
+            try {
+                // Fetch the audio file
+                const audioResponse = await fetch(audioUrl);
+                if (audioResponse.ok) {
+                    const audioBlob = await audioResponse.blob();
+                    
+                    // Create form data for OpenAI
+                    const formData = new FormData();
+                    formData.append('file', audioBlob, 'audio.mp3');
+                    formData.append('model', 'whisper-1');
+                    formData.append('language', language);
+                    formData.append('response_format', 'verbose_json');
+                    formData.append('timestamp_granularities[]', 'word');
+                    formData.append('timestamp_granularities[]', 'segment');
+
+                    const whisperResponse = await fetch('https://api.openai.com/v1/audio/transcriptions', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${OPENAI_API_KEY}`,
+                        },
+                        body: formData,
+                    });
+
+                    if (whisperResponse.ok) {
+                        const whisperData: WhisperResponse = await whisperResponse.json();
+                        
+                        return NextResponse.json({
+                            success: true,
+                            captions: whisperData.segments.map(convertWhisperToCaption),
+                            language: whisperData.language,
+                            fullText: whisperData.text,
+                            processingTime: Date.now() - startTime,
+                            source: 'openai-whisper'
+                        });
+                    }
+                }
+            } catch (openaiError) {
+                console.error('OpenAI Whisper error:', openaiError);
+            }
+        }
+
+        // Fallback to demo captions
+        console.log('Using demo captions (no transcription service available)');
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate processing
+
+        return NextResponse.json({
+            success: true,
+            captions: generateDemoCaptions(duration || 15000),
+            language,
+            processingTime: Date.now() - startTime,
+            source: 'demo',
+            message: 'Using demo captions. Set OPENAI_API_KEY or configure Python backend for real transcription.'
+        });
+
+    } catch (error) {
+        console.error('Caption generation error:', error);
+        return NextResponse.json(
+            { error: 'Failed to generate captions', details: String(error) },
+            { status: 500 }
+        );
+    }
 } 

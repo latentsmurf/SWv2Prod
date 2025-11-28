@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { 
     Film, Layers, Camera, List, Users, Layout, Zap, Grid, Video,
-    Calendar, FileText, Eye, Images
+    Calendar, FileText, Eye, Images, Smartphone
 } from 'lucide-react';
 import PageHeader from '@/components/ui/PageHeader';
 import LooksPanel from '@/components/production/LooksPanel';
@@ -18,6 +18,7 @@ import BlockingDiagram from '@/components/production/BlockingDiagram';
 import StuntCoordination from '@/components/production/StuntCoordination';
 import MultiCamSetup from '@/components/production/MultiCamSetup';
 import GeneratedMediaLibrary from '@/components/production/GeneratedMediaLibrary';
+import EpisodeManager from '@/components/production/EpisodeManager';
 import { Scene, Shot, Project } from '@/types';
 
 type MainSection = 'creative' | 'planning' | 'coordination' | 'media';
@@ -35,8 +36,31 @@ const SECTIONS: { key: MainSection; label: string; icon: React.ReactNode; descri
     { key: 'media', label: 'Media Library', icon: <Images size={16} />, description: 'Browse and manage generated media' },
 ];
 
-const SUB_TABS: Record<MainSection, SubTab[]> = {
+// Standard sub-tabs (non-micro-drama)
+const STANDARD_SUB_TABS: Record<MainSection, SubTab[]> = {
     creative: [
+        { key: 'scenes', label: 'Scenes', icon: <Film size={14} /> },
+        { key: 'storyboard', label: 'Storyboard', icon: <Layers size={14} /> },
+        { key: 'generate', label: 'Generate Shots', icon: <Camera size={14} /> },
+    ],
+    planning: [
+        { key: 'shot-list', label: 'Shot List', icon: <List size={14} /> },
+        { key: 'blocking', label: 'Blocking', icon: <Layout size={14} /> },
+        { key: 'multicam', label: 'Multi-Cam', icon: <Grid size={14} /> },
+    ],
+    coordination: [
+        { key: 'extras', label: 'Background/Extras', icon: <Users size={14} /> },
+        { key: 'stunts', label: 'Stunts', icon: <Zap size={14} /> },
+    ],
+    media: [
+        { key: 'library', label: 'All Media', icon: <Images size={14} /> },
+    ],
+};
+
+// Micro drama sub-tabs (with Episodes)
+const MICRO_DRAMA_SUB_TABS: Record<MainSection, SubTab[]> = {
+    creative: [
+        { key: 'episodes', label: 'Episodes', icon: <Smartphone size={14} /> },
         { key: 'scenes', label: 'Scenes', icon: <Film size={14} /> },
         { key: 'storyboard', label: 'Storyboard', icon: <Layers size={14} /> },
         { key: 'generate', label: 'Generate Shots', icon: <Camera size={14} /> },
@@ -115,16 +139,22 @@ export default function ProductionPage() {
         fetchProject();
     }, [projectId]);
 
+    // Detect if this is a micro drama project
+    const isMicroDrama = project?.genre?.startsWith('micro-');
+    
+    // Use appropriate sub-tabs based on project type
+    const SUB_TABS = isMicroDrama ? MICRO_DRAMA_SUB_TABS : STANDARD_SUB_TABS;
+
     // Reset sub-tab when section changes
     useEffect(() => {
         const firstTab = SUB_TABS[activeSection][0];
         if (firstTab) {
             setActiveSubTab(firstTab.key);
         }
-    }, [activeSection]);
+    }, [activeSection, isMicroDrama]);
 
     // Determine if looks panel should show
-    const hideLooksPanel = ['shot-list', 'extras', 'blocking', 'stunts', 'multicam', 'library'].includes(activeSubTab) || activeSection === 'media';
+    const hideLooksPanel = ['shot-list', 'extras', 'blocking', 'stunts', 'multicam', 'library', 'episodes'].includes(activeSubTab) || activeSection === 'media';
 
     const renderContent = () => {
         if (!projectId) {
@@ -145,6 +175,7 @@ export default function ProductionPage() {
 
         // Creative section
         if (activeSection === 'creative') {
+            if (activeSubTab === 'episodes') return <EpisodeManager projectId={projectId} genre={project?.genre} />;
             if (activeSubTab === 'scenes') return <SceneManager projectId={projectId} onScenesChange={setScenes} />;
             if (activeSubTab === 'storyboard') return <StoryboardViewer projectId={projectId} scenes={scenes} onExport={() => setShowExportModal(true)} />;
             if (activeSubTab === 'generate') return <ShotList projectId={projectId} />;
