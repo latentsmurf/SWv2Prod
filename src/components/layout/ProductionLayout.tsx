@@ -13,6 +13,7 @@ import {
 import GenerationStatus from '@/components/notifications/GenerationStatus';
 import OfflineBanner from '@/components/ui/OfflineBanner';
 import OnboardingWizard from '@/components/onboarding/OnboardingWizard';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 // Context for editor panel selection
 type EditorPanelType = 'video' | 'text' | 'audio' | 'caption' | 'image' | 'sticker' | 'uploads' | 'templates' | 'settings' | null;
@@ -361,6 +362,9 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                             <button className="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-colors">
                                 <HelpCircle size={16} />
                             </button>
+
+                            {/* Theme Toggle */}
+                            <ThemeToggle />
 
                             <div className="w-px h-6 bg-white/10 mx-1" />
 
