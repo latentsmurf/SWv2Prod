@@ -196,7 +196,7 @@ export default function AdminDashboard() {
                     <p className="text-sm text-gray-500">Welcome back! Here's what's happening.</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-500" suppressHydrationWarning>
                         Last updated: {lastRefresh.toLocaleTimeString()}
                     </span>
                     <button

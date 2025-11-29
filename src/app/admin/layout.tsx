@@ -200,7 +200,7 @@ export default function AdminLayout({
                             <span className="text-gray-400">All systems operational</span>
                         </div>
                         <div className="w-px h-4 bg-white/10"></div>
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-gray-500" suppressHydrationWarning>
                             {new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}
                         </span>
                     </div>
