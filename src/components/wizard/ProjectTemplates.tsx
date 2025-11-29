@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import {
     Smartphone, Film, Video, Tv, Music, Megaphone, Sparkles,
     ChevronRight, Check, Loader2, Clock, Users, Layers, Zap,
-    Heart, Skull, Crown, Building2, Ghost, Flame
+    Heart, Skull, Crown, Building2, Ghost, Flame, Clapperboard,
+    Play, Star, Award
 } from 'lucide-react';
 
 // ============================================================================
@@ -156,21 +157,71 @@ const TEMPLATES: ProjectTemplate[] = [
         difficulty: 'intermediate'
     },
     {
+        id: 'movie-trailer',
+        name: 'Movie Trailer',
+        description: 'High-impact cinematic trailer with dramatic reveals, quick cuts, and epic title cards.',
+        category: 'film',
+        icon: <Play size={24} />,
+        color: 'text-amber-400',
+        bgGradient: 'from-amber-500/20 to-red-500/20',
+        features: ['2-3 min runtime', 'Dramatic beat structure', 'Title card templates', 'Trailer music sync', 'Voice-over ready'],
+        defaults: {
+            genre: 'trailer',
+            aspect_ratio: '2.39:1',
+            style_preset: 'cinematic-dramatic',
+            coverage_preset: 'trailer-cuts',
+            delivery_formats: ['theatrical', 'youtube-hd', 'social-teaser']
+        },
+        scenes: [
+            { slug_line: 'BLACK - TITLE CARD', synopsis: 'Studio logo and opening beat.' },
+            { slug_line: 'MONTAGE - WORLD BUILDING', synopsis: 'Quick cuts establishing the world and tone.' },
+            { slug_line: 'INT. KEY LOCATION - DAY', synopsis: 'Character introduction with signature moment.' },
+            { slug_line: 'MONTAGE - RISING ACTION', synopsis: 'Stakes escalate, conflict revealed.' },
+            { slug_line: 'BLACK - DRAMATIC PAUSE', synopsis: 'Silence before the storm.' },
+            { slug_line: 'MONTAGE - CLIMAX TEASE', synopsis: 'Epic action/emotion montage with fast cuts.' },
+            { slug_line: 'BLACK - TITLE REVEAL', synopsis: 'Movie title with release date.' },
+            { slug_line: 'STINGER - POST TITLE', synopsis: 'Final shocking moment or one-liner.' },
+        ],
+        estimated_duration: '2-3 min',
+        difficulty: 'intermediate'
+    },
+    {
         id: 'feature-film',
         name: 'Feature Film',
-        description: 'Full-length feature with comprehensive scene structure.',
+        description: 'Full-length theatrical feature with comprehensive 3-act structure, character arcs, and professional production specs.',
         category: 'film',
-        icon: <Tv size={24} />,
+        icon: <Award size={24} />,
         color: 'text-indigo-400',
         bgGradient: 'from-indigo-500/20 to-purple-500/20',
-        features: ['Full 3-act structure', '90-120 min', 'Heavy coverage', 'Multiple locations'],
+        features: ['Full 3-act structure', '90-120 min runtime', 'Heavy coverage', 'Multiple locations', 'Character arc tracking', 'Scene breakdown sheets'],
         defaults: {
             genre: 'drama',
             aspect_ratio: '2.39:1',
             style_preset: 'cinematic',
             coverage_preset: 'heavy',
-            delivery_formats: ['theatrical', 'streaming-4k']
+            delivery_formats: ['theatrical-dcp', 'streaming-4k', 'broadcast-hd']
         },
+        scenes: [
+            // ACT 1 - Setup (25-30 min)
+            { slug_line: 'EXT. ESTABLISHING SHOT - DAY', synopsis: 'Opening image that sets the tone and world.' },
+            { slug_line: 'INT. PROTAGONIST HOME - DAY', synopsis: 'Introduce protagonist in their ordinary world.' },
+            { slug_line: 'INT/EXT. DAILY LIFE - DAY', synopsis: 'Character routines, relationships, and flaws.' },
+            { slug_line: 'EXT. INCITING INCIDENT LOCATION - DAY', synopsis: 'The event that disrupts normal life.' },
+            { slug_line: 'INT. DECISION POINT - NIGHT', synopsis: 'Protagonist faces the call to adventure.' },
+            // ACT 2A - Confrontation Rising (30 min)
+            { slug_line: 'EXT. NEW WORLD - DAY', synopsis: 'Crossing the threshold into unfamiliar territory.' },
+            { slug_line: 'INT. MEETING ALLIES - DAY', synopsis: 'Introduction of key supporting characters.' },
+            { slug_line: 'INT/EXT. TESTS AND TRIALS - VARIOUS', synopsis: 'Series of challenges and learning moments.' },
+            { slug_line: 'INT. MIDPOINT REVELATION - NIGHT', synopsis: 'Major twist that raises the stakes.' },
+            // ACT 2B - Confrontation Falling (30 min)
+            { slug_line: 'INT. AFTERMATH - DAY', synopsis: 'Dealing with midpoint consequences.' },
+            { slug_line: 'EXT. DARKEST HOUR - NIGHT', synopsis: 'All is lost moment - lowest point.' },
+            { slug_line: 'INT. SOUL SEARCHING - NIGHT', synopsis: 'Internal revelation and renewed determination.' },
+            // ACT 3 - Resolution (20-25 min)
+            { slug_line: 'EXT. FINAL APPROACH - DAY', synopsis: 'Gathering strength for the climax.' },
+            { slug_line: 'INT/EXT. CLIMAX SEQUENCE - DAY', synopsis: 'Final confrontation with antagonist.' },
+            { slug_line: 'EXT. RESOLUTION - DAY', synopsis: 'New equilibrium and closing image.' },
+        ],
         estimated_duration: '90-120 min',
         difficulty: 'advanced'
     },
