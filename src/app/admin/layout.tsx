@@ -6,7 +6,7 @@ import {
     LayoutDashboard, Users, FolderOpen, Library, Bot, CreditCard,
     Activity, Settings, ShieldAlert, Flag, FileText, Coins, TestTube,
     Database, Bell, Globe, Palette, BarChart3, Shield, Clock,
-    ChevronDown, Search, Menu, X, LogOut, Home
+    ChevronDown, Search, Menu, X, LogOut, Home, Mail
 } from "lucide-react";
 import { useState } from "react";
 
@@ -37,6 +37,12 @@ const navSections = [
             { icon: Palette, label: "Style Presets", href: "/admin/presets" },
             { icon: FileText, label: "Templates", href: "/admin/templates" },
             { icon: Globe, label: "Marketing Pages", href: "/admin/marketing" },
+        ]
+    },
+    {
+        title: "Marketing",
+        items: [
+            { icon: Mail, label: "Email & Newsletters", href: "/admin/email" },
         ]
     },
     {
