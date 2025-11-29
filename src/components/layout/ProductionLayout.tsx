@@ -11,6 +11,8 @@ import {
     Layers, Grid3X3, Zap, Sparkles, Plus
 } from 'lucide-react';
 import GenerationStatus from '@/components/notifications/GenerationStatus';
+import OfflineBanner from '@/components/ui/OfflineBanner';
+import OnboardingWizard from '@/components/onboarding/OnboardingWizard';
 
 // Context for editor panel selection
 type EditorPanelType = 'video' | 'text' | 'audio' | 'caption' | 'image' | 'sticker' | 'uploads' | 'templates' | 'settings' | null;
@@ -124,8 +126,17 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
     const [activeEditorPanel, setActiveEditorPanel] = useState<EditorPanelType>(null);
     const [showSearch, setShowSearch] = useState(false);
     const [showKeyboardShortcuts, setShowKeyboardShortcuts] = useState(false);
+    const [showOnboarding, setShowOnboarding] = useState(false);
     const pathname = usePathname();
     const isPostProduction = pathname === '/production/post';
+
+    // Check if user needs onboarding
+    useEffect(() => {
+        const hasCompletedOnboarding = localStorage.getItem('sw_onboarding_completed');
+        if (!hasCompletedOnboarding) {
+            setShowOnboarding(true);
+        }
+    }, []);
 
     // Keyboard shortcut handler
     useEffect(() => {
@@ -492,6 +503,14 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                         </div>
                     </div>
                 )}
+
+                {/* Onboarding Wizard */}
+                {showOnboarding && (
+                    <OnboardingWizard onComplete={() => setShowOnboarding(false)} />
+                )}
+
+                {/* Offline Banner */}
+                <OfflineBanner />
             </div>
         </EditorPanelContext.Provider>
     );
