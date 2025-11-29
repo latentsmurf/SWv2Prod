@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Coins, Users, TrendingUp, TrendingDown, Search, Filter,
     Download, Plus, RefreshCw, ArrowUpRight, ArrowDownRight,
@@ -82,19 +82,44 @@ const MOCK_TOP_USERS: UserCredits[] = [
 export default function CreditsPage() {
     const [transactions, setTransactions] = useState(MOCK_TRANSACTIONS);
     const [plans, setPlans] = useState(MOCK_PLANS);
+    const [topUsers, setTopUsers] = useState(MOCK_TOP_USERS);
     const [activeTab, setActiveTab] = useState<'transactions' | 'plans' | 'users'>('transactions');
     const [searchQuery, setSearchQuery] = useState('');
     const [filterType, setFilterType] = useState<string>('all');
     const [showAddCredits, setShowAddCredits] = useState(false);
     const [selectedUser, setSelectedUser] = useState<string | null>(null);
-
-    // Stats
-    const stats = {
-        totalCreditsIssued: 15847293,
-        totalCreditsConsumed: 12384756,
-        revenue: 847293,
+    const [loading, setLoading] = useState(true);
+    const [stats, setStats] = useState({
+        totalCreditsIssued: 0,
+        totalCreditsConsumed: 0,
+        revenue: 0,
         avgCreditPrice: 0.08
-    };
+    });
+
+    // Fetch data from API
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const res = await fetch('/api/admin/credits');
+                if (res.ok) {
+                    const data = await res.json();
+                    setTransactions(data.transactions.map((t: any) => ({
+                        ...t,
+                        created_at: new Date(t.created_at)
+                    })));
+                    setPlans(data.plans);
+                    setTopUsers(data.topUsers);
+                    setStats(data.stats);
+                }
+            } catch (error) {
+                console.error('Error fetching credits data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
     const getTransactionColor = (type: string) => {
         switch (type) {

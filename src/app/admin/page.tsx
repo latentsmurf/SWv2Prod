@@ -171,12 +171,38 @@ export default function AdminDashboard() {
     const [loading, setLoading] = useState(false);
     const [lastRefresh, setLastRefresh] = useState(new Date());
 
-    const handleRefresh = async () => {
+    // Fetch data from API
+    const fetchDashboardData = async () => {
         setLoading(true);
-        // Simulate API call
-        await new Promise(r => setTimeout(r, 1000));
-        setLastRefresh(new Date());
-        setLoading(false);
+        try {
+            const res = await fetch('/api/admin/stats');
+            if (res.ok) {
+                const data = await res.json();
+                setStats(data.stats);
+                setActivities(data.activity.map((a: any) => ({
+                    ...a,
+                    timestamp: new Date(a.timestamp)
+                })));
+                setServices(data.services.map((s: any) => ({
+                    ...s,
+                    lastCheck: new Date(s.lastCheck)
+                })));
+            }
+        } catch (error) {
+            console.error('Error fetching dashboard data:', error);
+        } finally {
+            setLastRefresh(new Date());
+            setLoading(false);
+        }
+    };
+
+    // Initial load
+    useEffect(() => {
+        fetchDashboardData();
+    }, []);
+
+    const handleRefresh = () => {
+        fetchDashboardData();
     };
 
     // Quick action cards

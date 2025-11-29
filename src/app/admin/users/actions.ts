@@ -1,81 +1,61 @@
 "use server";
 
-import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
-
-async function getAuthToken() {
-    const session = await getServerSession();
-    return session?.id_token;
-}
+import { adminStore } from "@/lib/admin-store";
 
 export async function updateUserRole(userId: string, role: string) {
-    const token = await getAuthToken();
-    if (!token) return { error: "Unauthorized" };
-
     try {
-        const res = await fetch(`http://localhost:8000/api/admin/users/${userId}/role?role=${role}`, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
-        if (!res.ok) {
-            const error = await res.json();
-            return { error: error.detail || "Failed to update role" };
-        }
-
+        const user = adminStore.updateUser(userId, { role: role as any });
+        if (!user) return { error: "User not found" };
+        
         revalidatePath("/admin/users");
-        return { success: true };
+        return { success: true, user };
     } catch (error) {
-        return { error: "Failed to connect to server" };
+        return { error: "Failed to update role" };
     }
 }
 
-export async function adjustUserCredits(userId: string, amount: number) {
-    const token = await getAuthToken();
-    if (!token) return { error: "Unauthorized" };
-
+export async function adjustUserCredits(userId: string, amount: number, reason?: string) {
     try {
-        const res = await fetch(`http://localhost:8000/api/admin/users/${userId}/credits?amount=${amount}`, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
-        if (!res.ok) {
-            const error = await res.json();
-            return { error: error.detail || "Failed to adjust credits" };
-        }
-
+        const user = adminStore.adjustUserCredits(userId, amount, reason || 'Admin adjustment');
+        if (!user) return { error: "User not found" };
+        
         revalidatePath("/admin/users");
-        return { success: true };
+        return { success: true, user };
     } catch (error) {
-        return { error: "Failed to connect to server" };
+        return { error: "Failed to adjust credits" };
     }
 }
 
-export async function suspendUser(userId: string) {
-    const token = await getAuthToken();
-    if (!token) return { error: "Unauthorized" };
-
+export async function suspendUser(userId: string, reason?: string) {
     try {
-        const res = await fetch(`http://localhost:8000/api/admin/users/${userId}/suspend`, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
-        if (!res.ok) {
-            const error = await res.json();
-            return { error: error.detail || "Failed to suspend user" };
-        }
-
+        const user = adminStore.suspendUser(userId, reason || 'Admin action');
+        if (!user) return { error: "User not found" };
+        
         revalidatePath("/admin/users");
-        return { success: true };
+        return { success: true, user };
     } catch (error) {
-        return { error: "Failed to connect to server" };
+        return { error: "Failed to suspend user" };
+    }
+}
+
+export async function activateUser(userId: string) {
+    try {
+        const user = adminStore.activateUser(userId);
+        if (!user) return { error: "User not found" };
+        
+        revalidatePath("/admin/users");
+        return { success: true, user };
+    } catch (error) {
+        return { error: "Failed to activate user" };
+    }
+}
+
+export async function getUsers(filters?: { role?: string; status?: string; search?: string }) {
+    try {
+        const users = adminStore.getUsers(filters);
+        return { success: true, users };
+    } catch (error) {
+        return { error: "Failed to fetch users", users: [] };
     }
 }

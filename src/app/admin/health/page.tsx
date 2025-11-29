@@ -156,21 +156,60 @@ export default function HealthPage() {
     const [lastCheck, setLastCheck] = useState(new Date());
     const [activeCategory, setActiveCategory] = useState<'all' | ServiceHealth['category']>('all');
 
+    // Fetch health data from API
+    const fetchHealthData = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/admin/health');
+            if (res.ok) {
+                const data = await res.json();
+                setServices(data.services.map((s: any) => ({
+                    ...s,
+                    lastCheck: new Date(s.lastCheck)
+                })));
+            }
+        } catch (error) {
+            console.error('Error fetching health data:', error);
+        } finally {
+            setLastCheck(new Date());
+            setLoading(false);
+        }
+    };
+
+    // Initial load
+    useEffect(() => {
+        fetchHealthData();
+    }, []);
+
     // Auto refresh
     useEffect(() => {
         if (!autoRefresh) return;
         const interval = setInterval(() => {
-            setLastCheck(new Date());
-            // In production, this would fetch real data
+            fetchHealthData();
         }, 30000);
         return () => clearInterval(interval);
     }, [autoRefresh]);
 
-    const handleRefresh = async () => {
+    const handleRefresh = () => {
+        fetchHealthData();
+    };
+    
+    const handleRunHealthCheck = async () => {
         setLoading(true);
-        await new Promise(r => setTimeout(r, 1000));
-        setLastCheck(new Date());
-        setLoading(false);
+        try {
+            const res = await fetch('/api/admin/health', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({})
+            });
+            if (res.ok) {
+                await fetchHealthData();
+            }
+        } catch (error) {
+            console.error('Error running health check:', error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const filteredServices = activeCategory === 'all' 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Settings, Globe, Bell, Shield, Database, Zap, Mail, Key,
     Save, RefreshCw, AlertTriangle, CheckCircle, Eye, EyeOff,
@@ -128,8 +128,40 @@ export default function SettingsPage() {
     const [activeSection, setActiveSection] = useState('general');
     const [settings, setSettings] = useState(SETTINGS);
     const [saving, setSaving] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [showPassword, setShowPassword] = useState<Record<string, boolean>>({});
     const [hasChanges, setHasChanges] = useState(false);
+    const [saveMessage, setSaveMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+    // Fetch settings from API
+    useEffect(() => {
+        const fetchSettings = async () => {
+            try {
+                const res = await fetch('/api/admin/settings');
+                if (res.ok) {
+                    const data = await res.json();
+                    // Update local settings with API values
+                    setSettings(prev => {
+                        const updated = { ...prev };
+                        Object.keys(data).forEach(section => {
+                            if (updated[section]) {
+                                updated[section] = updated[section].map(setting => ({
+                                    ...setting,
+                                    value: data[section][setting.key] ?? setting.value
+                                }));
+                            }
+                        });
+                        return updated;
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching settings:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchSettings();
+    }, []);
 
     const handleSettingChange = (sectionId: string, key: string, value: any) => {
         setSettings(prev => ({
@@ -139,14 +171,37 @@ export default function SettingsPage() {
             )
         }));
         setHasChanges(true);
+        setSaveMessage(null);
     };
 
     const handleSave = async () => {
         setSaving(true);
-        // Simulate API call
-        await new Promise(r => setTimeout(r, 1000));
-        setSaving(false);
-        setHasChanges(false);
+        setSaveMessage(null);
+        
+        try {
+            // Save each section that has changes
+            const updates: Record<string, any> = {};
+            settings[activeSection].forEach(setting => {
+                updates[setting.key] = setting.value;
+            });
+            
+            const res = await fetch('/api/admin/settings', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ section: activeSection, updates })
+            });
+            
+            if (res.ok) {
+                setSaveMessage({ type: 'success', text: 'Settings saved successfully!' });
+                setHasChanges(false);
+            } else {
+                throw new Error('Failed to save');
+            }
+        } catch (error) {
+            setSaveMessage({ type: 'error', text: 'Failed to save settings. Please try again.' });
+        } finally {
+            setSaving(false);
+        }
     };
 
     const handleClearCache = async () => {
@@ -251,6 +306,18 @@ export default function SettingsPage() {
                 <div className="flex items-center gap-3 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-yellow-400 text-sm">
                     <AlertTriangle size={16} />
                     You have unsaved changes
+                </div>
+            )}
+            
+            {/* Save Message */}
+            {saveMessage && (
+                <div className={`flex items-center gap-3 p-3 rounded-lg text-sm ${
+                    saveMessage.type === 'success'
+                        ? 'bg-green-500/10 border border-green-500/20 text-green-400'
+                        : 'bg-red-500/10 border border-red-500/20 text-red-400'
+                }`}>
+                    {saveMessage.type === 'success' ? <CheckCircle size={16} /> : <AlertTriangle size={16} />}
+                    {saveMessage.text}
                 </div>
             )}
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     CreditCard, Users, TrendingUp, TrendingDown, Search, Filter,
     Download, Plus, Edit2, Trash2, Check, X, Star, Crown, Zap,
@@ -112,14 +112,47 @@ export default function MembershipsPage() {
     const [filterPlan, setFilterPlan] = useState('all');
     const [filterStatus, setFilterStatus] = useState('all');
     const [showEditPlan, setShowEditPlan] = useState<MembershipPlan | null>(null);
-
-    // Stats
-    const stats = {
-        totalSubscribers: subscribers.filter(s => s.status === 'active').length,
-        mrr: plans.reduce((sum, p) => sum + p.revenue, 0),
+    const [loading, setLoading] = useState(true);
+    const [stats, setStats] = useState({
+        totalSubscribers: 0,
+        mrr: 0,
         churnRate: 3.2,
-        avgRevenue: Math.round(plans.reduce((sum, p) => sum + p.revenue, 0) / subscribers.filter(s => s.status === 'active').length)
-    };
+        avgRevenue: 0,
+        conversionRate: 0,
+        totalRevenue: 0
+    });
+
+    // Fetch data from API
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const res = await fetch('/api/admin/memberships');
+                if (res.ok) {
+                    const data = await res.json();
+                    setPlans(data.plans);
+                    setSubscribers(data.subscribers.map((s: any) => ({
+                        ...s,
+                        started_at: new Date(s.started_at),
+                        next_billing: s.next_billing ? new Date(s.next_billing) : new Date(),
+                    })));
+                    setStats({
+                        totalSubscribers: data.stats.totalSubscribers,
+                        mrr: data.stats.mrr,
+                        churnRate: data.stats.churnRate,
+                        avgRevenue: data.stats.avgSubscriptionValue,
+                        conversionRate: data.stats.conversionRate,
+                        totalRevenue: data.stats.totalRevenue
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching memberships data:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
     const getStatusColor = (status: string) => {
         switch (status) {
