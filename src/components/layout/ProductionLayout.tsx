@@ -14,6 +14,7 @@ import GenerationStatus from '@/components/notifications/GenerationStatus';
 import OfflineBanner from '@/components/ui/OfflineBanner';
 import OnboardingWizard from '@/components/onboarding/OnboardingWizard';
 import ThemeToggle from '@/components/ui/ThemeToggle';
+import CommandPalette from '@/components/ui/CommandPalette';
 
 // Context for editor panel selection
 type EditorPanelType = 'video' | 'text' | 'audio' | 'caption' | 'image' | 'sticker' | 'uploads' | 'templates' | 'settings' | null;
@@ -393,44 +394,8 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                     </main>
                 </div>
 
-                {/* Command Palette / Search Modal */}
-                {showSearch && (
-                    <div className="fixed inset-0 z-50 bg-black/80 flex items-start justify-center pt-[15vh]" onClick={() => setShowSearch(false)}>
-                        <div 
-                            className="w-full max-w-lg bg-[#121212] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
-                            onClick={e => e.stopPropagation()}
-                        >
-                            <div className="flex items-center gap-3 px-4 py-3 border-b border-white/5">
-                                <Search size={18} className="text-gray-500" />
-                                <input
-                                    type="text"
-                                    placeholder="Search anything..."
-                                    className="flex-1 bg-transparent text-white text-sm focus:outline-none placeholder-gray-500"
-                                    autoFocus
-                                />
-                                <kbd className="px-2 py-1 bg-white/10 rounded text-[10px] text-gray-500 font-mono">ESC</kbd>
-                            </div>
-                            <div className="p-2 max-h-80 overflow-y-auto">
-                                <div className="px-3 py-2 text-[10px] font-semibold text-gray-500 uppercase">Quick Actions</div>
-                                {[
-                                    { icon: Plus, label: 'New Scene', shortcut: '⌘N' },
-                                    { icon: FileText, label: 'Import Script', shortcut: '⌘I' },
-                                    { icon: Camera, label: 'Generate Shot', shortcut: '⌘G' },
-                                    { icon: Download, label: 'Export Project', shortcut: '⌘E' },
-                                ].map((item, i) => (
-                                    <button
-                                        key={i}
-                                        className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 text-gray-300 hover:text-white text-sm transition-colors"
-                                    >
-                                        <item.icon size={16} className="text-gray-500" />
-                                        <span className="flex-1 text-left">{item.label}</span>
-                                        <kbd className="px-1.5 py-0.5 bg-white/10 rounded text-[10px] font-mono text-gray-500">{item.shortcut}</kbd>
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                )}
+                {/* Command Palette */}
+                <CommandPalette isOpen={showSearch} onClose={() => setShowSearch(false)} />
 
                 {/* Keyboard Shortcuts Modal */}
                 {showKeyboardShortcuts && (
