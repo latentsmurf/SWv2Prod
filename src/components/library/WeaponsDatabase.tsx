@@ -304,13 +304,13 @@ export default function WeaponsDatabase({ projectId, onSelect, selectionMode }: 
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search weapons..."
-                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Types</option>
                     {Object.entries(WEAPON_TYPES).map(([key, config]) => (
@@ -434,7 +434,7 @@ export default function WeaponsDatabase({ projectId, onSelect, selectionMode }: 
                                                 <div className="flex items-center gap-1">
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedWeapon(weapon); }}
-                                                        className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                                        className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                                     >
                                                         <Eye size={14} />
                                                     </button>
@@ -459,9 +459,9 @@ export default function WeaponsDatabase({ projectId, onSelect, selectionMode }: 
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">Add Weapon/Special Prop</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Weapon/Special Prop</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -469,21 +469,21 @@ export default function WeaponsDatabase({ projectId, onSelect, selectionMode }: 
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Name *</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Name *</label>
                                     <input
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                                         placeholder="e.g., John's Pistol"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Type</label>
                                     <select
                                         value={form.type}
                                         onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(WEAPON_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.icon} {config.label}</option>
@@ -494,45 +494,45 @@ export default function WeaponsDatabase({ projectId, onSelect, selectionMode }: 
 
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Make</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Make</label>
                                     <input
                                         type="text"
                                         value={form.make}
                                         onChange={(e) => setForm({ ...form, make: e.target.value })}
                                         placeholder="e.g., Colt"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Model</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Model</label>
                                     <input
                                         type="text"
                                         value={form.model}
                                         onChange={(e) => setForm({ ...form, model: e.target.value })}
                                         placeholder="e.g., 1911"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Era</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Era</label>
                                     <input
                                         type="text"
                                         value={form.era}
                                         onChange={(e) => setForm({ ...form, era: e.target.value })}
                                         placeholder="e.g., WWII, Modern"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Image URL</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Image URL</label>
                                 <input
                                     type="text"
                                     value={form.image_url}
                                     onChange={(e) => setForm({ ...form, image_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
@@ -596,7 +596,7 @@ export default function WeaponsDatabase({ projectId, onSelect, selectionMode }: 
                                             type="text"
                                             value={form.armorer_name}
                                             onChange={(e) => setForm({ ...form, armorer_name: e.target.value })}
-                                            className="w-full bg-black/30 border border-orange-500/20 rounded-xl px-4 py-3 text-white"
+                                            className="w-full bg-black/30 border border-orange-500/20 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                         />
                                     </div>
                                     <div>
@@ -605,26 +605,26 @@ export default function WeaponsDatabase({ projectId, onSelect, selectionMode }: 
                                             type="text"
                                             value={form.armorer_phone}
                                             onChange={(e) => setForm({ ...form, armorer_phone: e.target.value })}
-                                            className="w-full bg-black/30 border border-orange-500/20 rounded-xl px-4 py-3 text-white"
+                                            className="w-full bg-black/30 border border-orange-500/20 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                         />
                                     </div>
                                 </div>
                             )}
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Safety Notes (comma-separated)</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Safety Notes (comma-separated)</label>
                                 <input
                                     type="text"
                                     value={form.safety_notes}
                                     onChange={(e) => setForm({ ...form, safety_notes: e.target.value })}
                                     placeholder="e.g., Always check clear, No live ammo on set"
-                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

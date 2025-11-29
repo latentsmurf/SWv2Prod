@@ -352,7 +352,7 @@ export default function StuntCoordination({ projectId, sceneId }: StuntCoordinat
                                                 </select>
                                                 <button
                                                     onClick={() => setSelectedSequence(seq)}
-                                                    className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                                    className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                                 >
                                                     <Eye size={16} />
                                                 </button>
@@ -415,32 +415,32 @@ export default function StuntCoordination({ projectId, sceneId }: StuntCoordinat
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">Add Stunt Sequence</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Stunt Sequence</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
 
                         <div className="p-6 space-y-4">
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Sequence Name *</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Sequence Name *</label>
                                 <input
                                     type="text"
                                     value={form.name}
                                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                                     placeholder="e.g., Rooftop Chase Fight"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Type</label>
                                     <select
                                         value={form.type}
                                         onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(STUNT_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.icon} {config.label}</option>
@@ -448,11 +448,11 @@ export default function StuntCoordination({ projectId, sceneId }: StuntCoordinat
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Risk Level</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Risk Level</label>
                                     <select
                                         value={form.risk_level}
                                         onChange={(e) => setForm({ ...form, risk_level: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(RISK_LEVELS).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -462,7 +462,7 @@ export default function StuntCoordination({ projectId, sceneId }: StuntCoordinat
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Description</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Description</label>
                                 <textarea
                                     value={form.description}
                                     onChange={(e) => setForm({ ...form, description: e.target.value })}
@@ -474,33 +474,33 @@ export default function StuntCoordination({ projectId, sceneId }: StuntCoordinat
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Stunt Coordinator</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Stunt Coordinator</label>
                                     <input
                                         type="text"
                                         value={form.stunt_coordinator}
                                         onChange={(e) => setForm({ ...form, stunt_coordinator: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Safety Supervisor</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Safety Supervisor</label>
                                     <input
                                         type="text"
                                         value={form.safety_supervisor}
                                         onChange={(e) => setForm({ ...form, safety_supervisor: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Equipment Needed (comma-separated)</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Equipment Needed (comma-separated)</label>
                                 <input
                                     type="text"
                                     value={form.equipment_needed}
                                     onChange={(e) => setForm({ ...form, equipment_needed: e.target.value })}
                                     placeholder="e.g., Crash pads, Wire rig, Breakaway glass"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
@@ -535,8 +535,8 @@ export default function StuntCoordination({ projectId, sceneId }: StuntCoordinat
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

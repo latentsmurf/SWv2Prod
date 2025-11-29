@@ -284,13 +284,13 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search cards..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterDay}
                     onChange={(e) => setFilterDay(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Days</option>
                     {shootDays.map(day => (
@@ -300,7 +300,7 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
                 <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Status</option>
                     {Object.entries(STATUS_CONFIG).map(([key, config]) => (
@@ -418,7 +418,7 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
                                             <td className="p-4 text-right">
                                                 <button
                                                     onClick={() => setSelectedCard(card)}
-                                                    className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg"
+                                                    className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                                                 >
                                                     <Eye size={16} />
                                                 </button>
@@ -437,8 +437,8 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">Add Media Card</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Media Card</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -446,21 +446,21 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Card Name</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Card Name</label>
                                     <input
                                         type="text"
                                         value={form.card_name}
                                         onChange={(e) => setForm({ ...form, card_name: e.target.value })}
                                         placeholder="e.g., A001"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Card Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Card Type</label>
                                     <select
                                         value={form.card_type}
                                         onChange={(e) => setForm({ ...form, card_type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(CARD_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -471,61 +471,61 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
 
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Day #</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Day #</label>
                                     <input
                                         type="number"
                                         value={form.day_number}
                                         onChange={(e) => setForm({ ...form, day_number: parseInt(e.target.value) })}
                                         min="1"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Roll #</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Roll #</label>
                                     <input
                                         type="text"
                                         value={form.roll_number}
                                         onChange={(e) => setForm({ ...form, roll_number: e.target.value })}
                                         placeholder="R001"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Capacity (GB)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Capacity (GB)</label>
                                     <input
                                         type="number"
                                         value={form.capacity_gb}
                                         onChange={(e) => setForm({ ...form, capacity_gb: parseInt(e.target.value) })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Camera</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Camera</label>
                                     <input
                                         type="text"
                                         value={form.camera}
                                         onChange={(e) => setForm({ ...form, camera: e.target.value })}
                                         placeholder="e.g., A Cam, B Cam"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Shoot Date</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Shoot Date</label>
                                     <input
                                         type="date"
                                         value={form.shoot_date}
                                         onChange={(e) => setForm({ ...form, shoot_date: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
                         </div>
 
                         <div className="p-6 border-t border-white/5 flex justify-end gap-3">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

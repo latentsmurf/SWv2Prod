@@ -317,25 +317,25 @@ export default function ColorPaletteManager({
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl w-full max-w-lg overflow-hidden">
                         <div className="p-6 border-b border-white/5">
-                            <h3 className="text-lg font-bold text-white">Create Color Palette</h3>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Create Color Palette</h3>
                         </div>
 
                         <div className="p-6 space-y-6">
                             {/* Name */}
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Palette Name</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Palette Name</label>
                                 <input
                                     type="text"
                                     value={newPalette.name}
                                     onChange={(e) => setNewPalette(prev => ({ ...prev, name: e.target.value }))}
                                     placeholder="e.g. Sunset Vibes"
-                                    className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white"
+                                    className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             {/* Colors */}
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Colors</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Colors</label>
                                 <div className="flex flex-wrap gap-2">
                                     {newPalette.colors.map((color, index) => (
                                         <div key={index} className="relative group">
@@ -356,7 +356,7 @@ export default function ColorPaletteManager({
                                     {newPalette.colors.length < 10 && (
                                         <button
                                             onClick={addColor}
-                                            className="w-12 h-12 rounded-lg border-2 border-dashed border-white/20 hover:border-white/40 flex items-center justify-center text-gray-500 hover:text-white"
+                                            className="w-12 h-12 rounded-lg border-2 border-dashed border-white/20 hover:border-white/40 flex items-center justify-center text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                         >
                                             <Plus size={16} />
                                         </button>
@@ -372,7 +372,7 @@ export default function ColorPaletteManager({
                                         if (prompt) generateFromPrompt(prompt);
                                     }}
                                     disabled={generating}
-                                    className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white"
+                                    className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                 >
                                     {generating ? (
                                         <Loader2 size={16} className="animate-spin" />
@@ -387,7 +387,7 @@ export default function ColorPaletteManager({
                         <div className="p-6 border-t border-white/5 flex justify-end gap-3">
                             <button
                                 onClick={() => setShowCreate(false)}
-                                className="px-4 py-2 text-gray-400 hover:text-white"
+                                className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                             >
                                 Cancel
                             </button>

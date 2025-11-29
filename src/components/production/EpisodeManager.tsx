@@ -315,7 +315,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                             <Smartphone size={20} className="text-pink-400" />
                         </div>
                         <div>
-                            <h2 className="text-lg font-bold text-white">Episode Manager</h2>
+                            <h2 className="text-lg font-bold text-gray-900 dark:text-white">Episode Manager</h2>
                             <p className="text-xs text-gray-500">
                                 {stats.total} episodes • ~{formatDuration(stats.totalDuration)} total
                             </p>
@@ -325,7 +325,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                     <div className="flex items-center gap-2">
                         {/* Batch Generate */}
                         <div className="relative group">
-                            <button className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm text-gray-400 hover:text-white transition-colors">
+                            <button className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
                                 <Sparkles size={14} />
                                 Batch Generate
                                 <ChevronDown size={14} />
@@ -335,7 +335,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                                     <button
                                         key={count}
                                         onClick={() => generateBatchEpisodes(count)}
-                                        className="w-full px-4 py-2 text-left text-sm text-gray-400 hover:text-white hover:bg-white/5"
+                                        className="w-full px-4 py-2 text-left text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5"
                                     >
                                         Generate {count} episodes
                                     </button>
@@ -446,13 +446,13 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                                             <div className="flex items-center gap-1" onClick={e => e.stopPropagation()}>
                                                 <button
                                                     onClick={() => setEditingEpisode(episode)}
-                                                    className="p-1.5 text-gray-500 hover:text-white hover:bg-white/10 rounded"
+                                                    className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 rounded"
                                                 >
                                                     <Edit2 size={14} />
                                                 </button>
                                                 <button
                                                     onClick={() => duplicateEpisode(episode)}
-                                                    className="p-1.5 text-gray-500 hover:text-white hover:bg-white/10 rounded"
+                                                    className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 rounded"
                                                 >
                                                     <Copy size={14} />
                                                 </button>
@@ -534,7 +534,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                                                                 className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                                                                     episode.status === key
                                                                         ? config.color
-                                                                        : 'bg-white/5 text-gray-500 hover:text-white'
+                                                                        : 'bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                                                 }`}
                                                             >
                                                                 {config.label}
@@ -556,8 +556,8 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">Create New Episode</h3>
-                            <button onClick={() => setShowCreateModal(false)} className="p-2 text-gray-500 hover:text-white">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Create New Episode</h3>
+                            <button onClick={() => setShowCreateModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -608,7 +608,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                             </div>
                         </div>
                         <div className="p-6 border-t border-white/5 flex justify-end gap-3">
-                            <button onClick={() => setShowCreateModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                            <button onClick={() => setShowCreateModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

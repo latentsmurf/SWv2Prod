@@ -215,7 +215,7 @@ export default function ShotListExport({
                     <div>
                         <button
                             onClick={() => setShowAdvanced(!showAdvanced)}
-                            className="flex items-center gap-2 text-sm text-gray-400 hover:text-white"
+                            className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             <Settings size={16} />
                             Advanced Options
@@ -286,7 +286,7 @@ export default function ShotListExport({
                     <div className="flex items-center gap-3">
                         <button
                             onClick={onClose}
-                            className="px-4 py-2 text-gray-400 hover:text-white"
+                            className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             Cancel
                         </button>

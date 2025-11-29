@@ -305,13 +305,13 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search equipment..."
-                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Types</option>
                     {Object.entries(ITEM_TYPES).map(([key, config]) => (
@@ -434,7 +434,7 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
                                                 <div className="flex items-center gap-1">
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedItem(item); }}
-                                                        className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                                        className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                                     >
                                                         <Eye size={14} />
                                                     </button>
@@ -459,20 +459,20 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">Add Equipment</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Equipment</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
 
                         <div className="p-6 space-y-4">
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Equipment Type</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Equipment Type</label>
                                 <select
                                     value={form.type}
                                     onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 >
                                     {Object.entries(ITEM_TYPES).map(([key, config]) => (
                                         <option key={key} value={key}>{config.icon} {config.label}</option>
@@ -484,14 +484,14 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
                                 <>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm text-gray-400 mb-2">Camera Make</label>
+                                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Camera Make</label>
                                             <input
                                                 type="text"
                                                 value={form.camera_make}
                                                 onChange={(e) => setForm({ ...form, camera_make: e.target.value })}
                                                 list="camera-makes"
                                                 placeholder="e.g., ARRI, RED"
-                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                             />
                                             <datalist id="camera-makes">
                                                 {['ARRI', 'RED', 'Sony', 'Canon', 'Blackmagic', 'Panasonic'].map(m => (
@@ -500,23 +500,23 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
                                             </datalist>
                                         </div>
                                         <div>
-                                            <label className="block text-sm text-gray-400 mb-2">Camera Model</label>
+                                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Camera Model</label>
                                             <input
                                                 type="text"
                                                 value={form.camera_model}
                                                 onChange={(e) => setForm({ ...form, camera_model: e.target.value })}
                                                 placeholder="e.g., ALEXA Mini LF"
-                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                             />
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm text-gray-400 mb-2">Sensor Size</label>
+                                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Sensor Size</label>
                                             <select
                                                 value={form.sensor_size}
                                                 onChange={(e) => setForm({ ...form, sensor_size: e.target.value })}
-                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                             >
                                                 <option value="">Select...</option>
                                                 <option value="Full Frame">Full Frame</option>
@@ -527,13 +527,13 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
                                             </select>
                                         </div>
                                         <div>
-                                            <label className="block text-sm text-gray-400 mb-2">Resolution</label>
+                                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Resolution</label>
                                             <input
                                                 type="text"
                                                 value={form.resolution}
                                                 onChange={(e) => setForm({ ...form, resolution: e.target.value })}
                                                 placeholder="e.g., 8K, 6K, 4K"
-                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                             />
                                         </div>
                                     </div>
@@ -544,43 +544,43 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
                                 <>
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm text-gray-400 mb-2">Lens Make</label>
+                                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Lens Make</label>
                                             <input
                                                 type="text"
                                                 value={form.lens_make}
                                                 onChange={(e) => setForm({ ...form, lens_make: e.target.value })}
                                                 placeholder="e.g., Cooke, Zeiss"
-                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm text-gray-400 mb-2">Focal Length</label>
+                                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Focal Length</label>
                                             <input
                                                 type="text"
                                                 value={form.focal_length}
                                                 onChange={(e) => setForm({ ...form, focal_length: e.target.value })}
                                                 placeholder="e.g., 50mm, 24-70mm"
-                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                             />
                                         </div>
                                     </div>
                                     <div className="grid grid-cols-3 gap-4">
                                         <div>
-                                            <label className="block text-sm text-gray-400 mb-2">Max Aperture</label>
+                                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Max Aperture</label>
                                             <input
                                                 type="text"
                                                 value={form.max_aperture}
                                                 onChange={(e) => setForm({ ...form, max_aperture: e.target.value })}
                                                 placeholder="e.g., T1.5, f/2.8"
-                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm text-gray-400 mb-2">Lens Mount</label>
+                                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Lens Mount</label>
                                             <select
                                                 value={form.lens_mount}
                                                 onChange={(e) => setForm({ ...form, lens_mount: e.target.value })}
-                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                             >
                                                 <option value="">Select...</option>
                                                 <option value="PL">PL Mount</option>
@@ -616,23 +616,23 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
 
                             {(form.type !== 'camera' && form.type !== 'lens') && (
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Name</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Name</label>
                                     <input
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             )}
 
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Source</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Source</label>
                                     <select
                                         value={form.source}
                                         onChange={(e) => setForm({ ...form, source: e.target.value as any })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         <option value="rented">Rented</option>
                                         <option value="owned">Owned</option>
@@ -640,39 +640,39 @@ export default function CameraLensDatabase({ projectId, onSelect, selectionMode 
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Daily Rate ($)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Daily Rate ($)</label>
                                     <input
                                         type="number"
                                         value={form.daily_rate}
                                         onChange={(e) => setForm({ ...form, daily_rate: parseInt(e.target.value) })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Vendor</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Vendor</label>
                                     <input
                                         type="text"
                                         value={form.vendor}
                                         onChange={(e) => setForm({ ...form, vendor: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Image URL</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Image URL</label>
                                 <input
                                     type="text"
                                     value={form.image_url}
                                     onChange={(e) => setForm({ ...form, image_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

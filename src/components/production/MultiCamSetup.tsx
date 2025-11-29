@@ -153,7 +153,7 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
                         className={`px-4 py-2 rounded-xl whitespace-nowrap ${
                             activeSetup?.id === setup.id
                                 ? 'bg-yellow-500 text-black'
-                                : 'bg-white/5 text-gray-400 hover:text-white'
+                                : 'bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                         }`}
                     >
                         {setup.name} ({setup.cameras.length} cam)
@@ -174,7 +174,7 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
                             </div>
                             <button
                                 onClick={() => setShowCameraModal(true)}
-                                className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white"
+                                className="flex items-center gap-2 px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-gray-900 dark:hover:text-white"
                             >
                                 <Plus size={16} />
                                 Add Camera
@@ -287,12 +287,12 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">New Multi-Cam Setup</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white"><X size={20} /></button>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">New Multi-Cam Setup</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"><X size={20} /></button>
                         </div>
                         <div className="p-6 space-y-4">
-                            <input type="text" value={setupForm.name} onChange={(e) => setSetupForm({...setupForm, name: e.target.value})} placeholder="Setup name" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white" />
-                            <select value={setupForm.sync_method} onChange={(e) => setSetupForm({...setupForm, sync_method: e.target.value as any})} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white">
+                            <input type="text" value={setupForm.name} onChange={(e) => setSetupForm({...setupForm, name: e.target.value})} placeholder="Setup name" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white" />
+                            <select value={setupForm.sync_method} onChange={(e) => setSetupForm({...setupForm, sync_method: e.target.value as any})} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white">
                                 <option value="timecode">Timecode Sync</option>
                                 <option value="genlock">Genlock</option>
                                 <option value="clap">Clap/Slate</option>
@@ -312,14 +312,14 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">Add Camera</h3>
-                            <button onClick={() => setShowCameraModal(false)} className="p-2 text-gray-500 hover:text-white"><X size={20} /></button>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Camera</h3>
+                            <button onClick={() => setShowCameraModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"><X size={20} /></button>
                         </div>
                         <div className="p-6 space-y-4">
-                            <input type="text" value={cameraForm.name} onChange={(e) => setCameraForm({...cameraForm, name: e.target.value})} placeholder="Camera name (optional)" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white" />
-                            <input type="text" value={cameraForm.camera_body} onChange={(e) => setCameraForm({...cameraForm, camera_body: e.target.value})} placeholder="Camera body" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white" />
-                            <input type="text" value={cameraForm.lens} onChange={(e) => setCameraForm({...cameraForm, lens: e.target.value})} placeholder="Lens" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white" />
-                            <input type="text" value={cameraForm.operator} onChange={(e) => setCameraForm({...cameraForm, operator: e.target.value})} placeholder="Operator" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white" />
+                            <input type="text" value={cameraForm.name} onChange={(e) => setCameraForm({...cameraForm, name: e.target.value})} placeholder="Camera name (optional)" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white" />
+                            <input type="text" value={cameraForm.camera_body} onChange={(e) => setCameraForm({...cameraForm, camera_body: e.target.value})} placeholder="Camera body" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white" />
+                            <input type="text" value={cameraForm.lens} onChange={(e) => setCameraForm({...cameraForm, lens: e.target.value})} placeholder="Lens" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white" />
+                            <input type="text" value={cameraForm.operator} onChange={(e) => setCameraForm({...cameraForm, operator: e.target.value})} placeholder="Operator" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white" />
                         </div>
                         <div className="p-6 border-t border-white/5 flex justify-end gap-3">
                             <button onClick={() => setShowCameraModal(false)} className="px-4 py-2 text-gray-400">Cancel</button>

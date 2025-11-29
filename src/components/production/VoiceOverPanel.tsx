@@ -357,7 +357,7 @@ export default function VoiceOverPanel({ projectId, scenes, shots, onVoiceOverGe
                                                 <a
                                                     href={track.audio_url}
                                                     download
-                                                    className="p-2 text-gray-400 hover:text-white transition-colors"
+                                                    className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                                                 >
                                                     <Download size={18} />
                                                 </a>

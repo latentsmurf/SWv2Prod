@@ -222,12 +222,12 @@ export default function ShotLocking({
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl w-full max-w-md overflow-hidden">
                         <div className="p-6 border-b border-white/5">
-                            <h3 className="text-lg font-bold text-white">Review Shot</h3>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Review Shot</h3>
                             <p className="text-sm text-gray-500 mt-1">Shot {shot.shot_number}</p>
                         </div>
 
                         <div className="p-6">
-                            <label className="block text-sm text-gray-400 mb-2">Comment (optional)</label>
+                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Comment (optional)</label>
                             <textarea
                                 value={approvalComment}
                                 onChange={(e) => setApprovalComment(e.target.value)}
@@ -267,7 +267,7 @@ export default function ShotLocking({
 
                             <button
                                 onClick={() => setShowApprovalDialog(false)}
-                                className="w-full py-2 text-gray-400 hover:text-white transition-colors"
+                                className="w-full py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                             >
                                 Cancel
                             </button>

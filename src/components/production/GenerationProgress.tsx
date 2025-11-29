@@ -244,7 +244,7 @@ export default function GenerationProgress({
                                     e.stopPropagation();
                                     isPaused ? resumeQueue() : pauseQueue();
                                 }}
-                                className="p-1.5 text-gray-500 hover:text-white hover:bg-white/10 rounded"
+                                className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/10 rounded"
                             >
                                 {isPaused ? <Play size={14} /> : <Pause size={14} />}
                             </button>
@@ -349,7 +349,7 @@ export default function GenerationProgress({
                                         {item.status === 'failed' && (
                                             <button
                                                 onClick={() => retryItem(item.id)}
-                                                className="p-1 text-gray-500 hover:text-white"
+                                                className="p-1 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                                 title="Retry"
                                             >
                                                 <RefreshCw size={12} />

@@ -327,7 +327,7 @@ export default function TimelinePreview({
                         <button
                             onClick={previousShot}
                             disabled={currentShotIndex === 0}
-                            className="p-1 text-gray-400 hover:text-white disabled:opacity-30"
+                            className="p-1 text-gray-500 hover:text-gray-900 dark:hover:text-white disabled:opacity-30"
                         >
                             <SkipBack size={14} />
                         </button>
@@ -340,7 +340,7 @@ export default function TimelinePreview({
                         <button
                             onClick={nextShot}
                             disabled={currentShotIndex === shots.length - 1}
-                            className="p-1 text-gray-400 hover:text-white disabled:opacity-30"
+                            className="p-1 text-gray-500 hover:text-gray-900 dark:hover:text-white disabled:opacity-30"
                         >
                             <SkipForward size={14} />
                         </button>
@@ -362,7 +362,7 @@ export default function TimelinePreview({
                         {/* Volume */}
                         <button
                             onClick={() => setIsMuted(!isMuted)}
-                            className="p-1 text-gray-400 hover:text-white"
+                            className="p-1 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
                         </button>
@@ -370,7 +370,7 @@ export default function TimelinePreview({
                         {/* Fullscreen */}
                         <button
                             onClick={toggleFullscreen}
-                            className="p-1 text-gray-400 hover:text-white"
+                            className="p-1 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             <Maximize size={14} />
                         </button>

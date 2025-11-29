@@ -305,7 +305,7 @@ export default function ScriptToShotPipeline({
                             <Wand2 size={20} className="text-purple-400" />
                         </div>
                         <div>
-                            <h2 className="text-lg font-bold text-white">Script to Shot Pipeline</h2>
+                            <h2 className="text-lg font-bold text-gray-900 dark:text-white">Script to Shot Pipeline</h2>
                             <p className="text-xs text-gray-500">
                                 Automatically generate shot lists from your script
                             </p>

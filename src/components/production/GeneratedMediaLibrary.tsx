@@ -368,7 +368,7 @@ export default function GeneratedMediaLibrary({
                             <Images size={20} className="text-purple-400" />
                         </div>
                         <div>
-                            <h2 className="text-lg font-bold text-white">Generated Media</h2>
+                            <h2 className="text-lg font-bold text-gray-900 dark:text-white">Generated Media</h2>
                             <p className="text-xs text-gray-500">
                                 {stats.total} items • {stats.completed} completed • {stats.processing} processing
                             </p>
@@ -411,7 +411,7 @@ export default function GeneratedMediaLibrary({
                                 </button>
                                 <button
                                     onClick={clearSelection}
-                                    className="p-1.5 text-gray-500 hover:text-white"
+                                    className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                 >
                                     <X size={16} />
                                 </button>
@@ -443,7 +443,7 @@ export default function GeneratedMediaLibrary({
                                 className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                                     filterType === type
                                         ? 'bg-purple-500 text-white'
-                                        : 'text-gray-400 hover:text-white'
+                                        : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                 }`}
                             >
                                 {type === 'all' ? 'All' : type === 'image' ? '🖼️ Images' : '🎬 Videos'}
@@ -495,7 +495,7 @@ export default function GeneratedMediaLibrary({
                         <button
                             onClick={() => setViewMode('grid')}
                             className={`p-1.5 rounded-md transition-colors ${
-                                viewMode === 'grid' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white'
+                                viewMode === 'grid' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                             }`}
                         >
                             <Grid size={16} />
@@ -503,7 +503,7 @@ export default function GeneratedMediaLibrary({
                         <button
                             onClick={() => setViewMode('list')}
                             className={`p-1.5 rounded-md transition-colors ${
-                                viewMode === 'list' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-white'
+                                viewMode === 'list' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                             }`}
                         >
                             <List size={16} />
@@ -513,7 +513,7 @@ export default function GeneratedMediaLibrary({
                     {/* Select All */}
                     <button
                         onClick={selectAll}
-                        className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                         title={selectedItems.size === sortedMedia.length ? 'Deselect all' : 'Select all'}
                     >
                         <Check size={16} />
@@ -793,7 +793,7 @@ function MediaListItem({
                 {media.status === 'completed' && (
                     <button
                         onClick={(e) => { e.stopPropagation(); onRegenerate(); }}
-                        className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                     >
                         <RefreshCw size={14} />
                     </button>
@@ -803,7 +803,7 @@ function MediaListItem({
                         href={media.public_url}
                         download
                         onClick={(e) => e.stopPropagation()}
-                        className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                     >
                         <Download size={14} />
                     </a>

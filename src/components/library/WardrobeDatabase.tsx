@@ -276,13 +276,13 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search wardrobe..."
-                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterCategory}
                     onChange={(e) => setFilterCategory(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Categories</option>
                     {Object.entries(CATEGORIES).map(([key, config]) => (
@@ -293,7 +293,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                     <select
                         value={filterCharacter}
                         onChange={(e) => setFilterCharacter(e.target.value)}
-                        className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                        className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                     >
                         <option value="all">All Characters</option>
                         {characters.map(char => (
@@ -415,7 +415,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                                 <div className="flex items-center gap-1">
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedItem(item); }}
-                                                        className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                                        className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                                     >
                                                         <Eye size={14} />
                                                     </button>
@@ -440,9 +440,9 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">Add Wardrobe Item</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Wardrobe Item</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -450,21 +450,21 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Item Name *</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Item Name *</label>
                                     <input
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                                         placeholder="e.g., Blue Silk Dress"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Category</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Category</label>
                                     <select
                                         value={form.category}
                                         onChange={(e) => setForm({ ...form, category: e.target.value as any })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(CATEGORIES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.icon} {config.label}</option>
@@ -475,65 +475,65 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Character</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Character</label>
                                     <input
                                         type="text"
                                         value={form.character_name}
                                         onChange={(e) => setForm({ ...form, character_name: e.target.value })}
                                         placeholder="Character name"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Size</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Size</label>
                                     <input
                                         type="text"
                                         value={form.size}
                                         onChange={(e) => setForm({ ...form, size: e.target.value })}
                                         placeholder="e.g., M, 10, 32x30"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Color</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Color</label>
                                     <input
                                         type="text"
                                         value={form.color}
                                         onChange={(e) => setForm({ ...form, color: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Brand</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Brand</label>
                                     <input
                                         type="text"
                                         value={form.brand}
                                         onChange={(e) => setForm({ ...form, brand: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Era/Period</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Era/Period</label>
                                     <input
                                         type="text"
                                         value={form.era}
                                         onChange={(e) => setForm({ ...form, era: e.target.value })}
                                         placeholder="e.g., 1920s"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Source</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Source</label>
                                     <select
                                         value={form.source}
                                         onChange={(e) => setForm({ ...form, source: e.target.value as any })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         <option value="purchased">Purchased</option>
                                         <option value="rented">Rented</option>
@@ -543,11 +543,11 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Condition</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Condition</label>
                                     <select
                                         value={form.condition}
                                         onChange={(e) => setForm({ ...form, condition: e.target.value as any })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         <option value="new">New</option>
                                         <option value="excellent">Excellent</option>
@@ -559,13 +559,13 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Image URL</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Image URL</label>
                                 <input
                                     type="text"
                                     value={form.image_url}
                                     onChange={(e) => setForm({ ...form, image_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
@@ -591,8 +591,8 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

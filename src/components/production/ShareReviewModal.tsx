@@ -142,7 +142,7 @@ export default function ShareReviewModal({ projectId, projectName, onClose }: Sh
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                     >
                         <X size={20} />
                     </button>
@@ -301,7 +301,7 @@ export default function ShareReviewModal({ projectId, projectName, onClose }: Sh
                                                     className={`p-2 rounded-lg transition-colors ${
                                                         copiedLinkId === link.id
                                                             ? 'bg-green-500/20 text-green-400'
-                                                            : 'bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white'
+                                                            : 'bg-white/5 hover:bg-white/10 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                                     }`}
                                                 >
                                                     {copiedLinkId === link.id ? (
@@ -330,7 +330,7 @@ export default function ShareReviewModal({ projectId, projectName, onClose }: Sh
                     <p className="text-xs text-gray-500">
                         Review links allow external collaborators to view and comment on your project.
                     </p>
-                    <button onClick={onClose} className="px-4 py-2 text-gray-400 hover:text-white">
+                    <button onClick={onClose} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                         Done
                     </button>
                 </div>

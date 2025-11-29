@@ -331,7 +331,7 @@ export default function ShotNotes({ shotId, projectId, compact = false }: ShotNo
                                                 setEditingId(note.id);
                                                 setEditContent(note.content);
                                             }}
-                                            className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                            className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                         >
                                             <Edit2 size={14} />
                                         </button>
@@ -357,7 +357,7 @@ export default function ShotNotes({ shotId, projectId, compact = false }: ShotNo
                                         <div className="flex justify-end gap-2 mt-2">
                                             <button
                                                 onClick={() => setEditingId(null)}
-                                                className="px-3 py-1 text-gray-400 hover:text-white text-sm"
+                                                className="px-3 py-1 text-gray-500 hover:text-gray-900 dark:hover:text-white text-sm"
                                             >
                                                 Cancel
                                             </button>

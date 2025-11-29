@@ -215,16 +215,16 @@ export default function SFXDatabase({ projectId }: SFXDatabaseProps) {
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">Add SFX Effect</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white"><X size={20} /></button>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add SFX Effect</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"><X size={20} /></button>
                         </div>
                         <div className="p-6 space-y-4">
-                            <input type="text" value={form.name} onChange={(e) => setForm({...form, name: e.target.value})} placeholder="Effect name" className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white" />
+                            <input type="text" value={form.name} onChange={(e) => setForm({...form, name: e.target.value})} placeholder="Effect name" className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white" />
                             <div className="grid grid-cols-2 gap-4">
-                                <select value={form.type} onChange={(e) => setForm({...form, type: e.target.value as any})} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white">
+                                <select value={form.type} onChange={(e) => setForm({...form, type: e.target.value as any})} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white">
                                     {Object.entries(SFX_TYPES).map(([k, v]) => <option key={k} value={k}>{v.icon} {v.label}</option>)}
                                 </select>
-                                <select value={form.risk_level} onChange={(e) => setForm({...form, risk_level: e.target.value as any})} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white">
+                                <select value={form.risk_level} onChange={(e) => setForm({...form, risk_level: e.target.value as any})} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white">
                                     {Object.entries(RISK_LEVELS).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
                                 </select>
                             </div>

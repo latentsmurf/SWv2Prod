@@ -482,7 +482,7 @@ function GenerateWardrobeForm({
                     <button
                         key={i}
                         onClick={() => setPrompt(preset)}
-                        className="px-2 py-1 text-xs bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white rounded-lg transition-colors"
+                        className="px-2 py-1 text-xs bg-white/5 hover:bg-white/10 text-gray-500 hover:text-gray-900 dark:hover:text-white rounded-lg transition-colors"
                     >
                         {preset}
                     </button>

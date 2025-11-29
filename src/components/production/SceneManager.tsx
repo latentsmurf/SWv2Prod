@@ -265,7 +265,7 @@ function SceneCard({
                     <span className="text-sm font-mono">{index + 1}</span>
                 </div>
 
-                <button className="text-gray-400 hover:text-white transition-colors">
+                <button className="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">
                     {isExpanded ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
                 </button>
 
@@ -307,7 +307,7 @@ function SceneCard({
                         e.stopPropagation();
                         onToggleEdit();
                     }}
-                    className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                    className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                 >
                     <Edit3 size={16} />
                 </button>
@@ -492,7 +492,7 @@ function AssetSelector({
                 </div>
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="text-xs text-gray-500 hover:text-white transition-colors"
+                    className="text-xs text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
                     {isOpen ? 'Close' : 'Edit'}
                 </button>

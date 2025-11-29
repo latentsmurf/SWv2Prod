@@ -320,7 +320,7 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => {/* Export functionality */}}
-                        className="flex items-center gap-2 px-3 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-xl"
+                        className="flex items-center gap-2 px-3 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-xl"
                     >
                         <Download size={18} />
                         Export
@@ -366,13 +366,13 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search shots..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Status</option>
                     {Object.entries(STATUS_CONFIG).map(([key, config]) => (
@@ -501,14 +501,14 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
                                                 <div className="flex items-center gap-1">
                                                     <button
                                                         onClick={() => duplicateShot(shot)}
-                                                        className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                                        className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                                         title="Duplicate"
                                                     >
                                                         <Copy size={14} />
                                                     </button>
                                                     <button
                                                         onClick={() => setEditingShot(shot)}
-                                                        className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                                        className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                                         title="Edit"
                                                     >
                                                         <Edit size={14} />
@@ -541,13 +541,13 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
             {(showAddModal || editingShot) && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                                 {editingShot ? 'Edit Shot' : 'Add Shot'}
                             </h3>
                             <button
                                 onClick={() => { setShowAddModal(false); setEditingShot(null); resetForm(); }}
-                                className="p-2 text-gray-500 hover:text-white"
+                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                             >
                                 <X size={20} />
                             </button>
@@ -556,31 +556,31 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Shot Number</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Shot Number</label>
                                     <input
                                         type="text"
                                         value={form.shot_number}
                                         onChange={(e) => setForm({ ...form, shot_number: e.target.value })}
                                         placeholder="Auto-generate"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Scene Number</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Scene Number</label>
                                     <input
                                         type="number"
                                         value={form.scene_number}
                                         onChange={(e) => setForm({ ...form, scene_number: parseInt(e.target.value) })}
                                         min="1"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Shot Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Shot Type</label>
                                     <select
                                         value={form.shot_type}
                                         onChange={(e) => setForm({ ...form, shot_type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(SHOT_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -590,7 +590,7 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Description *</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Description *</label>
                                 <textarea
                                     value={form.description}
                                     onChange={(e) => setForm({ ...form, description: e.target.value })}
@@ -602,62 +602,62 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
 
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Angle</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Angle</label>
                                     <input
                                         type="text"
                                         value={form.angle}
                                         onChange={(e) => setForm({ ...form, angle: e.target.value })}
                                         placeholder="e.g., Low angle"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Movement</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Movement</label>
                                     <input
                                         type="text"
                                         value={form.movement}
                                         onChange={(e) => setForm({ ...form, movement: e.target.value })}
                                         placeholder="e.g., Pan left"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Lens</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Lens</label>
                                     <input
                                         type="text"
                                         value={form.lens}
                                         onChange={(e) => setForm({ ...form, lens: e.target.value })}
                                         placeholder="e.g., 50mm"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Characters (comma-separated)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Characters (comma-separated)</label>
                                     <input
                                         type="text"
                                         value={form.characters}
                                         onChange={(e) => setForm({ ...form, characters: e.target.value })}
                                         placeholder="John, Sarah"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Duration (seconds)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Duration (seconds)</label>
                                     <input
                                         type="number"
                                         value={form.duration}
                                         onChange={(e) => setForm({ ...form, duration: parseInt(e.target.value) })}
                                         min="0"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Director Notes</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Director Notes</label>
                                 <textarea
                                     value={form.director_notes}
                                     onChange={(e) => setForm({ ...form, director_notes: e.target.value })}
@@ -667,11 +667,11 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Priority</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Priority</label>
                                 <select
                                     value={form.priority}
                                     onChange={(e) => setForm({ ...form, priority: e.target.value as any })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 >
                                     {Object.entries(PRIORITY_CONFIG).map(([key, config]) => (
                                         <option key={key} value={key}>{config.label}</option>
@@ -680,10 +680,10 @@ export default function ShotListManager({ projectId, sceneId }: ShotListManagerP
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
                             <button
                                 onClick={() => { setShowAddModal(false); setEditingShot(null); resetForm(); }}
-                                className="px-4 py-2 text-gray-400 hover:text-white"
+                                className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                             >
                                 Cancel
                             </button>

@@ -231,7 +231,7 @@ export default function RenderQueue({ projectId, compact = false }: RenderQueueP
                         {completedCount > 0 && (
                             <button
                                 onClick={clearCompleted}
-                                className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-gray-400 hover:text-white transition-colors"
+                                className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                             >
                                 <Trash2 size={16} />
                                 Clear Completed
@@ -388,7 +388,7 @@ export default function RenderQueue({ projectId, compact = false }: RenderQueueP
                                                         else next.add(job.id);
                                                         return next;
                                                     })}
-                                                    className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg"
+                                                    className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                                                 >
                                                     {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                                                 </button>

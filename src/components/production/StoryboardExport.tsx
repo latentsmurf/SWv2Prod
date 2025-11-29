@@ -140,7 +140,7 @@ export default function StoryboardExport({
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                     >
                         <X size={20} />
                     </button>
@@ -204,7 +204,7 @@ export default function StoryboardExport({
                                             className={`flex-1 py-2 rounded-lg border transition-colors ${
                                                 options.panelsPerRow === num
                                                     ? 'border-yellow-500 bg-yellow-500/10 text-yellow-500'
-                                                    : 'border-white/10 bg-white/5 text-gray-400 hover:text-white'
+                                                    : 'border-white/10 bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                             }`}
                                         >
                                             {num}
@@ -224,7 +224,7 @@ export default function StoryboardExport({
                                             className={`flex-1 py-2 rounded-lg border transition-colors uppercase text-sm ${
                                                 options.paperSize === size
                                                     ? 'border-yellow-500 bg-yellow-500/10 text-yellow-500'
-                                                    : 'border-white/10 bg-white/5 text-gray-400 hover:text-white'
+                                                    : 'border-white/10 bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                             }`}
                                         >
                                             {size}
@@ -329,7 +329,7 @@ export default function StoryboardExport({
                     <div className="flex gap-3">
                         <button
                             onClick={onClose}
-                            className="px-4 py-2 text-gray-400 hover:text-white transition-colors"
+                            className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                         >
                             Cancel
                         </button>

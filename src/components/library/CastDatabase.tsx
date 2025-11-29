@@ -391,7 +391,7 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                                                 <div className="flex items-center gap-1">
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedMember(member); }}
-                                                        className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                                        className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                                     >
                                                         <Eye size={14} />
                                                     </button>
@@ -416,9 +416,9 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">Add Cast Member</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Cast Member</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -427,32 +427,32 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                             {/* Basic Info */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Actor Name *</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Actor Name *</label>
                                     <input
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Character Name</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Character Name</label>
                                     <input
                                         type="text"
                                         value={form.character_name}
                                         onChange={(e) => setForm({ ...form, character_name: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Role Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Role Type</label>
                                     <select
                                         value={form.role_type}
                                         onChange={(e) => setForm({ ...form, role_type: e.target.value as any })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(ROLE_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -460,23 +460,23 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Gender</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Gender</label>
                                     <input
                                         type="text"
                                         value={form.gender}
                                         onChange={(e) => setForm({ ...form, gender: e.target.value })}
                                         placeholder="e.g., Male, Female"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Age Range</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Age Range</label>
                                     <input
                                         type="text"
                                         value={form.age_range}
                                         onChange={(e) => setForm({ ...form, age_range: e.target.value })}
                                         placeholder="e.g., 25-35"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
@@ -484,40 +484,40 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                             {/* Physical */}
                             <div className="grid grid-cols-4 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Ethnicity</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Ethnicity</label>
                                     <input
                                         type="text"
                                         value={form.ethnicity}
                                         onChange={(e) => setForm({ ...form, ethnicity: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Height</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Height</label>
                                     <input
                                         type="text"
                                         value={form.height}
                                         onChange={(e) => setForm({ ...form, height: e.target.value })}
                                         placeholder="e.g., 5'10"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Hair Color</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Hair Color</label>
                                     <input
                                         type="text"
                                         value={form.hair_color}
                                         onChange={(e) => setForm({ ...form, hair_color: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Eye Color</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Eye Color</label>
                                     <input
                                         type="text"
                                         value={form.eye_color}
                                         onChange={(e) => setForm({ ...form, eye_color: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
@@ -525,52 +525,52 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                             {/* Agency */}
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Agency</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Agency</label>
                                     <input
                                         type="text"
                                         value={form.agency}
                                         onChange={(e) => setForm({ ...form, agency: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Agent Name</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Agent Name</label>
                                     <input
                                         type="text"
                                         value={form.agent_name}
                                         onChange={(e) => setForm({ ...form, agent_name: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             {/* Headshot */}
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Headshot URL</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Headshot URL</label>
                                 <input
                                     type="text"
                                     value={form.headshot_url}
                                     onChange={(e) => setForm({ ...form, headshot_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             {/* Special Skills */}
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Special Skills (comma-separated)</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Special Skills (comma-separated)</label>
                                 <input
                                     type="text"
                                     value={form.special_skills}
                                     onChange={(e) => setForm({ ...form, special_skills: e.target.value })}
                                     placeholder="e.g., Martial Arts, Horse Riding, Accents"
-                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             {/* Notes */}
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Notes</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Notes</label>
                                 <textarea
                                     value={form.notes}
                                     onChange={(e) => setForm({ ...form, notes: e.target.value })}
@@ -580,8 +580,8 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button
@@ -601,8 +601,8 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">{selectedMember.name}</h3>
-                            <button onClick={() => setSelectedMember(null)} className="p-2 text-gray-500 hover:text-white">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{selectedMember.name}</h3>
+                            <button onClick={() => setSelectedMember(null)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>

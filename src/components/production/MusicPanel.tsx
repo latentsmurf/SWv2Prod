@@ -419,7 +419,7 @@ export default function MusicPanel({ projectId, scenes, onTrackSelect }: MusicPa
                                         className={`p-2 rounded-lg transition-colors ${
                                             track.is_favorite
                                                 ? 'text-red-400 bg-red-500/10'
-                                                : 'text-gray-500 hover:text-white hover:bg-white/5'
+                                                : 'text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5'
                                         }`}
                                     >
                                         <Heart size={16} fill={track.is_favorite ? 'currentColor' : 'none'} />
@@ -429,7 +429,7 @@ export default function MusicPanel({ projectId, scenes, onTrackSelect }: MusicPa
                                         <a
                                             href={track.audio_url}
                                             download
-                                            className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                                            className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                                         >
                                             <Download size={16} />
                                         </a>
@@ -470,7 +470,7 @@ export default function MusicPanel({ projectId, scenes, onTrackSelect }: MusicPa
                                         audioRef.current.currentTime = Math.max(0, audioRef.current.currentTime - 10);
                                     }
                                 }}
-                                className="p-2 text-gray-400 hover:text-white transition-colors"
+                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                             >
                                 <SkipBack size={18} />
                             </button>
@@ -491,7 +491,7 @@ export default function MusicPanel({ projectId, scenes, onTrackSelect }: MusicPa
                                         );
                                     }
                                 }}
-                                className="p-2 text-gray-400 hover:text-white transition-colors"
+                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                             >
                                 <SkipForward size={18} />
                             </button>
@@ -501,7 +501,7 @@ export default function MusicPanel({ projectId, scenes, onTrackSelect }: MusicPa
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={() => setIsMuted(!isMuted)}
-                                className="p-2 text-gray-400 hover:text-white transition-colors"
+                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                             >
                                 {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
                             </button>

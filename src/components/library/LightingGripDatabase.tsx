@@ -257,13 +257,13 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search equipment..."
-                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Types</option>
                     {Object.entries(TYPE_CONFIG).map(([key, config]) => (
@@ -273,7 +273,7 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
                 <select
                     value={filterCategory}
                     onChange={(e) => setFilterCategory(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Categories</option>
                     {ALL_CATEGORIES.map(cat => (
@@ -400,9 +400,9 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">Add Equipment</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Equipment</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -410,11 +410,11 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Type</label>
                                     <select
                                         value={form.type}
                                         onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(TYPE_CONFIG).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -422,11 +422,11 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Category</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Category</label>
                                     <select
                                         value={form.category}
                                         onChange={(e) => setForm({ ...form, category: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {ALL_CATEGORIES.map(cat => (
                                             <option key={cat.key} value={cat.key}>{cat.icon} {cat.label}</option>
@@ -437,23 +437,23 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Make</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Make</label>
                                     <input
                                         type="text"
                                         value={form.make}
                                         onChange={(e) => setForm({ ...form, make: e.target.value })}
                                         placeholder="e.g., ARRI, Kino Flo"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Model</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Model</label>
                                     <input
                                         type="text"
                                         value={form.model}
                                         onChange={(e) => setForm({ ...form, model: e.target.value })}
                                         placeholder="e.g., SkyPanel S60-C"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
@@ -461,22 +461,22 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
                             {form.type === 'lighting' && (
                                 <div className="grid grid-cols-3 gap-4">
                                     <div>
-                                        <label className="block text-sm text-gray-400 mb-2">Wattage</label>
+                                        <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Wattage</label>
                                         <input
                                             type="number"
                                             value={form.wattage}
                                             onChange={(e) => setForm({ ...form, wattage: parseInt(e.target.value) })}
-                                            className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                            className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm text-gray-400 mb-2">Color Temp</label>
+                                        <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Color Temp</label>
                                         <input
                                             type="text"
                                             value={form.color_temp}
                                             onChange={(e) => setForm({ ...form, color_temp: e.target.value })}
                                             placeholder="e.g., 5600K, Bi-Color"
-                                            className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                            className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                         />
                                     </div>
                                     <div className="flex items-end pb-3">
@@ -495,21 +495,21 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
 
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Quantity</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Quantity</label>
                                     <input
                                         type="number"
                                         value={form.quantity}
                                         onChange={(e) => setForm({ ...form, quantity: parseInt(e.target.value) })}
                                         min="1"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Source</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Source</label>
                                     <select
                                         value={form.source}
                                         onChange={(e) => setForm({ ...form, source: e.target.value as any })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         <option value="rented">Rented</option>
                                         <option value="owned">Owned</option>
@@ -517,19 +517,19 @@ export default function LightingGripDatabase({ projectId, onSelect, selectionMod
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Daily Rate ($)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Daily Rate ($)</label>
                                     <input
                                         type="number"
                                         value={form.daily_rate}
                                         onChange={(e) => setForm({ ...form, daily_rate: parseInt(e.target.value) })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

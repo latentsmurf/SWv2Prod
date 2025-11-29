@@ -314,13 +314,13 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search contacts..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterDepartment}
                     onChange={(e) => setFilterDepartment(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Departments</option>
                     {DEPARTMENTS.map(dept => (
@@ -338,7 +338,7 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
                 <div className="space-y-6">
                     {Object.entries(groupedContacts).sort().map(([department, deptContacts]) => (
                         <div key={department}>
-                            <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
                                 <Building size={18} className="text-gray-500" />
                                 {department}
                                 <span className="text-sm text-gray-500 font-normal">({deptContacts.length})</span>
@@ -380,7 +380,7 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
                                                         {contact.email && (
                                                             <button
                                                                 onClick={() => copyToClipboard(contact.email!, `email-${contact.id}`)}
-                                                                className="flex items-center gap-2 text-sm text-gray-400 hover:text-white"
+                                                                className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                                             >
                                                                 <Mail size={14} />
                                                                 {contact.email}
@@ -392,7 +392,7 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
                                                             </button>
                                                         )}
                                                         {contact.mobile && (
-                                                            <a href={`tel:${contact.mobile}`} className="flex items-center gap-2 text-sm text-gray-400 hover:text-white">
+                                                            <a href={`tel:${contact.mobile}`} className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                                                 <Phone size={14} />
                                                                 {contact.mobile}
                                                             </a>
@@ -415,7 +415,7 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
                                                         </button>
                                                         <button
                                                             onClick={() => startEdit(contact)}
-                                                            className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg"
+                                                            className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                                                         >
                                                             <Edit size={16} />
                                                         </button>
@@ -441,33 +441,33 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                                 {editingContact ? 'Edit Contact' : 'Add Contact'}
                             </h3>
-                            <button onClick={() => { setShowAddModal(false); setEditingContact(null); }} className="p-2 text-gray-500 hover:text-white">
+                            <button onClick={() => { setShowAddModal(false); setEditingContact(null); }} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
 
                         <div className="p-6 space-y-4">
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Full Name</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Full Name</label>
                                 <input
                                     type="text"
                                     value={form.name}
                                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Department</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Department</label>
                                     <select
                                         value={form.department}
                                         onChange={(e) => setForm({ ...form, department: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {DEPARTMENTS.map(dept => (
                                             <option key={dept} value={dept}>{dept}</option>
@@ -475,55 +475,55 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Role/Position</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Role/Position</label>
                                     <input
                                         type="text"
                                         value={form.role}
                                         onChange={(e) => setForm({ ...form, role: e.target.value })}
                                         placeholder="e.g., Director, Gaffer"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Email</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Email</label>
                                 <input
                                     type="email"
                                     value={form.email}
                                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Phone</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Phone</label>
                                     <input
                                         type="tel"
                                         value={form.phone}
                                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Mobile</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Mobile</label>
                                     <input
                                         type="tel"
                                         value={form.mobile}
                                         onChange={(e) => setForm({ ...form, mobile: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Company</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Company</label>
                                 <input
                                     type="text"
                                     value={form.company}
                                     onChange={(e) => setForm({ ...form, company: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
@@ -541,8 +541,8 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => { setShowAddModal(false); setEditingContact(null); }} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => { setShowAddModal(false); setEditingContact(null); }} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

@@ -359,7 +359,7 @@ export default function CharacterConsistencyPanel({
                                         flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors
                                         ${selectedCharacter.face_locked 
                                             ? 'bg-green-500/10 text-green-400' 
-                                            : 'bg-white/5 text-gray-400 hover:text-white'}
+                                            : 'bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white'}
                                     `}
                                 >
                                     {selectedCharacter.face_locked ? (
@@ -398,7 +398,7 @@ export default function CharacterConsistencyPanel({
                                         flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors
                                         ${activeTab === tab.key 
                                             ? 'bg-white text-black' 
-                                            : 'text-gray-400 hover:text-white'}
+                                            : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'}
                                     `}
                                 >
                                     <tab.icon size={14} />
@@ -562,8 +562,8 @@ export default function CharacterConsistencyPanel({
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">Add Character</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Character</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -600,7 +600,7 @@ export default function CharacterConsistencyPanel({
                             </div>
                         </div>
                         <div className="p-6 border-t border-white/5 flex justify-end gap-3">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

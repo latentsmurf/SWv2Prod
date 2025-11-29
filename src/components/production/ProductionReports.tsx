@@ -196,7 +196,7 @@ export default function ProductionReports({ projectId }: ProductionReportsProps)
             <div className="w-80 border-r border-white/5 flex flex-col">
                 <div className="p-4 border-b border-white/5">
                     <div className="flex items-center justify-between mb-4">
-                        <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                        <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                             <FileText className="text-yellow-500" />
                             Production Reports
                         </h2>
@@ -287,7 +287,7 @@ export default function ProductionReports({ projectId }: ProductionReportsProps)
                             <div className="flex items-center gap-3">
                                 <button
                                     onClick={() => setShowEditor(false)}
-                                    className="px-4 py-2 text-gray-400 hover:text-white"
+                                    className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                 >
                                     Cancel
                                 </button>
@@ -305,39 +305,39 @@ export default function ProductionReports({ projectId }: ProductionReportsProps)
                         {/* Basic Info */}
                         <div className="grid grid-cols-4 gap-4">
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Date</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Date</label>
                                 <input
                                     type="date"
                                     value={reportForm.date || ''}
                                     onChange={(e) => setReportForm({ ...reportForm, date: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Day Number</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Day Number</label>
                                 <input
                                     type="number"
                                     value={reportForm.day_number || ''}
                                     onChange={(e) => setReportForm({ ...reportForm, day_number: parseInt(e.target.value) })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Call Time</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Call Time</label>
                                 <input
                                     type="time"
                                     value={reportForm.call_time || ''}
                                     onChange={(e) => setReportForm({ ...reportForm, call_time: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Wrap Time</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Wrap Time</label>
                                 <input
                                     type="time"
                                     value={reportForm.wrap_time || ''}
                                     onChange={(e) => setReportForm({ ...reportForm, wrap_time: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                         </div>
@@ -345,48 +345,48 @@ export default function ProductionReports({ projectId }: ProductionReportsProps)
                         {/* Schedule Info */}
                         <div className="grid grid-cols-4 gap-4">
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Setups</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Setups</label>
                                 <input
                                     type="number"
                                     value={reportForm.setups || 0}
                                     onChange={(e) => setReportForm({ ...reportForm, setups: parseInt(e.target.value) })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Takes</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Takes</label>
                                 <input
                                     type="number"
                                     value={reportForm.takes || 0}
                                     onChange={(e) => setReportForm({ ...reportForm, takes: parseInt(e.target.value) })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Pages Scheduled</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Pages Scheduled</label>
                                 <input
                                     type="number"
                                     step="0.125"
                                     value={reportForm.pages_scheduled || 0}
                                     onChange={(e) => setReportForm({ ...reportForm, pages_scheduled: parseFloat(e.target.value) })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Pages Completed</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Pages Completed</label>
                                 <input
                                     type="number"
                                     step="0.125"
                                     value={reportForm.pages_completed || 0}
                                     onChange={(e) => setReportForm({ ...reportForm, pages_completed: parseFloat(e.target.value) })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                         </div>
 
                         {/* Notes */}
                         <div>
-                            <label className="block text-sm text-gray-400 mb-2">Notes</label>
+                            <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Notes</label>
                             <textarea
                                 value={reportForm.notes || ''}
                                 onChange={(e) => setReportForm({ ...reportForm, notes: e.target.value })}
@@ -453,28 +453,28 @@ export default function ProductionReports({ projectId }: ProductionReportsProps)
                                 <Sun className="text-yellow-400" size={24} />
                                 <div>
                                     <p className="text-xs text-gray-500">Call Time</p>
-                                    <p className="text-lg font-bold text-white">{formatTime(selectedReport.call_time)}</p>
+                                    <p className="text-lg font-bold text-gray-900 dark:text-white">{formatTime(selectedReport.call_time)}</p>
                                 </div>
                             </div>
                             <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
                                 <Camera className="text-blue-400" size={24} />
                                 <div>
                                     <p className="text-xs text-gray-500">First Shot</p>
-                                    <p className="text-lg font-bold text-white">{formatTime(selectedReport.first_shot)}</p>
+                                    <p className="text-lg font-bold text-gray-900 dark:text-white">{formatTime(selectedReport.first_shot)}</p>
                                 </div>
                             </div>
                             <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
                                 <Moon className="text-purple-400" size={24} />
                                 <div>
                                     <p className="text-xs text-gray-500">Wrap Time</p>
-                                    <p className="text-lg font-bold text-white">{formatTime(selectedReport.wrap_time)}</p>
+                                    <p className="text-lg font-bold text-gray-900 dark:text-white">{formatTime(selectedReport.wrap_time)}</p>
                                 </div>
                             </div>
                             <div className="bg-white/5 rounded-xl p-4 flex items-center gap-3">
                                 <Clock className="text-green-400" size={24} />
                                 <div>
                                     <p className="text-xs text-gray-500">Total Hours</p>
-                                    <p className="text-lg font-bold text-white">
+                                    <p className="text-lg font-bold text-gray-900 dark:text-white">
                                         {calculateHours(selectedReport.call_time, selectedReport.wrap_time)}h
                                     </p>
                                 </div>

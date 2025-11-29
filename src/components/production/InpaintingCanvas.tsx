@@ -109,7 +109,7 @@ export default function InpaintingCanvas({ imageUrl, shotId, onRepair }: Inpaint
                     </div>
                     <button
                         onClick={clearCanvas}
-                        className="p-2 rounded bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
+                        className="p-2 rounded bg-white/5 hover:bg-white/10 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                         title="Clear Mask"
                     >
                         <Undo size={18} />

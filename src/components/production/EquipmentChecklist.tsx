@@ -252,13 +252,13 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search equipment..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterCategory}
                     onChange={(e) => setFilterCategory(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Categories</option>
                     {Object.keys(CATEGORY_CONFIG).map(cat => (
@@ -268,7 +268,7 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
                 <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Status</option>
                     {Object.entries(STATUS_CONFIG).map(([key, config]) => (
@@ -376,10 +376,10 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">Add Equipment</h3>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Equipment</h3>
                             <button
                                 onClick={() => setShowAddModal(false)}
-                                className="p-2 text-gray-500 hover:text-white"
+                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                             >
                                 <X size={20} />
                             </button>
@@ -387,23 +387,23 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
 
                         <div className="p-6 space-y-4">
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Equipment Name</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Equipment Name</label>
                                 <input
                                     type="text"
                                     value={itemForm.name}
                                     onChange={(e) => setItemForm({ ...itemForm, name: e.target.value })}
                                     placeholder="e.g., ARRI Alexa Mini"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Category</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Category</label>
                                     <select
                                         value={itemForm.category}
                                         onChange={(e) => setItemForm({ ...itemForm, category: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.keys(CATEGORY_CONFIG).map(cat => (
                                             <option key={cat} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</option>
@@ -411,42 +411,42 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Quantity</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Quantity</label>
                                     <input
                                         type="number"
                                         value={itemForm.quantity}
                                         onChange={(e) => setItemForm({ ...itemForm, quantity: parseInt(e.target.value) })}
                                         min="1"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Rental Source</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Rental Source</label>
                                     <input
                                         type="text"
                                         value={itemForm.rental_source}
                                         onChange={(e) => setItemForm({ ...itemForm, rental_source: e.target.value })}
                                         placeholder="e.g., Panavision"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Daily Rate ($)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Daily Rate ($)</label>
                                     <input
                                         type="number"
                                         value={itemForm.daily_rate}
                                         onChange={(e) => setItemForm({ ...itemForm, daily_rate: parseInt(e.target.value) })}
                                         min="0"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Notes</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Notes</label>
                                 <textarea
                                     value={itemForm.notes}
                                     onChange={(e) => setItemForm({ ...itemForm, notes: e.target.value })}
@@ -460,7 +460,7 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
                         <div className="p-6 border-t border-white/5 flex justify-end gap-3">
                             <button
                                 onClick={() => setShowAddModal(false)}
-                                className="px-4 py-2 text-gray-400 hover:text-white"
+                                className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                             >
                                 Cancel
                             </button>

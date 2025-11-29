@@ -30,7 +30,7 @@ export default function CoverageSelector({ currentPreset, onSelect, onClose }: C
                     </div>
                     <button
                         onClick={onClose}
-                        className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                     >
                         <X size={20} />
                     </button>
@@ -58,7 +58,7 @@ export default function CoverageSelector({ currentPreset, onSelect, onClose }: C
 
                                 <div className="text-3xl mb-3">{preset.icon}</div>
                                 
-                                <h3 className="text-lg font-bold text-white mb-1">
+                                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                                     {preset.name}
                                 </h3>
                                 

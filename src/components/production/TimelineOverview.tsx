@@ -162,14 +162,14 @@ export default function TimelineOverview({
                     <div className="flex items-center gap-1 bg-white/5 rounded-lg">
                         <button
                             onClick={() => setZoom(Math.max(0.25, zoom - 0.25))}
-                            className="p-2 text-gray-400 hover:text-white"
+                            className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             <ZoomOut size={16} />
                         </button>
                         <span className="text-xs text-gray-400 w-12 text-center">{Math.round(zoom * 100)}%</span>
                         <button
                             onClick={() => setZoom(Math.min(4, zoom + 0.25))}
-                            className="p-2 text-gray-400 hover:text-white"
+                            className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             <ZoomIn size={16} />
                         </button>

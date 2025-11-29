@@ -813,7 +813,7 @@ export default function ImageEditingStudio({ imageUrl, shotId, shotName }: Image
                             className={`w-9 h-9 rounded flex items-center justify-center transition-colors group relative
                                 ${activeTool === tool.id 
                                     ? 'bg-yellow-500/20 text-yellow-400' 
-                                    : 'hover:bg-white/10 text-gray-400 hover:text-white'
+                                    : 'hover:bg-white/10 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                 }`}
                             title={`${tool.label} (${tool.shortcut})`}
                         >

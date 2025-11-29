@@ -162,7 +162,7 @@ export default function LooksPanel() {
                     {searchQuery && (
                         <button
                             onClick={() => setSearchQuery('')}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white"
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             <X size={14} />
                         </button>
@@ -294,7 +294,7 @@ export default function LooksPanel() {
                         />
                         <div className="p-4">
                             <div className="flex items-start justify-between mb-2">
-                                <h3 className="text-lg font-bold text-white">{showPreview.name}</h3>
+                                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{showPreview.name}</h3>
                                 <span className="text-[10px] px-2 py-1 bg-white/10 rounded text-gray-400 uppercase">
                                     {showPreview.category}
                                 </span>
@@ -326,7 +326,7 @@ export default function LooksPanel() {
                                     className={`p-2 rounded-lg border transition-colors ${
                                         favorites.includes(showPreview.id)
                                             ? 'bg-yellow-500/10 border-yellow-500/20 text-yellow-400'
-                                            : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
+                                            : 'bg-white/5 border-white/10 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                     }`}
                                 >
                                     <Star size={18} fill={favorites.includes(showPreview.id) ? 'currentColor' : 'none'} />

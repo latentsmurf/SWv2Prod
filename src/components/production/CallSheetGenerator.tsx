@@ -349,7 +349,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                                         setForm(sheet);
                                         setShowEditor(true);
                                     }}
-                                    className="text-sm text-gray-400 hover:text-white flex items-center gap-1"
+                                    className="text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white flex items-center gap-1"
                                 >
                                     <Edit size={14} />
                                     Edit
@@ -358,13 +358,13 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                                     <button
                                         onClick={() => exportCallSheet(sheet, 'pdf')}
                                         disabled={exporting}
-                                        className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg"
+                                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                                     >
                                         <Download size={16} />
                                     </button>
                                     <button
                                         onClick={() => exportCallSheet(sheet, 'email')}
-                                        className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg"
+                                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                                     >
                                         <Mail size={16} />
                                     </button>
@@ -389,7 +389,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                                     setShowEditor(false);
                                     setSelectedSheet(null);
                                 }}
-                                className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg"
+                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                             >
                                 <X size={20} />
                             </button>
@@ -400,21 +400,21 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                             {/* Basic Info */}
                             <div className="grid grid-cols-3 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Date</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Date</label>
                                     <input
                                         type="date"
                                         value={form.date || ''}
                                         onChange={(e) => setForm({ ...form, date: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">General Call Time</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">General Call Time</label>
                                     <input
                                         type="time"
                                         value={form.call_time || ''}
                                         onChange={(e) => setForm({ ...form, call_time: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
@@ -427,7 +427,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                                 </h4>
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <label className="block text-sm text-gray-400 mb-2">Location Name</label>
+                                        <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Location Name</label>
                                         <input
                                             type="text"
                                             value={form.shooting_location?.name || ''}
@@ -440,7 +440,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm text-gray-400 mb-2">Address</label>
+                                        <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Address</label>
                                         <input
                                             type="text"
                                             value={form.shooting_location?.address || ''}
@@ -597,7 +597,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
 
                             {/* Notes */}
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Production Notes</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Production Notes</label>
                                 <textarea
                                     value={form.notes || ''}
                                     onChange={(e) => setForm({ ...form, notes: e.target.value })}
@@ -615,7 +615,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                                     setShowEditor(false);
                                     setSelectedSheet(null);
                                 }}
-                                className="px-4 py-2 text-gray-400 hover:text-white"
+                                className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                             >
                                 Cancel
                             </button>

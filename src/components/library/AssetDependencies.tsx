@@ -96,7 +96,7 @@ export default function AssetDependencies({ assetId, assetType }: AssetDependenc
                         </div>
                     )}
                     <div className="flex-1">
-                        <h2 className="text-lg font-bold text-white">{asset?.name || 'Unknown Asset'}</h2>
+                        <h2 className="text-lg font-bold text-gray-900 dark:text-white">{asset?.name || 'Unknown Asset'}</h2>
                         <p className="text-sm text-gray-500 capitalize">{assetType}</p>
                     </div>
                 </div>

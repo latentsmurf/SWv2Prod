@@ -110,7 +110,7 @@ export default function ShotComparison({
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/10">
                 <div className="flex items-center gap-4">
-                    <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                    <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
                         <ArrowLeftRight className="text-yellow-500" />
                         Shot Comparison
                     </h2>
@@ -128,7 +128,7 @@ export default function ShotComparison({
                                 className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
                                     compareMode === mode.id
                                         ? 'bg-yellow-500 text-black font-medium'
-                                        : 'text-gray-400 hover:text-white'
+                                        : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                 }`}
                             >
                                 {mode.label} <kbd className="text-[10px] opacity-50 ml-1">{mode.key}</kbd>
@@ -142,14 +142,14 @@ export default function ShotComparison({
                     <div className="flex items-center gap-2">
                         <button
                             onClick={() => setZoom(Math.max(50, zoom - 25))}
-                            className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg"
+                            className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                         >
                             <ZoomOut size={18} />
                         </button>
                         <span className="text-sm text-gray-400 w-12 text-center">{zoom}%</span>
                         <button
                             onClick={() => setZoom(Math.min(200, zoom + 25))}
-                            className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg"
+                            className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                         >
                             <ZoomIn size={18} />
                         </button>
@@ -157,7 +157,7 @@ export default function ShotComparison({
 
                     <button
                         onClick={onClose}
-                        className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg"
+                        className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                     >
                         <X size={20} />
                     </button>

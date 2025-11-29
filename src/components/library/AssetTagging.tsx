@@ -171,7 +171,7 @@ export default function AssetTagging({
                 ))}
                 <button
                     onClick={() => setShowDropdown(true)}
-                    className="p-1 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                    className="p-1 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                 >
                     <Plus size={12} />
                 </button>
@@ -196,7 +196,7 @@ export default function AssetTagging({
                         <span style={{ color: tag.color }}>{tag.name}</span>
                         <button
                             onClick={() => removeTag(tag.id)}
-                            className="ml-1 text-gray-500 hover:text-white"
+                            className="ml-1 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                         >
                             <X size={14} />
                         </button>
@@ -205,7 +205,7 @@ export default function AssetTagging({
 
                 <button
                     onClick={() => setShowDropdown(!showDropdown)}
-                    className="flex items-center gap-1 px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg text-sm text-gray-400 hover:text-white"
+                    className="flex items-center gap-1 px-3 py-1 bg-white/5 hover:bg-white/10 rounded-lg text-sm text-gray-500 hover:text-gray-900 dark:hover:text-white"
                 >
                     <Tag size={14} />
                     Add Tag

@@ -338,7 +338,7 @@ export default function ShotPriorityQueue({
 
                                     {/* Actions */}
                                     <div className="relative group">
-                                        <button className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg">
+                                        <button className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg">
                                             <MoreVertical size={16} />
                                         </button>
                                         <div className="absolute right-0 top-full mt-1 w-48 bg-[#1a1a1a] border border-white/10 rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">

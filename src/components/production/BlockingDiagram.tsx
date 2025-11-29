@@ -409,34 +409,34 @@ export default function BlockingDiagram({ projectId, sceneId, shotId }: Blocking
                         type="text"
                         value={diagramName}
                         onChange={(e) => setDiagramName(e.target.value)}
-                        className="bg-transparent text-lg font-bold text-white border-none focus:outline-none"
+                        className="bg-transparent text-lg font-bold text-gray-900 dark:text-white border-none focus:outline-none"
                     />
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <button onClick={undo} disabled={historyIndex <= 0} className="p-2 text-gray-500 hover:text-white disabled:opacity-30">
+                    <button onClick={undo} disabled={historyIndex <= 0} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white disabled:opacity-30">
                         <Undo size={18} />
                     </button>
-                    <button onClick={redo} disabled={historyIndex >= history.length - 1} className="p-2 text-gray-500 hover:text-white disabled:opacity-30">
+                    <button onClick={redo} disabled={historyIndex >= history.length - 1} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white disabled:opacity-30">
                         <Redo size={18} />
                     </button>
                     <div className="w-px h-6 bg-white/10 mx-2" />
-                    <button onClick={() => setZoom(z => Math.max(0.5, z - 0.1))} className="p-2 text-gray-500 hover:text-white">
+                    <button onClick={() => setZoom(z => Math.max(0.5, z - 0.1))} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                         <ZoomOut size={18} />
                     </button>
                     <span className="text-sm text-gray-400 w-12 text-center">{Math.round(zoom * 100)}%</span>
-                    <button onClick={() => setZoom(z => Math.min(2, z + 0.1))} className="p-2 text-gray-500 hover:text-white">
+                    <button onClick={() => setZoom(z => Math.min(2, z + 0.1))} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                         <ZoomIn size={18} />
                     </button>
                     <div className="w-px h-6 bg-white/10 mx-2" />
                     <button
                         onClick={() => setShowGrid(!showGrid)}
-                        className={`p-2 rounded ${showGrid ? 'text-yellow-500' : 'text-gray-500 hover:text-white'}`}
+                        className={`p-2 rounded ${showGrid ? 'text-yellow-500' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'}`}
                     >
                         <Grid size={18} />
                     </button>
                     <div className="w-px h-6 bg-white/10 mx-2" />
-                    <button onClick={exportPNG} className="px-3 py-1.5 text-gray-400 hover:text-white hover:bg-white/5 rounded-lg text-sm">
+                    <button onClick={exportPNG} className="px-3 py-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg text-sm">
                         <Download size={16} className="inline mr-1" />
                         PNG
                     </button>

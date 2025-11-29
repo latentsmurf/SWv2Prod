@@ -194,7 +194,7 @@ export default function StoryboardViewer({ projectId, scenes, onExport }: Storyb
                                     onClick={() => setViewMode(mode)}
                                     className={`p-2 rounded-md transition-colors ${viewMode === mode
                                         ? 'bg-yellow-500 text-black'
-                                        : 'text-gray-400 hover:text-white'
+                                        : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                         }`}
                                     title={label}
                                 >
@@ -239,7 +239,7 @@ export default function StoryboardViewer({ projectId, scenes, onExport }: Storyb
                         onClick={() => setSelectedSceneId('all')}
                         className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${selectedSceneId === 'all'
                             ? 'bg-yellow-500 text-black'
-                            : 'bg-white/5 text-gray-400 hover:text-white'
+                            : 'bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                             }`}
                     >
                         All Scenes
@@ -250,7 +250,7 @@ export default function StoryboardViewer({ projectId, scenes, onExport }: Storyb
                             onClick={() => setSelectedSceneId(scene.id)}
                             className={`flex-shrink-0 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${selectedSceneId === scene.id
                                 ? 'bg-yellow-500 text-black'
-                                : 'bg-white/5 text-gray-400 hover:text-white'
+                                : 'bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                 }`}
                         >
                             Scene {index + 1}
@@ -663,10 +663,10 @@ function ShotDetailModal({
                     {/* Details */}
                     <div className="w-80 p-6 border-l border-white/5">
                         <div className="flex items-center justify-between mb-6">
-                            <h3 className="text-lg font-bold text-white">Shot Details</h3>
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Shot Details</h3>
                             <button
                                 onClick={onClose}
-                                className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg transition-colors"
                             >
                                 <X size={18} />
                             </button>

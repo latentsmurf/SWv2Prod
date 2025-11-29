@@ -232,14 +232,14 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
             <div className="flex items-center justify-between bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                 <button
                     onClick={goToPrevMonth}
-                    className="p-2 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white"
+                    className="p-2 hover:bg-white/5 rounded-lg text-gray-500 hover:text-gray-900 dark:hover:text-white"
                 >
                     <ChevronLeft size={20} />
                 </button>
                 <h3 className="text-xl font-bold text-white">{monthName}</h3>
                 <button
                     onClick={goToNextMonth}
-                    className="p-2 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white"
+                    className="p-2 hover:bg-white/5 rounded-lg text-gray-500 hover:text-gray-900 dark:hover:text-white"
                 >
                     <ChevronRight size={20} />
                 </button>
@@ -328,12 +328,12 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl w-full max-w-lg overflow-hidden">
                         <div className="flex items-center justify-between p-6 border-b border-white/5">
-                            <h3 className="text-lg font-bold text-white">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
                                 {selectedEvent ? 'Edit Event' : 'New Event'}
                             </h3>
                             <button
                                 onClick={() => setShowEventModal(false)}
-                                className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg"
+                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                             >
                                 <X size={20} />
                             </button>
@@ -341,18 +341,18 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
 
                         <div className="p-6 space-y-4 max-h-[60vh] overflow-y-auto">
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Title</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Title</label>
                                 <input
                                     type="text"
                                     value={eventForm.title}
                                     onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })}
                                     placeholder="Event title"
-                                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Type</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Type</label>
                                 <div className="grid grid-cols-5 gap-2">
                                     {Object.entries(EVENT_TYPES).map(([type, config]) => {
                                         const Icon = config.icon;
@@ -376,59 +376,59 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Start Date</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Start Date</label>
                                     <input
                                         type="date"
                                         value={eventForm.start_date}
                                         onChange={(e) => setEventForm({ ...eventForm, start_date: e.target.value })}
-                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">End Date</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">End Date</label>
                                     <input
                                         type="date"
                                         value={eventForm.end_date}
                                         onChange={(e) => setEventForm({ ...eventForm, end_date: e.target.value })}
-                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Start Time</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Start Time</label>
                                     <input
                                         type="time"
                                         value={eventForm.start_time}
                                         onChange={(e) => setEventForm({ ...eventForm, start_time: e.target.value })}
-                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">End Time</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">End Time</label>
                                     <input
                                         type="time"
                                         value={eventForm.end_time}
                                         onChange={(e) => setEventForm({ ...eventForm, end_time: e.target.value })}
-                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Location</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Location</label>
                                 <input
                                     type="text"
                                     value={eventForm.location}
                                     onChange={(e) => setEventForm({ ...eventForm, location: e.target.value })}
                                     placeholder="Event location"
-                                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Description</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Description</label>
                                 <textarea
                                     value={eventForm.description}
                                     onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })}
@@ -454,7 +454,7 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
                             <div className="flex items-center gap-3">
                                 <button
                                     onClick={() => setShowEventModal(false)}
-                                    className="px-4 py-2 text-gray-400 hover:text-white"
+                                    className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                 >
                                     Cancel
                                 </button>

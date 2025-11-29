@@ -224,7 +224,7 @@ export default function GlobalAssetLibrary({
                             className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
                                 selectedCategory === 'all'
                                     ? 'bg-yellow-500 text-black font-medium'
-                                    : 'text-gray-400 hover:text-white'
+                                    : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                             }`}
                         >
                             All
@@ -238,7 +238,7 @@ export default function GlobalAssetLibrary({
                                     className={`px-3 py-1.5 rounded-md text-sm flex items-center gap-1.5 transition-colors ${
                                         selectedCategory === key
                                             ? 'bg-yellow-500 text-black font-medium'
-                                            : 'text-gray-400 hover:text-white'
+                                            : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                     }`}
                                 >
                                     <Icon size={14} />
@@ -253,7 +253,7 @@ export default function GlobalAssetLibrary({
                         <button
                             onClick={() => setViewMode('grid')}
                             className={`p-2 rounded-md transition-colors ${
-                                viewMode === 'grid' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white'
+                                viewMode === 'grid' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                             }`}
                         >
                             <Grid size={16} />
@@ -261,7 +261,7 @@ export default function GlobalAssetLibrary({
                         <button
                             onClick={() => setViewMode('list')}
                             className={`p-2 rounded-md transition-colors ${
-                                viewMode === 'list' ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white'
+                                viewMode === 'list' ? 'bg-white/10 text-white' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                             }`}
                         >
                             <List size={16} />
@@ -485,7 +485,7 @@ function AssetListItem({
                     onToggleFavorite();
                 }}
                 className={`p-2 rounded-lg transition-colors ${
-                    isFavorite ? 'text-red-400' : 'text-gray-500 hover:text-white'
+                    isFavorite ? 'text-red-400' : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                 }`}
             >
                 <Heart size={16} fill={isFavorite ? 'currentColor' : 'none'} />
@@ -540,8 +540,8 @@ function CreateAssetModal({
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
             <div className="w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden">
                 <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                    <h3 className="text-lg font-bold text-white">Create New Asset</h3>
-                    <button onClick={onClose} className="text-gray-500 hover:text-white">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">Create New Asset</h3>
+                    <button onClick={onClose} className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                         <X size={20} />
                     </button>
                 </div>
@@ -597,7 +597,7 @@ function CreateAssetModal({
                 </div>
 
                 <div className="p-6 bg-white/5 flex justify-end gap-3">
-                    <button onClick={onClose} className="px-4 py-2 text-gray-400 hover:text-white">
+                    <button onClick={onClose} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                         Cancel
                     </button>
                     <button

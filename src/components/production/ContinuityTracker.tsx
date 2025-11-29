@@ -142,7 +142,7 @@ export default function ContinuityTracker({ projectId }: ContinuityTrackerProps)
             <div className="w-80 border-r border-white/5 flex flex-col">
                 {/* Header */}
                 <div className="p-4 border-b border-white/5">
-                    <h2 className="text-lg font-bold text-white flex items-center gap-2 mb-4">
+                    <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2 mb-4">
                         <Link className="text-yellow-500" />
                         Continuity Tracker
                     </h2>

@@ -410,7 +410,7 @@ export default function BudgetTracker({ projectId }: BudgetTrackerProps) {
                                                     <div className="flex items-center gap-2">
                                                         <button
                                                             onClick={() => setShowAddItem(null)}
-                                                            className="px-3 py-1 text-gray-400 hover:text-white"
+                                                            className="px-3 py-1 text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                                         >
                                                             Cancel
                                                         </button>

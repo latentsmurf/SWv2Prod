@@ -275,7 +275,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                     />
                     <button
                         onClick={() => setShowBulkModal(true)}
-                        className="flex items-center gap-2 px-3 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-xl"
+                        className="flex items-center gap-2 px-3 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-xl"
                     >
                         <Plus size={18} />
                         Bulk Add
@@ -318,7 +318,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search by name or voucher..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                 />
             </div>
 
@@ -363,7 +363,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                                                         className={`w-8 h-8 rounded-lg flex items-center justify-center ${
                                                             extra.checked_in
                                                                 ? 'bg-green-500 text-white'
-                                                                : 'bg-white/5 text-gray-500 hover:text-white'
+                                                                : 'bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white'
                                                         }`}
                                                         title="Check In"
                                                     >
@@ -375,7 +375,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                                                         className={`w-8 h-8 rounded-lg flex items-center justify-center ${
                                                             extra.checked_out
                                                                 ? 'bg-purple-500 text-white'
-                                                                : 'bg-white/5 text-gray-500 hover:text-white disabled:opacity-30'
+                                                                : 'bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white disabled:opacity-30'
                                                         }`}
                                                         title="Check Out"
                                                     >
@@ -431,8 +431,8 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">Add Extra</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Extra</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -440,32 +440,32 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Name</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Name</label>
                                     <input
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Voucher #</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Voucher #</label>
                                     <input
                                         type="text"
                                         value={form.voucher_number}
                                         onChange={(e) => setForm({ ...form, voucher_number: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Type</label>
                                     <select
                                         value={form.type}
                                         onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(EXTRA_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -473,40 +473,40 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Call Time</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Call Time</label>
                                     <input
                                         type="time"
                                         value={form.call_time}
                                         onChange={(e) => setForm({ ...form, call_time: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Rate ($)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Rate ($)</label>
                                     <input
                                         type="number"
                                         value={form.rate}
                                         onChange={(e) => setForm({ ...form, rate: parseInt(e.target.value) })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Bump ($)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Bump ($)</label>
                                     <input
                                         type="number"
                                         value={form.bump}
                                         onChange={(e) => setForm({ ...form, bump: parseInt(e.target.value) })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
                         </div>
 
                         <div className="p-6 border-t border-white/5 flex justify-end gap-3">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button
@@ -525,8 +525,8 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                            <h3 className="text-lg font-bold text-white">Bulk Add Extras</h3>
-                            <button onClick={() => setShowBulkModal(false)} className="p-2 text-gray-500 hover:text-white">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Bulk Add Extras</h3>
+                            <button onClick={() => setShowBulkModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -534,22 +534,22 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Number of Extras</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Number of Extras</label>
                                     <input
                                         type="number"
                                         value={bulkForm.count}
                                         onChange={(e) => setBulkForm({ ...bulkForm, count: parseInt(e.target.value) })}
                                         min="1"
                                         max="100"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Type</label>
                                     <select
                                         value={bulkForm.type}
                                         onChange={(e) => setBulkForm({ ...bulkForm, type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(EXTRA_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -560,21 +560,21 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Call Time</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Call Time</label>
                                     <input
                                         type="time"
                                         value={bulkForm.call_time}
                                         onChange={(e) => setBulkForm({ ...bulkForm, call_time: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Rate ($)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Rate ($)</label>
                                     <input
                                         type="number"
                                         value={bulkForm.rate}
                                         onChange={(e) => setBulkForm({ ...bulkForm, rate: parseInt(e.target.value) })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
@@ -588,7 +588,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                         </div>
 
                         <div className="p-6 border-t border-white/5 flex justify-end gap-3">
-                            <button onClick={() => setShowBulkModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                            <button onClick={() => setShowBulkModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button

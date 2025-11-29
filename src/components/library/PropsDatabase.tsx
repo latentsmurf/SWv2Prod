@@ -206,13 +206,13 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search props..."
-                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterCategory}
                     onChange={(e) => setFilterCategory(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Categories</option>
                     {Object.entries(CATEGORIES).map(([key, config]) => (
@@ -222,7 +222,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                 <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Status</option>
                     {Object.entries(STATUS_CONFIG).map(([key, config]) => (
@@ -326,7 +326,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                                 <div className="flex items-center gap-1">
                                                     <button
                                                         onClick={(e) => { e.stopPropagation(); setSelectedProp(prop); }}
-                                                        className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded"
+                                                        className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded"
                                                     >
                                                         <Eye size={14} />
                                                     </button>
@@ -370,7 +370,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                     <span className={`px-2 py-1 rounded text-xs ${statusConfig.color}`}>{statusConfig.label}</span>
                                     <span className="text-sm text-gray-400">${prop.purchase_cost || prop.rental_cost || 0}</span>
                                     <div className="flex items-center gap-1">
-                                        <button onClick={() => setSelectedProp(prop)} className="p-1.5 text-gray-500 hover:text-white hover:bg-white/5 rounded">
+                                        <button onClick={() => setSelectedProp(prop)} className="p-1.5 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded">
                                             <Eye size={14} />
                                         </button>
                                         <button onClick={() => deleteProp(prop.id)} className="p-1.5 text-gray-500 hover:text-red-400 hover:bg-red-500/10 rounded">
@@ -388,29 +388,29 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">Add Prop</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Prop</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Prop Name *</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Prop Name *</label>
                                     <input
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Category</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Category</label>
                                     <select
                                         value={form.category}
                                         onChange={(e) => setForm({ ...form, category: e.target.value as Prop['category'] })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(CATEGORIES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.icon} {config.label}</option>
@@ -419,7 +419,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Description</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Description</label>
                                 <textarea
                                     value={form.description}
                                     onChange={(e) => setForm({ ...form, description: e.target.value })}
@@ -429,21 +429,21 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                             </div>
                             <div className="grid grid-cols-4 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Quantity</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Quantity</label>
                                     <input
                                         type="number"
                                         value={form.quantity}
                                         onChange={(e) => setForm({ ...form, quantity: parseInt(e.target.value) || 1 })}
                                         min="1"
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Condition</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Condition</label>
                                     <select
                                         value={form.condition}
                                         onChange={(e) => setForm({ ...form, condition: e.target.value as Prop['condition'] })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         <option value="new">New</option>
                                         <option value="good">Good</option>
@@ -452,11 +452,11 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Source</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Source</label>
                                     <select
                                         value={form.source}
                                         onChange={(e) => setForm({ ...form, source: e.target.value as Prop['source'] })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         <option value="owned">Owned</option>
                                         <option value="rented">Rented</option>
@@ -466,43 +466,43 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Cost ($)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Cost ($)</label>
                                     <input
                                         type="number"
                                         value={form.purchase_cost}
                                         onChange={(e) => setForm({ ...form, purchase_cost: parseInt(e.target.value) || 0 })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Vendor</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Vendor</label>
                                     <input
                                         type="text"
                                         value={form.vendor}
                                         onChange={(e) => setForm({ ...form, vendor: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Storage Location</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Storage Location</label>
                                     <input
                                         type="text"
                                         value={form.storage_location}
                                         onChange={(e) => setForm({ ...form, storage_location: e.target.value })}
-                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Image URL</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Image URL</label>
                                 <input
                                     type="text"
                                     value={form.image_url}
                                     onChange={(e) => setForm({ ...form, image_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
                             <div className="flex items-center gap-6">
@@ -526,8 +526,8 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                 </label>
                             </div>
                         </div>
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button
@@ -562,7 +562,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                         <h3 className="text-xl font-bold text-white">{selectedProp.name}</h3>
                                         <p className="text-sm text-gray-500">{selectedProp.description}</p>
                                     </div>
-                                    <button onClick={() => setSelectedProp(null)} className="text-gray-500 hover:text-white">
+                                    <button onClick={() => setSelectedProp(null)} className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                         <X size={20} />
                                     </button>
                                 </div>

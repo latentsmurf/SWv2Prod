@@ -171,7 +171,7 @@ export default function ShotVariations({ projectId, shot, onSelectVariation, onC
                         
                         <button
                             onClick={onClose}
-                            className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg"
+                            className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                         >
                             <X size={20} />
                         </button>

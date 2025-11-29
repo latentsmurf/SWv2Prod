@@ -261,13 +261,13 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search permits..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Types</option>
                     {Object.entries(PERMIT_TYPES).map(([key, config]) => (
@@ -277,7 +277,7 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
                 <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Status</option>
                     {Object.entries(STATUS_CONFIG).map(([key, config]) => (
@@ -318,7 +318,7 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
                                             </div>
                                             <div>
                                                 <div className="flex items-center gap-3 mb-1">
-                                                    <h3 className="text-lg font-bold text-white">{permit.location}</h3>
+                                                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">{permit.location}</h3>
                                                     <span className={`px-2 py-0.5 rounded text-xs ${typeConfig.color}`}>
                                                         {typeConfig.label}
                                                     </span>
@@ -371,7 +371,7 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
                                             </select>
                                             <button
                                                 onClick={() => setSelectedPermit(permit)}
-                                                className="p-2 text-gray-500 hover:text-white hover:bg-white/5 rounded-lg"
+                                                className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-white/5 rounded-lg"
                                             >
                                                 <Eye size={18} />
                                             </button>
@@ -424,9 +424,9 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
                     <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
-                            <h3 className="text-lg font-bold text-white">Add Permit</h3>
-                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-white dark:bg-[#121212]">
+                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">Add Permit</h3>
+                            <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 <X size={20} />
                             </button>
                         </div>
@@ -434,11 +434,11 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
                         <div className="p-6 space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Permit Type</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Permit Type</label>
                                     <select
                                         value={form.permit_type}
                                         onChange={(e) => setForm({ ...form, permit_type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     >
                                         {Object.entries(PERMIT_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.icon} {config.label}</option>
@@ -446,83 +446,83 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Fee ($)</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Fee ($)</label>
                                     <input
                                         type="number"
                                         value={form.fee}
                                         onChange={(e) => setForm({ ...form, fee: parseInt(e.target.value) })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Location Name</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Location Name</label>
                                 <input
                                     type="text"
                                     value={form.location}
                                     onChange={(e) => setForm({ ...form, location: e.target.value })}
                                     placeholder="e.g., Central Park, Main Street"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Address</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Address</label>
                                 <input
                                     type="text"
                                     value={form.address}
                                     onChange={(e) => setForm({ ...form, address: e.target.value })}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                 />
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Jurisdiction</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Jurisdiction</label>
                                     <input
                                         type="text"
                                         value={form.jurisdiction}
                                         onChange={(e) => setForm({ ...form, jurisdiction: e.target.value })}
                                         placeholder="e.g., NYC, LA County"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Issuing Authority</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Issuing Authority</label>
                                     <input
                                         type="text"
                                         value={form.issuing_authority}
                                         onChange={(e) => setForm({ ...form, issuing_authority: e.target.value })}
                                         placeholder="e.g., Film Office"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">Start Date</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Start Date</label>
                                     <input
                                         type="date"
                                         value={form.start_date}
                                         onChange={(e) => setForm({ ...form, start_date: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm text-gray-400 mb-2">End Date</label>
+                                    <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">End Date</label>
                                     <input
                                         type="date"
                                         value={form.end_date}
                                         onChange={(e) => setForm({ ...form, end_date: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                                     />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm text-gray-400 mb-2">Notes</label>
+                                <label className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Notes</label>
                                 <textarea
                                     value={form.notes}
                                     onChange={(e) => setForm({ ...form, notes: e.target.value })}
@@ -532,8 +532,8 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
                             </div>
                         </div>
 
-                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-[#121212]">
-                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-400 hover:text-white">
+                        <div className="p-6 border-t border-white/5 flex justify-end gap-3 sticky bottom-0 bg-white dark:bg-[#121212]">
+                            <button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-gray-500 hover:text-gray-900 dark:hover:text-white">
                                 Cancel
                             </button>
                             <button
