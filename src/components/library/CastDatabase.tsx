@@ -230,7 +230,7 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Users className="text-yellow-500" />
                         Cast Database
                     </h2>
@@ -250,40 +250,40 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
 
             {/* Stats */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Cast</p>
-                    <p className="text-2xl font-bold text-white">{stats.total}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Lead Roles</p>
-                    <p className="text-2xl font-bold text-yellow-400">{stats.leads}</p>
+                    <p className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">{stats.leads}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Supporting</p>
-                    <p className="text-2xl font-bold text-blue-400">{stats.supporting}</p>
+                    <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.supporting}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Booked</p>
-                    <p className="text-2xl font-bold text-green-400">{stats.booked}</p>
+                    <p className="text-2xl font-bold text-green-600 dark:text-green-400">{stats.booked}</p>
                 </div>
             </div>
 
             {/* Filters */}
             <div className="flex items-center gap-4">
                 <div className="flex-1 relative">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" size={18} />
                     <input
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search cast..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-gray-900 dark:text-white"
                     />
                 </div>
                 <select
                     value={filterRole}
                     onChange={(e) => setFilterRole(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Roles</option>
                     {Object.entries(ROLE_TYPES).map(([key, config]) => (
@@ -293,7 +293,7 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                 <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                    className="bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-gray-900 dark:text-white"
                 >
                     <option value="all">All Status</option>
                     {Object.entries(STATUS_CONFIG).map(([key, config]) => (
@@ -310,7 +310,7 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
             ) : (
                 <div className="grid grid-cols-4 gap-4">
                     {filteredCast.length === 0 ? (
-                        <div className="col-span-4 bg-[#121212] border border-white/5 rounded-xl p-8 text-center text-gray-500">
+                        <div className="col-span-4 bg-gray-100 dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-8 text-center text-gray-500">
                             No cast members found
                         </div>
                     ) : (
@@ -321,7 +321,7 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
                             return (
                                 <div
                                     key={member.id}
-                                    className={`bg-[#121212] border border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors ${
+                                    className={`bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:border-gray-300 dark:hover:border-white/20 transition-colors ${
                                         selectionMode ? 'cursor-pointer' : ''
                                     }`}
                                     onClick={() => selectionMode && onSelect?.(member)}
@@ -353,7 +353,7 @@ export default function CastDatabase({ projectId, onSelect, selectionMode }: Cas
 
                                     {/* Info */}
                                     <div className="p-4">
-                                        <h3 className="text-white font-bold truncate">{member.name}</h3>
+                                        <h3 className="text-gray-900 dark:text-white font-bold truncate">{member.name}</h3>
                                         {member.character_name && (
                                             <p className="text-sm text-yellow-500">as {member.character_name}</p>
                                         )}

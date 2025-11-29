@@ -138,26 +138,26 @@ export default function LooksPanel() {
     });
 
     return (
-        <div className="bg-[#0a0a0a] border-l border-white/5 w-80 h-full flex flex-col">
+        <div className="bg-white dark:bg-[#0a0a0a] border-l border-gray-200 dark:border-white/5 w-80 h-full flex flex-col">
             {/* Header */}
-            <div className="p-4 border-b border-white/5">
-                <h2 className="font-semibold text-white tracking-wide flex items-center gap-2">
+            <div className="p-4 border-b border-gray-200 dark:border-white/5">
+                <h2 className="font-semibold text-gray-900 dark:text-white tracking-wide flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
                     Looks & Styles
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">Select a visual style for your project</p>
+                <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">Select a visual style for your project</p>
             </div>
 
             {/* Search */}
-            <div className="px-4 py-3 border-b border-white/5">
+            <div className="px-4 py-3 border-b border-gray-200 dark:border-white/5">
                 <div className="relative">
-                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+                    <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500" />
                     <input
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search styles..."
-                        className="w-full pl-9 pr-8 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50"
+                        className="w-full pl-9 pr-8 py-2 bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg text-sm text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50"
                     />
                     {searchQuery && (
                         <button
@@ -171,7 +171,7 @@ export default function LooksPanel() {
             </div>
 
             {/* Category Tabs */}
-            <div className="relative border-b border-white/5">
+            <div className="relative border-b border-gray-200 dark:border-white/5">
                 <div className="flex overflow-x-auto px-2 py-2 gap-1 hide-scrollbar">
                     {CATEGORIES.map((cat) => (
                         <button
@@ -179,8 +179,8 @@ export default function LooksPanel() {
                             onClick={() => setActiveCategory(cat.id)}
                             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${
                                 activeCategory === cat.id
-                                    ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
-                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    ? 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20'
+                                    : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
                             }`}
                         >
                             {getCategoryIcon(cat.icon)}

@@ -218,7 +218,7 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
     const selectedItemData = board.items.find(i => i.id === selectedItem);
 
     return (
-        <div className="h-full flex flex-col bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Toolbar */}
             <div className="flex items-center justify-between p-4 border-b border-white/5">
                 <div className="flex items-center gap-4">
@@ -415,7 +415,7 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
 
             {/* Properties Panel */}
             {selectedItemData && (
-                <div className="absolute right-4 top-20 w-64 bg-[#121212] border border-white/10 rounded-xl p-4 shadow-xl">
+                <div className="absolute right-4 top-20 w-64 bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-xl p-4 shadow-xl">
                     <h4 className="text-sm font-medium text-white mb-4">Properties</h4>
                     
                     {selectedItemData.type === 'color' && (

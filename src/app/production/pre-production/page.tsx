@@ -131,7 +131,7 @@ export default function PreProductionPage() {
     return (
         <div className="h-full flex flex-col -m-6">
             {/* Main Section Selector */}
-            <div className="bg-[#0a0a0a] border-b border-white/5 px-6 pt-4">
+            <div className="bg-white dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-white/5 px-6 pt-4">
                 {/* Section Tabs */}
                 <div className="flex items-center gap-2 mb-4">
                     {SECTIONS.map((section) => {
@@ -143,7 +143,7 @@ export default function PreProductionPage() {
                                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                                     isActive
                                         ? 'bg-yellow-500 text-black'
-                                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                        : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
                                 }`}
                             >
                                 {section.icon}
@@ -164,8 +164,8 @@ export default function PreProductionPage() {
                                     onClick={() => setActiveSubTab(tab.key)}
                                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                                         isActive
-                                            ? 'bg-white/10 text-white'
-                                            : 'text-gray-500 hover:text-white hover:bg-white/5'
+                                            ? 'bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white'
+                                            : 'text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
                                     }`}
                                 >
                                     {tab.icon}
@@ -178,7 +178,7 @@ export default function PreProductionPage() {
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-hidden">
+            <div className="flex-1 overflow-hidden bg-gray-50 dark:bg-transparent">
                 {isFullHeight ? (
                     renderContent()
                 ) : (
