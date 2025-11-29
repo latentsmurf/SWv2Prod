@@ -36,6 +36,7 @@ const navSections = [
             { icon: Library, label: "Asset Libraries", href: "/admin/libraries" },
             { icon: Palette, label: "Style Presets", href: "/admin/presets" },
             { icon: FileText, label: "Templates", href: "/admin/templates" },
+            { icon: Globe, label: "Marketing Pages", href: "/admin/marketing" },
         ]
     },
     {
