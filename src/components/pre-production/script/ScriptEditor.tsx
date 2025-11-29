@@ -285,9 +285,9 @@ export default function ScriptEditor({ projectId }: ScriptEditorProps) {
     };
 
     return (
-        <div className="flex h-full bg-[#1a1a1a]">
+        <div className="flex h-full bg-gray-100 dark:bg-[#1a1a1a]">
             {/* Editor Area */}
-            <div className={`flex-1 overflow-y-auto p-8 flex justify-center bg-[#111] relative transition-all duration-300 ${focusMode ? 'z-50 fixed inset-0' : ''}`}>
+            <div className={`flex-1 overflow-y-auto p-8 flex justify-center bg-gray-200 dark:bg-[#111] relative transition-all duration-300 ${focusMode ? 'z-50 fixed inset-0' : ''}`}>
                 <div className={`w-full max-w-[850px] bg-white text-black min-h-[1100px] shadow-2xl p-16 my-8 relative transition-all duration-300 ${focusMode ? 'scale-110 mt-20' : ''}`}>
                     {/* Toolbar */}
                     <div className={`absolute top-4 right-4 flex gap-2 transition-opacity duration-300 ${focusMode ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}>

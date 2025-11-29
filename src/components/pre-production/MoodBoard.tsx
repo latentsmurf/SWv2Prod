@@ -42,12 +42,14 @@ interface MoodBoardBuilderProps {
 
 export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoardBuilderProps) {
     const canvasRef = useRef<HTMLDivElement>(null);
+    // Detect if in dark mode for default background
+    const isDarkMode = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches;
     const [board, setBoard] = useState<MoodBoard>({
         id: boardId || '',
         name: 'Untitled Mood Board',
         project_id: projectId,
         items: [],
-        background_color: '#0a0a0a',
+        background_color: '#e5e7eb', // gray-200 for light mode default
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
     });
