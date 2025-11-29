@@ -5,6 +5,8 @@ import { NotificationProvider } from "@/contexts/NotificationContext";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeCustomizationProvider } from "@/contexts/ThemeCustomizationContext";
 import { SubscriptionProvider } from "@/contexts/SubscriptionContext";
+import SessionProvider from "@/components/providers/SessionProvider";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,20 +40,24 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ThemeCustomizationProvider>
-            <SubscriptionProvider>
-              <NotificationProvider>
-                {children}
-              </NotificationProvider>
-            </SubscriptionProvider>
-          </ThemeCustomizationProvider>
-        </ThemeProvider>
+        <SessionProvider>
+          <AuthProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <ThemeCustomizationProvider>
+                <SubscriptionProvider>
+                  <NotificationProvider>
+                    {children}
+                  </NotificationProvider>
+                </SubscriptionProvider>
+              </ThemeCustomizationProvider>
+            </ThemeProvider>
+          </AuthProvider>
+        </SessionProvider>
       </body>
     </html>
   );

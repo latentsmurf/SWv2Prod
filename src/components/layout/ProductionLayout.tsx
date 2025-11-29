@@ -19,6 +19,7 @@ import { useSubscription } from '@/contexts/SubscriptionContext';
 import { getPlanInfo } from '@/config/featurePermissions';
 import UpgradeModal from '@/components/subscription/UpgradeModal';
 import PlanSelector from '@/components/subscription/PlanSelector';
+import UserMenu from '@/components/auth/UserMenu';
 
 // Context for editor panel selection
 type EditorPanelType = 'video' | 'text' | 'audio' | 'caption' | 'image' | 'sticker' | 'uploads' | 'templates' | 'settings' | null;
@@ -445,6 +446,11 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                             <button className="px-4 py-1.5 rounded-lg bg-yellow-500 hover:bg-yellow-400 text-black font-semibold text-xs transition-all">
                                 Share
                             </button>
+                            
+                            <div className="w-px h-6 bg-white/10 mx-1" />
+                            
+                            {/* User Menu */}
+                            <UserMenu variant="compact" showCredits={true} />
                         </div>
                     </header>
 
