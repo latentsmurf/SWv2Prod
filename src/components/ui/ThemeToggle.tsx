@@ -27,7 +27,7 @@ export default function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
     // Prevent hydration mismatch
     if (!mounted) {
         return (
-            <div className="p-2 w-[34px] h-[34px] rounded-lg bg-white/5" />
+            <div className="p-2 w-[34px] h-[34px] rounded-lg bg-gray-100 dark:bg-white/5" />
         );
     }
 
@@ -36,7 +36,7 @@ export default function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
         return (
             <button
                 onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                className="p-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
                 title={`Switch to ${resolvedTheme === 'dark' ? 'light' : 'dark'} mode`}
             >
                 {resolvedTheme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -49,7 +49,7 @@ export default function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
         <div className="relative">
             <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
             >
                 {resolvedTheme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}
                 <span className="text-sm">Theme</span>
@@ -61,7 +61,7 @@ export default function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
                         className="fixed inset-0 z-40"
                         onClick={() => setShowDropdown(false)} 
                     />
-                    <div className="absolute right-0 top-full mt-2 w-40 bg-[#0a0a0a] border border-white/10 rounded-lg shadow-xl z-50 overflow-hidden">
+                    <div className="absolute right-0 top-full mt-2 w-40 bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 rounded-lg shadow-xl z-50 overflow-hidden">
                         {themes.map(({ key, label, icon: Icon }) => (
                             <button
                                 key={key}
@@ -71,8 +71,8 @@ export default function ThemeToggle({ variant = 'button' }: ThemeToggleProps) {
                                 }}
                                 className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
                                     theme === key 
-                                        ? 'bg-yellow-500/10 text-yellow-400' 
-                                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                        ? 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400' 
+                                        : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
                                 }`}
                             >
                                 <Icon size={16} />

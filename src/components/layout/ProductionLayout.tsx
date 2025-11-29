@@ -77,9 +77,9 @@ const SidebarItem = ({
         return (
             <button
                 onClick={onLockedClick}
-                className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group relative w-full text-left text-gray-500 hover:bg-white/5 border-l-2 border-transparent opacity-60"
+                className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group relative w-full text-left text-gray-500 dark:text-gray-500 hover:bg-black/5 dark:hover:bg-white/5 border-l-2 border-transparent opacity-60"
             >
-                <Icon size={18} className="text-gray-600" />
+                <Icon size={18} className="text-gray-400 dark:text-gray-600" />
                 {!collapsed && (
                     <>
                         <span className="text-sm font-medium flex-1">{label}</span>
@@ -92,7 +92,7 @@ const SidebarItem = ({
                 
                 {/* Tooltip for collapsed mode */}
                 {collapsed && (
-                    <div className="absolute left-full ml-2 px-2 py-1 bg-[#1a1a1a] text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-white/10">
+                    <div className="absolute left-full ml-2 px-2 py-1 bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-gray-200 dark:border-white/10 shadow-lg">
                         {label} <span className="text-purple-400">({requiredPlan})</span>
                     </div>
                 )}
@@ -105,17 +105,17 @@ const SidebarItem = ({
             href={href}
             className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group relative
                 ${isActive
-                    ? 'bg-yellow-500/10 text-yellow-400 border-l-2 border-yellow-500'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
+                    ? 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-l-2 border-yellow-500'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 border-l-2 border-transparent'
                 }`}
         >
-            <Icon size={18} className={isActive ? 'text-yellow-400' : 'text-gray-500 group-hover:text-gray-300'} />
+            <Icon size={18} className={isActive ? 'text-yellow-600 dark:text-yellow-400' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300'} />
             {!collapsed && (
                 <>
                     <span className="text-sm font-medium flex-1">{label}</span>
                     {badge !== undefined && (
                         <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
-                            isActive ? 'bg-yellow-500/20 text-yellow-400' : 'bg-white/10 text-gray-500'
+                            isActive ? 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-400' : 'bg-black/10 dark:bg-white/10 text-gray-500'
                         }`}>
                             {badge}
                         </span>
@@ -125,7 +125,7 @@ const SidebarItem = ({
             
             {/* Tooltip for collapsed mode */}
             {collapsed && (
-                <div className="absolute left-full ml-2 px-2 py-1 bg-[#1a1a1a] text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-white/10">
+                <div className="absolute left-full ml-2 px-2 py-1 bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-gray-200 dark:border-white/10 shadow-lg">
                     {label}
                 </div>
             )}
@@ -144,16 +144,16 @@ const EditorToolButton = ({ icon: Icon, label, isActive, collapsed, onClick }: {
         onClick={onClick}
         className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 w-full text-left group relative
             ${isActive
-                ? 'bg-yellow-500/10 text-yellow-400'
-                : 'text-gray-400 hover:text-white hover:bg-white/5'
+                ? 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
             }`}
     >
-        <Icon size={18} className={isActive ? 'text-yellow-400' : 'text-gray-500 group-hover:text-gray-300'} />
+        <Icon size={18} className={isActive ? 'text-yellow-600 dark:text-yellow-400' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300'} />
         {!collapsed && <span className="text-sm font-medium">{label}</span>}
         
         {/* Tooltip for collapsed mode */}
         {collapsed && (
-            <div className="absolute left-full ml-2 px-2 py-1 bg-[#1a1a1a] text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-white/10">
+            <div className="absolute left-full ml-2 px-2 py-1 bg-white dark:bg-[#1a1a1a] text-gray-900 dark:text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-gray-200 dark:border-white/10 shadow-lg">
                 {label}
             </div>
         )}
@@ -260,28 +260,28 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
 
     return (
         <EditorPanelContext.Provider value={{ activePanel: activeEditorPanel, setActivePanel: setActiveEditorPanel }}>
-            <div className="flex h-screen bg-[#050505] text-white font-sans overflow-hidden selection:bg-yellow-500/30">
+            <div className="flex h-screen bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white font-sans overflow-hidden selection:bg-yellow-500/30">
                 {/* Sidebar */}
                 <aside
-                    className={`relative flex flex-col border-r border-white/5 bg-[#0a0a0a] transition-all duration-300 ease-in-out
+                    className={`relative flex flex-col border-r border-gray-200 dark:border-white/5 bg-white dark:bg-[#0a0a0a] transition-all duration-300 ease-in-out
                         ${collapsed ? 'w-16' : 'w-56'}
                     `}
                 >
                     {/* Logo */}
-                    <div className="flex items-center justify-between px-3 h-14 border-b border-white/5">
+                    <div className="flex items-center justify-between px-3 h-14 border-b border-gray-200 dark:border-white/5">
                         {!collapsed && (
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/20">
                                     <span className="font-bold text-black text-sm">S</span>
                                 </div>
-                                <span className="font-bold text-sm tracking-tight text-white">
+                                <span className="font-bold text-sm tracking-tight text-gray-900 dark:text-white">
                                     SceneWeaver
                                 </span>
                             </div>
                         )}
                         <button
                             onClick={() => setCollapsed(!collapsed)}
-                            className="p-1.5 rounded-lg hover:bg-white/5 text-gray-500 hover:text-white transition-colors"
+                            className="p-1.5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
                         >
                             {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
                         </button>
@@ -367,22 +367,22 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                     </nav>
 
                     {/* Bottom Actions */}
-                    <div className="p-2 border-t border-white/5">
+                    <div className="p-2 border-t border-gray-200 dark:border-white/5">
                         {/* Keyboard Shortcuts Hint */}
                         {!collapsed && (
                             <button
                                 onClick={() => setShowKeyboardShortcuts(true)}
-                                className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-gray-500 hover:text-white hover:bg-white/5 transition-colors text-xs"
+                                className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-xs"
                             >
                                 <Keyboard size={14} />
                                 <span>Shortcuts</span>
-                                <kbd className="ml-auto px-1.5 py-0.5 bg-white/10 rounded text-[10px] font-mono">⌘/</kbd>
+                                <kbd className="ml-auto px-1.5 py-0.5 bg-gray-100 dark:bg-white/10 rounded text-[10px] font-mono">⌘/</kbd>
                             </button>
                         )}
                         
                         {/* Plan Selector / User Info */}
                         {collapsed ? (
-                            <div className="flex items-center justify-center p-2 mt-1 rounded-lg bg-white/5">
+                            <div className="flex items-center justify-center p-2 mt-1 rounded-lg bg-gray-100 dark:bg-white/5">
                                 <div 
                                     className="w-7 h-7 rounded-full flex items-center justify-center text-sm cursor-pointer"
                                     style={{ backgroundColor: `${currentPlan.color}30` }}
@@ -401,11 +401,11 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                 </aside>
 
                 {/* Main Content */}
-                <div className="flex-1 flex flex-col min-w-0 bg-[#050505]">
+                <div className="flex-1 flex flex-col min-w-0 bg-gray-100 dark:bg-[#050505]">
                     {/* Header */}
-                    <header className="h-12 border-b border-white/5 bg-[#0a0a0a] flex items-center justify-between px-4 sticky top-0 z-10">
+                    <header className="h-12 border-b border-gray-200 dark:border-white/5 bg-white dark:bg-[#0a0a0a] flex items-center justify-between px-4 sticky top-0 z-10">
                         <div className="flex items-center gap-4">
-                            <h1 className="text-sm font-medium tracking-tight text-white/90">{projectName}</h1>
+                            <h1 className="text-sm font-medium tracking-tight text-gray-900 dark:text-white/90">{projectName}</h1>
                             <span className="flex items-center gap-1.5 text-[10px] text-gray-500">
                                 <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
                                 Saved
@@ -416,30 +416,30 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                             {/* Search */}
                             <button 
                                 onClick={() => setShowSearch(true)}
-                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white text-xs transition-colors"
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white text-xs transition-colors"
                             >
                                 <Search size={14} />
                                 <span className="hidden sm:inline">Search</span>
-                                <kbd className="hidden sm:inline px-1.5 py-0.5 bg-white/10 rounded text-[10px] font-mono">⌘K</kbd>
+                                <kbd className="hidden sm:inline px-1.5 py-0.5 bg-gray-200 dark:bg-white/10 rounded text-[10px] font-mono">⌘K</kbd>
                             </button>
                             
                             {/* Notifications */}
-                            <button className="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-colors relative">
+                            <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors relative">
                                 <Bell size={16} />
                                 <span className="absolute top-1 right-1 w-2 h-2 bg-yellow-500 rounded-full"></span>
                             </button>
                             
                             {/* Help */}
-                            <button className="p-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-colors">
+                            <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
                                 <HelpCircle size={16} />
                             </button>
 
                             {/* Theme Toggle */}
                             <ThemeToggle />
 
-                            <div className="w-px h-6 bg-white/10 mx-1" />
+                            <div className="w-px h-6 bg-gray-200 dark:bg-white/10 mx-1" />
 
-                            <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/5 text-xs font-medium transition-all text-white">
+                            <button className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 border border-gray-200 dark:border-white/5 text-xs font-medium transition-all text-gray-900 dark:text-white">
                                 <Download size={14} />
                                 Export
                             </button>
@@ -447,7 +447,7 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                                 Share
                             </button>
                             
-                            <div className="w-px h-6 bg-white/10 mx-1" />
+                            <div className="w-px h-6 bg-gray-200 dark:bg-white/10 mx-1" />
                             
                             {/* User Menu */}
                             <UserMenu variant="compact" showCredits={true} />
@@ -474,19 +474,19 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
 
                 {/* Keyboard Shortcuts Modal */}
                 {showKeyboardShortcuts && (
-                    <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center" onClick={() => setShowKeyboardShortcuts(false)}>
+                    <div className="fixed inset-0 z-50 bg-black/50 dark:bg-black/80 flex items-center justify-center" onClick={() => setShowKeyboardShortcuts(false)}>
                         <div 
-                            className="w-full max-w-2xl bg-[#121212] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+                            className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden"
                             onClick={e => e.stopPropagation()}
                         >
-                            <div className="flex items-center justify-between px-6 py-4 border-b border-white/5">
-                                <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                                    <Keyboard size={20} className="text-yellow-400" />
+                            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-white/5">
+                                <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                                    <Keyboard size={20} className="text-yellow-500 dark:text-yellow-400" />
                                     Keyboard Shortcuts
                                 </h2>
                                 <button 
                                     onClick={() => setShowKeyboardShortcuts(false)}
-                                    className="text-gray-500 hover:text-white"
+                                    className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
                                 >
                                     <span className="text-xs">ESC</span>
                                 </button>
@@ -536,8 +536,8 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                                         <div className="space-y-2">
                                             {section.shortcuts.map((shortcut, i) => (
                                                 <div key={i} className="flex items-center justify-between">
-                                                    <span className="text-sm text-gray-300">{shortcut.label}</span>
-                                                    <kbd className="px-2 py-1 bg-white/10 rounded text-xs font-mono text-gray-400">{shortcut.keys}</kbd>
+                                                    <span className="text-sm text-gray-700 dark:text-gray-300">{shortcut.label}</span>
+                                                    <kbd className="px-2 py-1 bg-gray-100 dark:bg-white/10 rounded text-xs font-mono text-gray-500 dark:text-gray-400">{shortcut.keys}</kbd>
                                                 </div>
                                             ))}
                                         </div>
