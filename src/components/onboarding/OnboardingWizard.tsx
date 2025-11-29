@@ -57,12 +57,15 @@ export default function OnboardingWizard({ onComplete, onSkip }: OnboardingWizar
 
     const handleComplete = () => {
         localStorage.setItem('onboarding_completed', 'true');
+        localStorage.setItem('sw_onboarding_completed', 'true'); // Also set the key ProductionLayout checks
         onComplete?.();
     };
 
     const handleSkip = () => {
         localStorage.setItem('onboarding_completed', 'true');
+        localStorage.setItem('sw_onboarding_completed', 'true'); // Also set the key ProductionLayout checks
         onSkip?.();
+        onComplete?.(); // Also call onComplete as fallback to close the wizard
     };
 
     // ========================================================================
