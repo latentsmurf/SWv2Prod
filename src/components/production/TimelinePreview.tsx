@@ -13,11 +13,16 @@ import {
 
 interface Shot {
     id: string;
-    scene_id: string;
+    scene_id?: string;
     thumbnail_url?: string;
     video_url?: string;
-    duration: number;
-    order: number;
+    urls?: {
+        high_res?: string;
+        proxy?: string;
+    };
+    duration?: number;
+    order?: number;
+    shot_number?: number;
     description?: string;
 }
 

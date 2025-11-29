@@ -13,9 +13,10 @@ import {
 
 interface Scene {
     id: string;
-    scene_number: number;
-    slug_line: string;
-    script_text: string;
+    scene_number?: number;
+    order_index?: number;
+    slug_line?: string;
+    script_text?: string;
     synopsis?: string;
 }
 
@@ -144,7 +145,7 @@ export default function ScriptToShotPipeline({
 
     const generatePrompt = (scene: Scene, shotType: string, description: string): string => {
         const style = 'cinematic, professional lighting, high quality';
-        const location = scene.slug_line.replace(/INT\.|EXT\.|-|DAY|NIGHT/gi, '').trim();
+        const location = (scene.slug_line || 'scene').replace(/INT\.|EXT\.|-|DAY|NIGHT/gi, '').trim();
         
         return `${description}, ${location}, ${style}`;
     };

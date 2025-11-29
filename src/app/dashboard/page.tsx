@@ -2,14 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
     Plus, Film, Users, MapPin, Shirt, Package, ArrowRight,
     Clock, Loader2, Play, Edit2, Trash2, MoreHorizontal,
     Sparkles, FolderOpen, Layers, Camera, Check, Zap,
-    FileText, Calendar, TrendingUp, Star, ChevronRight
+    FileText, Calendar, TrendingUp, Star, ChevronRight, X
 } from 'lucide-react';
 import { Project, Asset } from '@/types';
+import ProjectTemplates from '@/components/wizard/ProjectTemplates';
+import RecentProjects from '@/components/ui/RecentProjects';
 
 interface DashboardProject {
     id: string;
@@ -23,9 +25,11 @@ interface DashboardProject {
 
 export default function DashboardPage() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const [projects, setProjects] = useState<DashboardProject[]>([]);
     const [recentAssets, setRecentAssets] = useState<Asset[]>([]);
     const [loading, setLoading] = useState(true);
+    const [showTemplates, setShowTemplates] = useState(searchParams.get('showTemplates') === 'true');
     const [stats, setStats] = useState({
         totalProjects: 0,
         totalAssets: 0,
@@ -365,9 +369,49 @@ export default function DashboardPage() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* Browse Templates Button */}
+                        <button
+                            onClick={() => setShowTemplates(true)}
+                            className="w-full p-4 bg-gradient-to-br from-pink-500/10 to-purple-500/10 border border-pink-500/20 rounded-2xl text-left hover:border-pink-500/40 transition-colors group"
+                        >
+                            <div className="flex items-center gap-3">
+                                <div className="p-2 bg-pink-500/20 rounded-lg">
+                                    <Sparkles size={16} className="text-pink-400" />
+                                </div>
+                                <div className="flex-1">
+                                    <h4 className="text-sm font-semibold text-white mb-0.5">Project Templates</h4>
+                                    <p className="text-xs text-gray-500">Start with a pre-built template</p>
+                                </div>
+                                <ChevronRight size={16} className="text-gray-600 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {/* Templates Modal */}
+            {showTemplates && (
+                <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-8 overflow-y-auto">
+                    <div className="w-full max-w-5xl bg-[#0a0a0a] border border-white/10 rounded-3xl overflow-hidden">
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between">
+                            <div>
+                                <h2 className="text-xl font-bold text-white">Project Templates</h2>
+                                <p className="text-sm text-gray-500">Choose a template to jumpstart your project</p>
+                            </div>
+                            <button
+                                onClick={() => setShowTemplates(false)}
+                                className="p-2 text-gray-500 hover:text-white hover:bg-white/10 rounded-lg"
+                            >
+                                <X size={20} />
+                            </button>
+                        </div>
+                        <div className="p-6 max-h-[70vh] overflow-y-auto">
+                            <ProjectTemplates showCreateButton={true} />
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

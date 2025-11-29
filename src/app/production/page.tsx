@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { 
     Film, Layers, Camera, List, Users, Layout, Zap, Grid, Video,
-    Calendar, FileText, Eye, Images, Smartphone
+    Calendar, FileText, Eye, Images, Smartphone, Wand2, Mic, Music,
+    Download, Subtitles, UserCheck, History, Play, Sparkles
 } from 'lucide-react';
 import PageHeader from '@/components/ui/PageHeader';
 import LooksPanel from '@/components/production/LooksPanel';
@@ -19,9 +20,19 @@ import StuntCoordination from '@/components/production/StuntCoordination';
 import MultiCamSetup from '@/components/production/MultiCamSetup';
 import GeneratedMediaLibrary from '@/components/production/GeneratedMediaLibrary';
 import EpisodeManager from '@/components/production/EpisodeManager';
+import ScriptToShotPipeline from '@/components/production/ScriptToShotPipeline';
+import CharacterConsistencyPanel from '@/components/production/CharacterConsistencyPanel';
+import TimelinePreview from '@/components/production/TimelinePreview';
+import GenerationProgress from '@/components/production/GenerationProgress';
+import VoiceCloning from '@/components/ai/VoiceCloning';
+import MusicGenerator from '@/components/ai/MusicGenerator';
+import PlatformExporter from '@/components/export/PlatformExporter';
+import SubtitleExporter from '@/components/export/SubtitleExporter';
+import ApprovalWorkflow from '@/components/collaboration/ApprovalWorkflow';
+import ProjectVersioning from '@/components/project/ProjectVersioning';
 import { Scene, Shot, Project } from '@/types';
 
-type MainSection = 'creative' | 'planning' | 'coordination' | 'media';
+type MainSection = 'creative' | 'planning' | 'coordination' | 'media' | 'ai-tools' | 'export' | 'collaboration';
 
 interface SubTab {
     key: string;
@@ -33,7 +44,10 @@ const SECTIONS: { key: MainSection; label: string; icon: React.ReactNode; descri
     { key: 'creative', label: 'Creative', icon: <Film size={16} />, description: 'Scenes, storyboards, and shot generation' },
     { key: 'planning', label: 'Planning', icon: <List size={16} />, description: 'Shot lists, blocking, and setups' },
     { key: 'coordination', label: 'Coordination', icon: <Users size={16} />, description: 'Extras, stunts, and multi-cam' },
+    { key: 'ai-tools', label: 'AI Tools', icon: <Wand2 size={16} />, description: 'Voice, music, and smart prompts' },
     { key: 'media', label: 'Media Library', icon: <Images size={16} />, description: 'Browse and manage generated media' },
+    { key: 'export', label: 'Export', icon: <Download size={16} />, description: 'Platform export and subtitles' },
+    { key: 'collaboration', label: 'Collaborate', icon: <UserCheck size={16} />, description: 'Approvals and versioning' },
 ];
 
 // Standard sub-tabs (non-micro-drama)
@@ -41,19 +55,34 @@ const STANDARD_SUB_TABS: Record<MainSection, SubTab[]> = {
     creative: [
         { key: 'scenes', label: 'Scenes', icon: <Film size={14} /> },
         { key: 'storyboard', label: 'Storyboard', icon: <Layers size={14} /> },
+        { key: 'pipeline', label: 'Script to Shot', icon: <Sparkles size={14} /> },
         { key: 'generate', label: 'Generate Shots', icon: <Camera size={14} /> },
+        { key: 'characters', label: 'Characters', icon: <Users size={14} /> },
     ],
     planning: [
         { key: 'shot-list', label: 'Shot List', icon: <List size={14} /> },
         { key: 'blocking', label: 'Blocking', icon: <Layout size={14} /> },
         { key: 'multicam', label: 'Multi-Cam', icon: <Grid size={14} /> },
+        { key: 'preview', label: 'Timeline Preview', icon: <Play size={14} /> },
     ],
     coordination: [
         { key: 'extras', label: 'Background/Extras', icon: <Users size={14} /> },
         { key: 'stunts', label: 'Stunts', icon: <Zap size={14} /> },
     ],
+    'ai-tools': [
+        { key: 'voice', label: 'Voice Studio', icon: <Mic size={14} /> },
+        { key: 'music', label: 'Music Generator', icon: <Music size={14} /> },
+    ],
     media: [
         { key: 'library', label: 'All Media', icon: <Images size={14} /> },
+    ],
+    export: [
+        { key: 'platforms', label: 'Platform Export', icon: <Download size={14} /> },
+        { key: 'subtitles', label: 'Subtitles', icon: <Subtitles size={14} /> },
+    ],
+    collaboration: [
+        { key: 'approvals', label: 'Approvals', icon: <UserCheck size={14} /> },
+        { key: 'versions', label: 'Version History', icon: <History size={14} /> },
     ],
 };
 
@@ -63,19 +92,34 @@ const MICRO_DRAMA_SUB_TABS: Record<MainSection, SubTab[]> = {
         { key: 'episodes', label: 'Episodes', icon: <Smartphone size={14} /> },
         { key: 'scenes', label: 'Scenes', icon: <Film size={14} /> },
         { key: 'storyboard', label: 'Storyboard', icon: <Layers size={14} /> },
+        { key: 'pipeline', label: 'Script to Shot', icon: <Sparkles size={14} /> },
         { key: 'generate', label: 'Generate Shots', icon: <Camera size={14} /> },
+        { key: 'characters', label: 'Characters', icon: <Users size={14} /> },
     ],
     planning: [
         { key: 'shot-list', label: 'Shot List', icon: <List size={14} /> },
         { key: 'blocking', label: 'Blocking', icon: <Layout size={14} /> },
         { key: 'multicam', label: 'Multi-Cam', icon: <Grid size={14} /> },
+        { key: 'preview', label: 'Timeline Preview', icon: <Play size={14} /> },
     ],
     coordination: [
         { key: 'extras', label: 'Background/Extras', icon: <Users size={14} /> },
         { key: 'stunts', label: 'Stunts', icon: <Zap size={14} /> },
     ],
+    'ai-tools': [
+        { key: 'voice', label: 'Voice Studio', icon: <Mic size={14} /> },
+        { key: 'music', label: 'Music Generator', icon: <Music size={14} /> },
+    ],
     media: [
         { key: 'library', label: 'All Media', icon: <Images size={14} /> },
+    ],
+    export: [
+        { key: 'platforms', label: 'Platform Export', icon: <Download size={14} /> },
+        { key: 'subtitles', label: 'Subtitles', icon: <Subtitles size={14} /> },
+    ],
+    collaboration: [
+        { key: 'approvals', label: 'Approvals', icon: <UserCheck size={14} /> },
+        { key: 'versions', label: 'Version History', icon: <History size={14} /> },
     ],
 };
 
@@ -153,8 +197,12 @@ export default function ProductionPage() {
         }
     }, [activeSection, isMicroDrama]);
 
-    // Determine if looks panel should show
-    const hideLooksPanel = ['shot-list', 'extras', 'blocking', 'stunts', 'multicam', 'library', 'episodes'].includes(activeSubTab) || activeSection === 'media';
+    // Determine if looks panel should show (hide for full-width panels)
+    const hideLooksPanel = [
+        'shot-list', 'extras', 'blocking', 'stunts', 'multicam', 'library', 
+        'episodes', 'pipeline', 'characters', 'preview', 'voice', 'music',
+        'platforms', 'subtitles', 'approvals', 'versions'
+    ].includes(activeSubTab) || ['media', 'ai-tools', 'export', 'collaboration'].includes(activeSection);
 
     const renderContent = () => {
         if (!projectId) {
@@ -178,7 +226,9 @@ export default function ProductionPage() {
             if (activeSubTab === 'episodes') return <EpisodeManager projectId={projectId} genre={project?.genre} />;
             if (activeSubTab === 'scenes') return <SceneManager projectId={projectId} onScenesChange={setScenes} />;
             if (activeSubTab === 'storyboard') return <StoryboardViewer projectId={projectId} scenes={scenes} onExport={() => setShowExportModal(true)} />;
+            if (activeSubTab === 'pipeline') return <ScriptToShotPipeline projectId={projectId} scenes={scenes} />;
             if (activeSubTab === 'generate') return <ShotList projectId={projectId} />;
+            if (activeSubTab === 'characters') return <CharacterConsistencyPanel projectId={projectId} />;
         }
         
         // Planning section
@@ -186,6 +236,7 @@ export default function ProductionPage() {
             if (activeSubTab === 'shot-list') return <ShotListManager projectId={projectId} />;
             if (activeSubTab === 'blocking') return <BlockingDiagram projectId={projectId} />;
             if (activeSubTab === 'multicam') return <MultiCamSetup projectId={projectId} />;
+            if (activeSubTab === 'preview') return <TimelinePreview projectId={projectId} shots={shots} />;
         }
         
         // Coordination section
@@ -194,9 +245,27 @@ export default function ProductionPage() {
             if (activeSubTab === 'stunts') return <StuntCoordination projectId={projectId} />;
         }
         
+        // AI Tools section
+        if (activeSection === 'ai-tools') {
+            if (activeSubTab === 'voice') return <VoiceCloning projectId={projectId} />;
+            if (activeSubTab === 'music') return <MusicGenerator projectId={projectId} sceneMood={project?.genre} />;
+        }
+        
         // Media section
         if (activeSection === 'media') {
             return <GeneratedMediaLibrary projectId={projectId} />;
+        }
+        
+        // Export section
+        if (activeSection === 'export') {
+            if (activeSubTab === 'platforms') return <PlatformExporter projectId={projectId} />;
+            if (activeSubTab === 'subtitles') return <SubtitleExporter projectId={projectId} />;
+        }
+        
+        // Collaboration section
+        if (activeSection === 'collaboration') {
+            if (activeSubTab === 'approvals') return <ApprovalWorkflow projectId={projectId} userRole="director" />;
+            if (activeSubTab === 'versions') return <ProjectVersioning projectId={projectId} />;
         }
         
         return null;
@@ -299,6 +368,14 @@ export default function ProductionPage() {
                     scenes={scenes}
                     shots={shots}
                     onClose={() => setShowExportModal(false)}
+                />
+            )}
+
+            {/* Floating Generation Progress */}
+            {projectId && (
+                <GenerationProgress 
+                    projectId={projectId}
+                    onItemComplete={(item) => console.log('Completed:', item)}
                 />
             )}
         </div>
