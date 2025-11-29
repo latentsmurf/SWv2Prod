@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { 
     Film, Layers, Camera, List, Users, Layout, Zap, Grid, Video,
@@ -123,7 +123,20 @@ const MICRO_DRAMA_SUB_TABS: Record<MainSection, SubTab[]> = {
     ],
 };
 
-export default function ProductionPage() {
+function ProductionLoading() {
+    return (
+        <div className="min-h-screen bg-gray-50 dark:bg-[#050505] flex items-center justify-center">
+            <div className="text-center">
+                <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mx-auto mb-4 animate-pulse">
+                    <Film className="text-yellow-500" size={24} />
+                </div>
+                <p className="text-gray-500 text-sm">Loading production studio...</p>
+            </div>
+        </div>
+    );
+}
+
+function ProductionContent() {
     const searchParams = useSearchParams();
     const projectIdParam = searchParams.get('projectId');
     
@@ -379,5 +392,13 @@ export default function ProductionPage() {
                 />
             )}
         </div>
+    );
+}
+
+export default function ProductionPage() {
+    return (
+        <Suspense fallback={<ProductionLoading />}>
+            <ProductionContent />
+        </Suspense>
     );
 }

@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
     FileText, Image, MapPin, Film, Users, Sparkles, ChevronDown,
-    Clapperboard, Palette, Settings2, Shirt, Scissors
+    Clapperboard, Palette, Settings2, Shirt, Scissors, Loader2
 } from 'lucide-react';
 import PageHeader from '@/components/ui/PageHeader';
 import SectionTabs from '@/components/ui/SectionTabs';
@@ -55,7 +55,20 @@ const SUB_TABS: Record<MainSection, SubTab[]> = {
     ],
 };
 
-export default function PreProductionPage() {
+function PreProductionLoading() {
+    return (
+        <div className="min-h-screen bg-gray-50 dark:bg-[#050505] flex items-center justify-center">
+            <div className="text-center">
+                <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mx-auto mb-4 animate-pulse">
+                    <FileText className="text-yellow-500" size={24} />
+                </div>
+                <p className="text-gray-500 text-sm">Loading pre-production...</p>
+            </div>
+        </div>
+    );
+}
+
+function PreProductionContent() {
     const searchParams = useSearchParams();
     const projectIdParam = searchParams.get('projectId');
     
@@ -188,5 +201,13 @@ export default function PreProductionPage() {
                 )}
             </div>
         </div>
+    );
+}
+
+export default function PreProductionPage() {
+    return (
+        <Suspense fallback={<PreProductionLoading />}>
+            <PreProductionContent />
+        </Suspense>
     );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
@@ -23,7 +23,7 @@ interface DashboardProject {
     shotsCount: number;
 }
 
-export default function DashboardPage() {
+function DashboardContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [projects, setProjects] = useState<DashboardProject[]>([]);
@@ -413,5 +413,26 @@ export default function DashboardPage() {
                 </div>
             )}
         </div>
+    );
+}
+
+function DashboardLoading() {
+    return (
+        <div className="min-h-screen bg-gray-50 dark:bg-[#050505] flex items-center justify-center">
+            <div className="text-center">
+                <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center mx-auto mb-4">
+                    <Loader2 className="animate-spin text-yellow-500" size={24} />
+                </div>
+                <p className="text-gray-500 text-sm">Loading your workspace...</p>
+            </div>
+        </div>
+    );
+}
+
+export default function DashboardPage() {
+    return (
+        <Suspense fallback={<DashboardLoading />}>
+            <DashboardContent />
+        </Suspense>
     );
 }
