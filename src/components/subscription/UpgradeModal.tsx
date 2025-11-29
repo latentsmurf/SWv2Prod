@@ -62,34 +62,34 @@ export default function UpgradeModal() {
     
     return (
         <div 
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 dark:bg-black/80 backdrop-blur-sm"
             onClick={hideUpgradeModal}
         >
             <div 
-                className="w-full max-w-4xl bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden shadow-2xl"
+                className="w-full max-w-4xl bg-white dark:bg-[#0a0a0a] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden shadow-2xl"
                 onClick={e => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="relative px-6 py-8 bg-gradient-to-br from-purple-500/10 via-transparent to-orange-500/10 border-b border-white/5">
+                <div className="relative px-6 py-8 bg-gradient-to-br from-purple-500/10 via-transparent to-orange-500/10 border-b border-gray-200 dark:border-white/5">
                     <button 
                         onClick={hideUpgradeModal}
-                        className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white rounded-lg hover:bg-white/5"
+                        className="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-white/5"
                     >
                         <X size={20} />
                     </button>
                     
                     <div className="text-center">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-full text-yellow-400 text-sm font-medium mb-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-full text-yellow-600 dark:text-yellow-400 text-sm font-medium mb-4">
                             <Sparkles size={14} />
                             Unlock More Power
                         </div>
-                        <h2 className="text-2xl font-bold text-white mb-2">
+                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                             {triggerFeature 
                                 ? `Unlock ${triggerFeature.name}` 
                                 : 'Upgrade Your Plan'
                             }
                         </h2>
-                        <p className="text-gray-400 max-w-md mx-auto">
+                        <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
                             {triggerFeature 
                                 ? triggerFeature.description
                                 : 'Get more credits, features, and capabilities with a premium plan.'
@@ -103,8 +103,8 @@ export default function UpgradeModal() {
                             onClick={() => setBillingPeriod('monthly')}
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                                 billingPeriod === 'monthly' 
-                                    ? 'bg-white/10 text-white' 
-                                    : 'text-gray-500 hover:text-white'
+                                    ? 'bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white' 
+                                    : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                             }`}
                         >
                             Monthly
@@ -113,8 +113,8 @@ export default function UpgradeModal() {
                             onClick={() => setBillingPeriod('yearly')}
                             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative ${
                                 billingPeriod === 'yearly' 
-                                    ? 'bg-white/10 text-white' 
-                                    : 'text-gray-500 hover:text-white'
+                                    ? 'bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white' 
+                                    : 'text-gray-500 hover:text-gray-900 dark:hover:text-white'
                             }`}
                         >
                             Yearly
@@ -141,7 +141,7 @@ export default function UpgradeModal() {
                                     className={`relative p-5 rounded-xl border transition-all ${
                                         isRecommended 
                                             ? 'border-purple-500/50 bg-purple-500/5 ring-1 ring-purple-500/20' 
-                                            : 'border-white/10 hover:border-white/20 bg-white/[0.02]'
+                                            : 'border-gray-200 dark:border-white/10 hover:border-gray-300 dark:hover:border-white/20 bg-gray-50 dark:bg-white/[0.02]'
                                     }`}
                                 >
                                     {isRecommended && (
@@ -159,7 +159,7 @@ export default function UpgradeModal() {
                                             {plan.icon}
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-bold text-white">{plan.name}</h3>
+                                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{plan.name}</h3>
                                             <p className="text-xs text-gray-500">{plan.tagline}</p>
                                         </div>
                                     </div>
@@ -167,7 +167,7 @@ export default function UpgradeModal() {
                                     {/* Price */}
                                     <div className="mb-4">
                                         <div className="flex items-baseline gap-1">
-                                            <span className="text-3xl font-bold text-white">${price}</span>
+                                            <span className="text-3xl font-bold text-gray-900 dark:text-white">${price}</span>
                                             <span className="text-gray-500">/{billingPeriod === 'yearly' ? 'year' : 'mo'}</span>
                                         </div>
                                         <p className="text-xs text-gray-500 mt-1">
@@ -179,8 +179,8 @@ export default function UpgradeModal() {
                                     <div className="space-y-2 mb-6">
                                         {upgradeFeatures.slice(0, 5).map((feature) => (
                                             <div key={feature.id} className="flex items-start gap-2">
-                                                <Check size={14} className="text-green-400 mt-0.5 flex-shrink-0" />
-                                                <span className="text-sm text-gray-300">{feature.name}</span>
+                                                <Check size={14} className="text-green-500 dark:text-green-400 mt-0.5 flex-shrink-0" />
+                                                <span className="text-sm text-gray-700 dark:text-gray-300">{feature.name}</span>
                                             </div>
                                         ))}
                                         {upgradeFeatures.length > 5 && (
@@ -196,7 +196,7 @@ export default function UpgradeModal() {
                                         className={`w-full py-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-all ${
                                             isRecommended 
                                                 ? 'bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-400 hover:to-purple-500 text-white' 
-                                                : 'bg-white/10 hover:bg-white/15 text-white'
+                                                : 'bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/15 text-gray-900 dark:text-white'
                                         }`}
                                     >
                                         {plan.id === 'enterprise' ? (
@@ -214,7 +214,7 @@ export default function UpgradeModal() {
                     </div>
                     
                     {/* Trust Badges */}
-                    <div className="flex items-center justify-center gap-8 mt-8 pt-6 border-t border-white/5">
+                    <div className="flex items-center justify-center gap-8 mt-8 pt-6 border-t border-gray-200 dark:border-white/5">
                         <div className="flex items-center gap-2 text-gray-500 text-sm">
                             <Shield size={16} />
                             Secure checkout

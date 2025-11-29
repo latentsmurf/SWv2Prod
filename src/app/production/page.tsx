@@ -209,10 +209,10 @@ export default function ProductionPage() {
             return (
                 <div className="flex items-center justify-center h-full">
                     <div className="text-center">
-                        <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4">
-                            <Film className="text-gray-500" size={28} />
+                        <div className="w-16 h-16 rounded-2xl bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 flex items-center justify-center mx-auto mb-4">
+                            <Film className="text-gray-400 dark:text-gray-500" size={28} />
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-2">No project selected</h3>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No project selected</h3>
                         <p className="text-sm text-gray-500 max-w-xs">
                             Create a new project or select an existing one to start production.
                         </p>
@@ -283,7 +283,7 @@ export default function ProductionPage() {
             {/* Main Content Area */}
             <div className="flex-1 overflow-hidden flex flex-col">
                 {/* Navigation Header */}
-                <div className="bg-[#0a0a0a] border-b border-white/5 px-6 pt-4">
+                <div className="bg-white dark:bg-[#0a0a0a] border-b border-gray-200 dark:border-white/5 px-6 pt-4">
                     {/* Main Section Tabs */}
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center gap-2">
@@ -296,7 +296,7 @@ export default function ProductionPage() {
                                         className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                                             isActive
                                                 ? 'bg-yellow-500 text-black'
-                                                : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
                                         }`}
                                     >
                                         {section.icon}
@@ -316,7 +316,7 @@ export default function ProductionPage() {
                                 <Camera size={12} />
                                 {stats.shots} shots
                             </span>
-                            <span className="flex items-center gap-1.5 text-green-400">
+                            <span className="flex items-center gap-1.5 text-green-500 dark:text-green-400">
                                 <Eye size={12} />
                                 {stats.rendered} rendered
                             </span>
@@ -333,8 +333,8 @@ export default function ProductionPage() {
                                     onClick={() => setActiveSubTab(tab.key)}
                                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                                         isActive
-                                            ? 'bg-white/10 text-white'
-                                            : 'text-gray-500 hover:text-white hover:bg-white/5'
+                                            ? 'bg-gray-200 dark:bg-white/10 text-gray-900 dark:text-white'
+                                            : 'text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5'
                                     }`}
                                 >
                                     {tab.icon}
