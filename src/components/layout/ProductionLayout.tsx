@@ -15,7 +15,6 @@ import OfflineBanner from '@/components/ui/OfflineBanner';
 import OnboardingWizard from '@/components/onboarding/OnboardingWizard';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import CommandPalette from '@/components/ui/CommandPalette';
-import QuickThemePicker from '@/components/ui/QuickThemePicker';
 import { useSubscription } from '@/contexts/SubscriptionContext';
 import { getPlanInfo } from '@/config/featurePermissions';
 import UpgradeModal from '@/components/subscription/UpgradeModal';
@@ -436,9 +435,6 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
 
                             {/* Theme Toggle */}
                             <ThemeToggle />
-
-                            {/* Quick Theme Picker */}
-                            <QuickThemePicker />
 
                             <div className="w-px h-6 bg-white/10 mx-1" />
 

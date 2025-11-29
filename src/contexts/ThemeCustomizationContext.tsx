@@ -60,6 +60,7 @@ export interface ThemeSettings {
 // ============================================================================
 
 export const THEME_PRESETS: ThemePreset[] = [
+    // ===== DARK THEMES =====
     {
         id: 'midnight',
         name: 'Midnight',
@@ -123,6 +124,8 @@ export const THEME_PRESETS: ThemePreset[] = [
             error: '#ef4444',
         }
     },
+    
+    // ===== NATURE-INSPIRED =====
     {
         id: 'forest',
         name: 'Forest',
@@ -166,9 +169,118 @@ export const THEME_PRESETS: ThemePreset[] = [
         }
     },
     {
+        id: 'aurora',
+        name: 'Aurora',
+        description: 'Northern lights inspired',
+        preview: 'linear-gradient(135deg, #0f1419 0%, #1a2b3c 50%, #0d2818 100%)',
+        colors: {
+            background: '#0f1419',
+            backgroundSecondary: '#162028',
+            backgroundTertiary: '#1d2d3a',
+            foreground: '#e8f4f8',
+            foregroundMuted: '#7ec8e3',
+            border: 'rgba(126,200,227,0.15)',
+            borderHover: 'rgba(126,200,227,0.25)',
+            accent: '#22d3ee',
+            accentHover: '#67e8f9',
+            accentForeground: '#000000',
+            success: '#34d399',
+            warning: '#fbbf24',
+            error: '#f87171',
+        }
+    },
+    
+    // ===== CREATIVE/ARTISTIC =====
+    {
+        id: 'cyberpunk',
+        name: 'Cyberpunk',
+        description: 'Neon-soaked futuristic vibes',
+        preview: 'linear-gradient(135deg, #0d0221 0%, #1a0a2e 50%, #16042d 100%)',
+        colors: {
+            background: '#0d0221',
+            backgroundSecondary: '#150530',
+            backgroundTertiary: '#1f0a40',
+            foreground: '#f0e6ff',
+            foregroundMuted: '#a78bfa',
+            border: 'rgba(167,139,250,0.2)',
+            borderHover: 'rgba(167,139,250,0.35)',
+            accent: '#f0abfc',
+            accentHover: '#f5d0fe',
+            accentForeground: '#000000',
+            success: '#4ade80',
+            warning: '#fbbf24',
+            error: '#fb7185',
+        }
+    },
+    {
+        id: 'synthwave',
+        name: 'Synthwave',
+        description: '80s retro neon aesthetic',
+        preview: 'linear-gradient(135deg, #1a1033 0%, #2d1b4e 50%, #1f1040 100%)',
+        colors: {
+            background: '#1a1033',
+            backgroundSecondary: '#241545',
+            backgroundTertiary: '#2d1b4e',
+            foreground: '#fdf4ff',
+            foregroundMuted: '#e879f9',
+            border: 'rgba(232,121,249,0.2)',
+            borderHover: 'rgba(232,121,249,0.35)',
+            accent: '#f472b6',
+            accentHover: '#f9a8d4',
+            accentForeground: '#000000',
+            success: '#4ade80',
+            warning: '#fde047',
+            error: '#fb7185',
+        }
+    },
+    {
+        id: 'tokyo-night',
+        name: 'Tokyo Night',
+        description: 'Inspired by Tokyo city lights',
+        preview: 'linear-gradient(135deg, #1a1b26 0%, #24283b 100%)',
+        colors: {
+            background: '#1a1b26',
+            backgroundSecondary: '#1f2335',
+            backgroundTertiary: '#24283b',
+            foreground: '#c0caf5',
+            foregroundMuted: '#565f89',
+            border: 'rgba(86,95,137,0.3)',
+            borderHover: 'rgba(86,95,137,0.5)',
+            accent: '#7aa2f7',
+            accentHover: '#89b4fa',
+            accentForeground: '#000000',
+            success: '#9ece6a',
+            warning: '#e0af68',
+            error: '#f7768e',
+        }
+    },
+    {
+        id: 'dracula',
+        name: 'Dracula',
+        description: 'Popular dark theme with purple tones',
+        preview: 'linear-gradient(135deg, #282a36 0%, #44475a 100%)',
+        colors: {
+            background: '#282a36',
+            backgroundSecondary: '#2d303d',
+            backgroundTertiary: '#44475a',
+            foreground: '#f8f8f2',
+            foregroundMuted: '#6272a4',
+            border: 'rgba(98,114,164,0.3)',
+            borderHover: 'rgba(98,114,164,0.5)',
+            accent: '#bd93f9',
+            accentHover: '#d4b9fc',
+            accentForeground: '#000000',
+            success: '#50fa7b',
+            warning: '#ffb86c',
+            error: '#ff5555',
+        }
+    },
+    
+    // ===== MOODY/DRAMATIC =====
+    {
         id: 'vampire',
         name: 'Vampire',
-        description: 'Dark with red accents',
+        description: 'Dark with blood red accents',
         preview: 'linear-gradient(135deg, #0f0a0a 0%, #1f1414 100%)',
         colors: {
             background: '#0f0a0a',
@@ -229,6 +341,73 @@ export const THEME_PRESETS: ThemePreset[] = [
         }
     },
     {
+        id: 'noir',
+        name: 'Film Noir',
+        description: 'Classic black and white cinema',
+        preview: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%)',
+        colors: {
+            background: '#0a0a0a',
+            backgroundSecondary: '#141414',
+            backgroundTertiary: '#1e1e1e',
+            foreground: '#e5e5e5',
+            foregroundMuted: '#737373',
+            border: 'rgba(255,255,255,0.1)',
+            borderHover: 'rgba(255,255,255,0.2)',
+            accent: '#a3a3a3',
+            accentHover: '#d4d4d4',
+            accentForeground: '#000000',
+            success: '#a3a3a3',
+            warning: '#a3a3a3',
+            error: '#a3a3a3',
+        }
+    },
+    
+    // ===== WARM THEMES =====
+    {
+        id: 'mocha',
+        name: 'Mocha',
+        description: 'Rich coffee and chocolate tones',
+        preview: 'linear-gradient(135deg, #1c1410 0%, #2c2018 100%)',
+        colors: {
+            background: '#1c1410',
+            backgroundSecondary: '#241a14',
+            backgroundTertiary: '#2c2018',
+            foreground: '#f5f0eb',
+            foregroundMuted: '#a89984',
+            border: 'rgba(168,153,132,0.2)',
+            borderHover: 'rgba(168,153,132,0.35)',
+            accent: '#d79921',
+            accentHover: '#fabd2f',
+            accentForeground: '#000000',
+            success: '#98971a',
+            warning: '#d79921',
+            error: '#cc241d',
+        }
+    },
+    {
+        id: 'terracotta',
+        name: 'Terracotta',
+        description: 'Earthy clay and rust tones',
+        preview: 'linear-gradient(135deg, #1a1412 0%, #2a1f1a 100%)',
+        colors: {
+            background: '#1a1412',
+            backgroundSecondary: '#221a16',
+            backgroundTertiary: '#2a1f1a',
+            foreground: '#faf5f0',
+            foregroundMuted: '#c4a882',
+            border: 'rgba(196,168,130,0.2)',
+            borderHover: 'rgba(196,168,130,0.35)',
+            accent: '#c2410c',
+            accentHover: '#ea580c',
+            accentForeground: '#ffffff',
+            success: '#65a30d',
+            warning: '#ca8a04',
+            error: '#dc2626',
+        }
+    },
+    
+    // ===== LIGHT THEMES =====
+    {
         id: 'light',
         name: 'Light',
         description: 'Clean light mode for bright environments',
@@ -264,6 +443,48 @@ export const THEME_PRESETS: ThemePreset[] = [
             borderHover: 'rgba(0,0,0,0.2)',
             accent: '#b45309',
             accentHover: '#92400e',
+            accentForeground: '#ffffff',
+            success: '#16a34a',
+            warning: '#d97706',
+            error: '#dc2626',
+        }
+    },
+    {
+        id: 'rose',
+        name: 'Rose Quartz',
+        description: 'Soft pink light theme',
+        preview: 'linear-gradient(135deg, #fff5f7 0%, #ffe4e8 100%)',
+        colors: {
+            background: '#fff5f7',
+            backgroundSecondary: '#ffe4e8',
+            backgroundTertiary: '#fecdd3',
+            foreground: '#1c1917',
+            foregroundMuted: '#78716c',
+            border: 'rgba(0,0,0,0.08)',
+            borderHover: 'rgba(0,0,0,0.15)',
+            accent: '#e11d48',
+            accentHover: '#be123c',
+            accentForeground: '#ffffff',
+            success: '#16a34a',
+            warning: '#d97706',
+            error: '#dc2626',
+        }
+    },
+    {
+        id: 'mint',
+        name: 'Mint Fresh',
+        description: 'Cool minty light theme',
+        preview: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+        colors: {
+            background: '#f0fdf4',
+            backgroundSecondary: '#dcfce7',
+            backgroundTertiary: '#bbf7d0',
+            foreground: '#14532d',
+            foregroundMuted: '#166534',
+            border: 'rgba(0,0,0,0.08)',
+            borderHover: 'rgba(0,0,0,0.15)',
+            accent: '#16a34a',
+            accentHover: '#15803d',
             accentForeground: '#ffffff',
             success: '#16a34a',
             warning: '#d97706',

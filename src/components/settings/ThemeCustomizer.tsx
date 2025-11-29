@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
     Palette, Type, Maximize2, Circle, Check, RotateCcw, Eye,
-    Moon, Sun, Sparkles, Minus, Square, Monitor, Zap
+    Moon, Sun, Sparkles, Minus, Square, Monitor, Zap, ArrowLeft,
+    Layout, Layers, Grid3X3
 } from 'lucide-react';
 import {
     useThemeCustomization,
@@ -12,15 +14,126 @@ import {
     FONT_OPTIONS,
     DEFAULT_THEME_SETTINGS,
     ThemePreset,
-    AccentColor,
-    FontOption
 } from '@/contexts/ThemeCustomizationContext';
+
+// ============================================================================
+// THEME CATEGORIES
+// ============================================================================
+
+const THEME_CATEGORIES = [
+    { id: 'dark', name: 'Dark', themes: ['midnight', 'obsidian', 'slate'] },
+    { id: 'nature', name: 'Nature', themes: ['forest', 'ocean', 'aurora'] },
+    { id: 'creative', name: 'Creative', themes: ['cyberpunk', 'synthwave', 'tokyo-night', 'dracula'] },
+    { id: 'moody', name: 'Moody', themes: ['vampire', 'lavender', 'sunset', 'noir'] },
+    { id: 'warm', name: 'Warm', themes: ['mocha', 'terracotta'] },
+    { id: 'light', name: 'Light', themes: ['light', 'paper', 'rose', 'mint'] },
+];
+
+// ============================================================================
+// THEME PREVIEW COMPONENT
+// ============================================================================
+
+function ThemePreviewCard({ 
+    preset, 
+    isSelected, 
+    onClick 
+}: { 
+    preset: ThemePreset; 
+    isSelected: boolean; 
+    onClick: () => void;
+}) {
+    return (
+        <button
+            onClick={onClick}
+            className="relative group rounded-xl overflow-hidden transition-all hover:scale-[1.02] hover:shadow-lg"
+            style={{
+                border: isSelected 
+                    ? '3px solid var(--sw-accent)' 
+                    : '2px solid var(--sw-border)',
+            }}
+        >
+            {/* Full Preview */}
+            <div 
+                className="aspect-[16/10] p-3"
+                style={{ background: preset.preview }}
+            >
+                {/* Mock interface */}
+                <div className="h-full rounded-lg overflow-hidden flex" style={{ backgroundColor: preset.colors.backgroundSecondary }}>
+                    {/* Sidebar */}
+                    <div 
+                        className="w-1/4 p-2 space-y-1.5 border-r"
+                        style={{ backgroundColor: preset.colors.background, borderColor: preset.colors.border }}
+                    >
+                        <div className="h-2 w-4 rounded" style={{ backgroundColor: preset.colors.accent }} />
+                        <div className="h-1.5 w-full rounded opacity-30" style={{ backgroundColor: preset.colors.foreground }} />
+                        <div className="h-1.5 w-3/4 rounded opacity-20" style={{ backgroundColor: preset.colors.foreground }} />
+                        <div className="h-1.5 w-5/6 rounded opacity-20" style={{ backgroundColor: preset.colors.foreground }} />
+                    </div>
+                    {/* Main content */}
+                    <div className="flex-1 p-2">
+                        {/* Header bar */}
+                        <div className="flex items-center justify-between mb-2">
+                            <div className="h-1.5 w-1/4 rounded opacity-30" style={{ backgroundColor: preset.colors.foreground }} />
+                            <div className="h-3 w-8 rounded" style={{ backgroundColor: preset.colors.accent }} />
+                        </div>
+                        {/* Content area */}
+                        <div 
+                            className="rounded p-1.5 h-[calc(100%-20px)]"
+                            style={{ backgroundColor: preset.colors.backgroundTertiary }}
+                        >
+                            <div className="grid grid-cols-3 gap-1 h-full">
+                                {[1,2,3].map(i => (
+                                    <div 
+                                        key={i}
+                                        className="rounded"
+                                        style={{ backgroundColor: preset.colors.background }}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {/* Label */}
+            <div 
+                className="px-3 py-2 text-left flex items-center justify-between"
+                style={{ backgroundColor: preset.colors.backgroundSecondary }}
+            >
+                <div>
+                    <div className="text-sm font-medium" style={{ color: preset.colors.foreground }}>
+                        {preset.name}
+                    </div>
+                    <div className="text-[10px] opacity-60" style={{ color: preset.colors.foregroundMuted }}>
+                        {preset.description}
+                    </div>
+                </div>
+                {/* Color dots */}
+                <div className="flex -space-x-1">
+                    <div className="w-3 h-3 rounded-full border-2" style={{ backgroundColor: preset.colors.background, borderColor: preset.colors.backgroundSecondary }} />
+                    <div className="w-3 h-3 rounded-full border-2" style={{ backgroundColor: preset.colors.accent, borderColor: preset.colors.backgroundSecondary }} />
+                </div>
+            </div>
+            
+            {/* Selected indicator */}
+            {isSelected && (
+                <div 
+                    className="absolute top-2 right-2 w-6 h-6 rounded-full flex items-center justify-center shadow-lg"
+                    style={{ backgroundColor: 'var(--sw-accent)' }}
+                >
+                    <Check size={14} style={{ color: 'var(--sw-accent-foreground)' }} />
+                </div>
+            )}
+        </button>
+    );
+}
 
 // ============================================================================
 // MAIN COMPONENT
 // ============================================================================
 
 export default function ThemeCustomizer() {
+    const router = useRouter();
     const {
         settings,
         updateSettings,
@@ -31,36 +144,65 @@ export default function ThemeCustomizer() {
     } = useThemeCustomization();
 
     const [activeTab, setActiveTab] = useState<'themes' | 'colors' | 'typography' | 'layout'>('themes');
-    const [showPreview, setShowPreview] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
     const hasChanges = JSON.stringify(settings) !== JSON.stringify(DEFAULT_THEME_SETTINGS);
 
+    // Get themes for display
+    const getThemesForCategory = (categoryId: string) => {
+        const category = THEME_CATEGORIES.find(c => c.id === categoryId);
+        if (!category) return [];
+        return category.themes.map(id => THEME_PRESETS.find(p => p.id === id)).filter(Boolean) as ThemePreset[];
+    };
+
     return (
-        <div className="space-y-6">
+        <div className="max-w-5xl mx-auto space-y-6">
             {/* Header */}
             <div className="flex items-center justify-between">
-                <div>
-                    <h2 className="text-xl font-bold" style={{ color: 'var(--sw-foreground)' }}>
-                        Appearance
-                    </h2>
-                    <p className="text-sm" style={{ color: 'var(--sw-foreground-muted)' }}>
-                        Customize how SceneWeaver looks for you
-                    </p>
-                </div>
-                {hasChanges && (
+                <div className="flex items-center gap-4">
                     <button
-                        onClick={resetSettings}
-                        className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors"
+                        onClick={() => router.back()}
+                        className="p-2 rounded-lg transition-colors hover:bg-white/5"
+                        style={{ color: 'var(--sw-foreground-muted)' }}
+                    >
+                        <ArrowLeft size={20} />
+                    </button>
+                    <div>
+                        <h2 className="text-xl font-bold" style={{ color: 'var(--sw-foreground)' }}>
+                            Appearance
+                        </h2>
+                        <p className="text-sm" style={{ color: 'var(--sw-foreground-muted)' }}>
+                            Customize how SceneWeaver looks for you
+                        </p>
+                    </div>
+                </div>
+                <div className="flex items-center gap-3">
+                    {hasChanges && (
+                        <button
+                            onClick={resetSettings}
+                            className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors"
+                            style={{
+                                backgroundColor: 'var(--sw-background-tertiary)',
+                                color: 'var(--sw-foreground-muted)',
+                                border: '1px solid var(--sw-border)'
+                            }}
+                        >
+                            <RotateCcw size={14} />
+                            Reset to Default
+                        </button>
+                    )}
+                    <button
+                        onClick={() => router.push('/production')}
+                        className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                         style={{
-                            backgroundColor: 'var(--sw-background-tertiary)',
-                            color: 'var(--sw-foreground-muted)',
-                            border: '1px solid var(--sw-border)'
+                            backgroundColor: 'var(--sw-accent)',
+                            color: 'var(--sw-accent-foreground)'
                         }}
                     >
-                        <RotateCcw size={14} />
-                        Reset to Default
+                        <Check size={14} />
+                        Done
                     </button>
-                )}
+                </div>
             </div>
 
             {/* Tabs */}
@@ -73,7 +215,7 @@ export default function ThemeCustomizer() {
                 ].map(tab => (
                     <button
                         key={tab.key}
-                        onClick={() => setActiveTab(tab.key as any)}
+                        onClick={() => setActiveTab(tab.key as typeof activeTab)}
                         className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors"
                         style={{
                             backgroundColor: activeTab === tab.key ? 'var(--sw-background-tertiary)' : 'transparent',
@@ -88,57 +230,70 @@ export default function ThemeCustomizer() {
 
             {/* Themes Tab */}
             {activeTab === 'themes' && (
-                <div className="space-y-4">
-                    <p className="text-sm" style={{ color: 'var(--sw-foreground-muted)' }}>
-                        Choose a base theme for the interface
-                    </p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-                        {THEME_PRESETS.map(preset => (
+                <div className="space-y-6">
+                    {/* Category filters */}
+                    <div className="flex items-center gap-2 flex-wrap">
+                        <button
+                            onClick={() => setSelectedCategory(null)}
+                            className="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
+                            style={{
+                                backgroundColor: selectedCategory === null ? 'var(--sw-accent)' : 'var(--sw-background-secondary)',
+                                color: selectedCategory === null ? 'var(--sw-accent-foreground)' : 'var(--sw-foreground-muted)'
+                            }}
+                        >
+                            All Themes
+                        </button>
+                        {THEME_CATEGORIES.map(cat => (
                             <button
-                                key={preset.id}
-                                onClick={() => updateSettings({ preset: preset.id })}
-                                className="relative group rounded-xl overflow-hidden transition-all"
+                                key={cat.id}
+                                onClick={() => setSelectedCategory(cat.id)}
+                                className="px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
                                 style={{
-                                    border: settings.preset === preset.id 
-                                        ? `2px solid var(--sw-accent)` 
-                                        : '2px solid var(--sw-border)',
+                                    backgroundColor: selectedCategory === cat.id ? 'var(--sw-accent)' : 'var(--sw-background-secondary)',
+                                    color: selectedCategory === cat.id ? 'var(--sw-accent-foreground)' : 'var(--sw-foreground-muted)'
                                 }}
                             >
-                                {/* Preview */}
-                                <div 
-                                    className="aspect-[4/3] p-3"
-                                    style={{ background: preset.preview }}
-                                >
-                                    <div className="h-full rounded-lg flex flex-col gap-1 p-2" style={{ backgroundColor: preset.colors.backgroundSecondary }}>
-                                        <div className="h-2 w-3/4 rounded" style={{ backgroundColor: preset.colors.foreground, opacity: 0.3 }} />
-                                        <div className="h-2 w-1/2 rounded" style={{ backgroundColor: preset.colors.foregroundMuted, opacity: 0.3 }} />
-                                        <div className="mt-auto flex gap-1">
-                                            <div className="h-3 w-8 rounded" style={{ backgroundColor: preset.colors.accent }} />
-                                            <div className="h-3 w-6 rounded" style={{ backgroundColor: preset.colors.border }} />
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* Label */}
-                                <div 
-                                    className="p-2 text-left"
-                                    style={{ backgroundColor: preset.colors.backgroundSecondary }}
-                                >
-                                    <div className="text-xs font-medium" style={{ color: preset.colors.foreground }}>
-                                        {preset.name}
-                                    </div>
-                                </div>
-                                {/* Selected indicator */}
-                                {settings.preset === preset.id && (
-                                    <div 
-                                        className="absolute top-2 right-2 w-5 h-5 rounded-full flex items-center justify-center"
-                                        style={{ backgroundColor: 'var(--sw-accent)' }}
-                                    >
-                                        <Check size={12} style={{ color: 'var(--sw-accent-foreground)' }} />
-                                    </div>
-                                )}
+                                {cat.name}
                             </button>
                         ))}
                     </div>
+
+                    {/* Theme grid - show all or by category */}
+                    {selectedCategory === null ? (
+                        // Show all themes grouped by category
+                        <div className="space-y-8">
+                            {THEME_CATEGORIES.map(category => (
+                                <div key={category.id}>
+                                    <h3 className="text-sm font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--sw-foreground-muted)' }}>
+                                        {category.name}
+                                        <span className="text-xs opacity-50">({category.themes.length})</span>
+                                    </h3>
+                                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                                        {getThemesForCategory(category.id).map(preset => (
+                                            <ThemePreviewCard
+                                                key={preset.id}
+                                                preset={preset}
+                                                isSelected={settings.preset === preset.id}
+                                                onClick={() => updateSettings({ preset: preset.id })}
+                                            />
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        // Show themes for selected category
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            {getThemesForCategory(selectedCategory).map(preset => (
+                                <ThemePreviewCard
+                                    key={preset.id}
+                                    preset={preset}
+                                    isSelected={settings.preset === preset.id}
+                                    onClick={() => updateSettings({ preset: preset.id })}
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
             )}
 
@@ -179,7 +334,7 @@ export default function ThemeCustomizer() {
                         style={{ backgroundColor: 'var(--sw-background-secondary)', border: '1px solid var(--sw-border)' }}
                     >
                         <div className="text-sm mb-3" style={{ color: 'var(--sw-foreground-muted)' }}>Preview</div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-3 flex-wrap">
                             <button
                                 className="px-4 py-2 rounded-lg font-medium text-sm transition-colors"
                                 style={{ 
@@ -208,6 +363,10 @@ export default function ThemeCustomizer() {
                             >
                                 Badge
                             </span>
+                            <div 
+                                className="w-4 h-4 rounded-full"
+                                style={{ backgroundColor: 'var(--sw-accent)' }}
+                            />
                         </div>
                     </div>
                 </div>
@@ -241,7 +400,7 @@ export default function ThemeCustomizer() {
                                         {font.name}
                                     </div>
                                     <div className="text-xs mt-1" style={{ color: 'var(--sw-foreground-muted)' }}>
-                                        The quick brown fox
+                                        The quick brown fox jumps over
                                     </div>
                                 </button>
                             ))}
@@ -294,7 +453,7 @@ export default function ThemeCustomizer() {
                             ].map(option => (
                                 <button
                                     key={option.key}
-                                    onClick={() => updateSettings({ density: option.key as any })}
+                                    onClick={() => updateSettings({ density: option.key as typeof settings.density })}
                                     className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg transition-colors"
                                     style={{
                                         backgroundColor: settings.density === option.key 
@@ -328,7 +487,7 @@ export default function ThemeCustomizer() {
                             ].map(option => (
                                 <button
                                     key={option.key}
-                                    onClick={() => updateSettings({ borderRadius: option.key as any })}
+                                    onClick={() => updateSettings({ borderRadius: option.key as typeof settings.borderRadius })}
                                     className="flex-1 px-4 py-3 transition-colors"
                                     style={{
                                         backgroundColor: settings.borderRadius === option.key 
