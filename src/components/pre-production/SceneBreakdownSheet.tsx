@@ -166,7 +166,7 @@ export default function SceneBreakdownSheet({ projectId, sceneId }: SceneBreakdo
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <FileText className="text-yellow-500" />
                         Scene Breakdown Sheets
                     </h2>
@@ -220,7 +220,7 @@ export default function SceneBreakdownSheet({ projectId, sceneId }: SceneBreakdo
                         return (
                             <div
                                 key={breakdown.scene_id || `breakdown-${index}`}
-                                className="bg-[#121212] border border-white/5 rounded-xl p-4 hover:border-white/20 cursor-pointer"
+                                className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4 hover:border-white/20 cursor-pointer"
                                 onClick={() => { setSelectedScene(breakdown); setViewMode('sheet'); }}
                             >
                                 <div className="flex items-start justify-between">
@@ -270,7 +270,7 @@ export default function SceneBreakdownSheet({ projectId, sceneId }: SceneBreakdo
                     })}
 
                     {breakdowns.length === 0 && (
-                        <div className="bg-[#121212] border border-white/5 rounded-xl p-8 text-center text-gray-500">
+                        <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-8 text-center text-gray-500">
                             No scene breakdowns yet
                         </div>
                     )}
@@ -286,7 +286,7 @@ export default function SceneBreakdownSheet({ projectId, sceneId }: SceneBreakdo
                     {renderBreakdownSheet(selectedScene)}
                 </div>
             ) : (
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-8 text-center text-gray-500">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-8 text-center text-gray-500">
                     Select a scene to view breakdown sheet
                 </div>
             )}

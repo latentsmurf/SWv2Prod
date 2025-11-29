@@ -181,7 +181,7 @@ export default function AIScriptAssistant({
     };
 
     return (
-        <div className="h-full flex flex-col bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Header */}
             <div className="p-4 border-b border-white/5">
                 <div className="flex items-center gap-3">

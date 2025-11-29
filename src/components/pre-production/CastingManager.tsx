@@ -91,10 +91,10 @@ export default function CastingManager({ projectId }: CastingManagerProps) {
     };
 
     return (
-        <div className="p-8 h-full bg-[#0a0a0a]">
+        <div className="p-8 h-full bg-gray-50 dark:bg-[#0a0a0a]">
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h2 className="text-2xl font-bold text-white">Casting</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Casting</h2>
                     <p className="text-gray-400 text-sm">Manage your project's talent</p>
                 </div>
                 <button
@@ -121,7 +121,7 @@ export default function CastingManager({ projectId }: CastingManagerProps) {
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-                    <div className="bg-[#121212] border border-white/10 rounded-xl p-6 w-full max-w-md space-y-4">
+                    <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-xl p-6 w-full max-w-md space-y-4">
                         <h3 className="text-xl font-bold text-white">Cast New Actor</h3>
 
                         <div className="space-y-3">

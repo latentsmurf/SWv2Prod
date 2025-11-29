@@ -229,7 +229,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <FileText className="text-yellow-500" />
                         Call Sheets
                     </h2>
@@ -280,7 +280,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                     <Loader2 className="animate-spin text-yellow-500" size={32} />
                 </div>
             ) : callSheets.length === 0 ? (
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-12 text-center">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-12 text-center">
                     <FileText className="mx-auto text-gray-600 mb-4" size={48} />
                     <h3 className="text-lg font-medium text-white mb-2">No Call Sheets Yet</h3>
                     <p className="text-gray-500 mb-6">Create your first call sheet for the production</p>
@@ -296,7 +296,7 @@ export default function CallSheetGenerator({ projectId }: CallSheetGeneratorProp
                     {callSheets.map((sheet) => (
                         <div
                             key={sheet.id}
-                            className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 transition-colors"
+                            className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:border-white/10 transition-colors"
                         >
                             {/* Header */}
                             <div className="p-4 border-b border-white/5 bg-gradient-to-r from-yellow-500/10 to-orange-500/10">

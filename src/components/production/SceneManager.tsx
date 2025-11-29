@@ -127,7 +127,7 @@ export default function SceneManager({ projectId, onScenesChange }: SceneManager
     }
 
     return (
-        <div className="h-full flex flex-col bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Header */}
             <div className="p-6 border-b border-white/5 flex items-center justify-between">
                 <div>

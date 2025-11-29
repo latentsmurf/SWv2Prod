@@ -402,7 +402,7 @@ export default function ProductionReports({ projectId }: ProductionReportsProps)
                         {/* Header */}
                         <div className="flex items-center justify-between">
                             <div>
-                                <h3 className="text-2xl font-bold text-white">Day {selectedReport.day_number}</h3>
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Day {selectedReport.day_number}</h3>
                                 <p className="text-gray-400">
                                     {new Date(selectedReport.date).toLocaleDateString('en-US', {
                                         weekday: 'long',
@@ -483,31 +483,31 @@ export default function ProductionReports({ projectId }: ProductionReportsProps)
 
                         {/* Production Stats */}
                         <div className="grid grid-cols-4 gap-4">
-                            <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                            <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                                 <p className="text-sm text-gray-500">Scenes</p>
-                                <p className="text-2xl font-bold text-white">
+                                <p className="text-2xl font-bold text-gray-900 dark:text-white">
                                     {selectedReport.scenes_completed.length}
                                     <span className="text-sm text-gray-500 font-normal">
                                         /{selectedReport.scenes_scheduled.length}
                                     </span>
                                 </p>
                             </div>
-                            <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                            <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                                 <p className="text-sm text-gray-500">Pages</p>
-                                <p className="text-2xl font-bold text-white">
+                                <p className="text-2xl font-bold text-gray-900 dark:text-white">
                                     {selectedReport.pages_completed}
                                     <span className="text-sm text-gray-500 font-normal">
                                         /{selectedReport.pages_scheduled}
                                     </span>
                                 </p>
                             </div>
-                            <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                            <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                                 <p className="text-sm text-gray-500">Setups</p>
-                                <p className="text-2xl font-bold text-white">{selectedReport.setups}</p>
+                                <p className="text-2xl font-bold text-gray-900 dark:text-white">{selectedReport.setups}</p>
                             </div>
-                            <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                            <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                                 <p className="text-sm text-gray-500">Takes</p>
-                                <p className="text-2xl font-bold text-white">{selectedReport.takes}</p>
+                                <p className="text-2xl font-bold text-gray-900 dark:text-white">{selectedReport.takes}</p>
                             </div>
                         </div>
 

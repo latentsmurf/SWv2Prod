@@ -218,7 +218,7 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
     const selectedItemData = board.items.find(i => i.id === selectedItem);
 
     return (
-        <div className="h-full flex flex-col bg-gray-50 dark:bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-50 dark:bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Toolbar */}
             <div className="flex items-center justify-between p-4 border-b border-white/5">
                 <div className="flex items-center gap-4">

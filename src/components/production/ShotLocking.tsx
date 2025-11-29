@@ -220,7 +220,7 @@ export default function ShotLocking({
             {/* Approval Dialog */}
             {showApprovalDialog && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="bg-[#121212] border border-white/10 rounded-2xl w-full max-w-md overflow-hidden">
+                    <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl w-full max-w-md overflow-hidden">
                         <div className="p-6 border-b border-white/5">
                             <h3 className="text-lg font-bold text-white">Review Shot</h3>
                             <p className="text-sm text-gray-500 mt-1">Shot {shot.shot_number}</p>

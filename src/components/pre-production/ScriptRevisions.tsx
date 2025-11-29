@@ -280,7 +280,7 @@ export default function ScriptRevisions({ projectId, onSelectRevision }: ScriptR
                                     <FileText size={32} style={{ color: getColorConfig(selectedRevision.color).color }} />
                                 </div>
                                 <div>
-                                    <h3 className="text-2xl font-bold text-white">{selectedRevision.version}</h3>
+                                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{selectedRevision.version}</h3>
                                     <p className="text-gray-400">
                                         {getColorConfig(selectedRevision.color).name} Revision
                                     </p>
@@ -310,7 +310,7 @@ export default function ScriptRevisions({ projectId, onSelectRevision }: ScriptR
                         <div className="grid grid-cols-3 gap-4 mb-6">
                             <div className="bg-white/5 rounded-xl p-4">
                                 <p className="text-sm text-gray-500 mb-1">Pages</p>
-                                <p className="text-2xl font-bold text-white">{selectedRevision.page_count}</p>
+                                <p className="text-2xl font-bold text-gray-900 dark:text-white">{selectedRevision.page_count}</p>
                             </div>
                             <div className="bg-white/5 rounded-xl p-4">
                                 <p className="text-sm text-gray-500 mb-1">Created By</p>
@@ -406,7 +406,7 @@ export default function ScriptRevisions({ projectId, onSelectRevision }: ScriptR
             {/* Upload Modal */}
             {showUploadModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-md bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Upload New Revision</h3>
                             <button

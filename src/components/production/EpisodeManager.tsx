@@ -306,7 +306,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
     }
 
     return (
-        <div className="h-full flex flex-col bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Header */}
             <div className="p-6 border-b border-white/5">
                 <div className="flex items-center justify-between mb-4">
@@ -330,7 +330,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                                 Batch Generate
                                 <ChevronDown size={14} />
                             </button>
-                            <div className="absolute right-0 top-full mt-1 w-48 bg-[#121212] border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
+                            <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10">
                                 {[10, 25, 50, 100].map(count => (
                                     <button
                                         key={count}
@@ -398,7 +398,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
                                 return (
                                     <div
                                         key={episode.id}
-                                        className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden"
+                                        className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden"
                                     >
                                         {/* Episode Header */}
                                         <div
@@ -554,7 +554,7 @@ export default function EpisodeManager({ projectId, genre }: EpisodeManagerProps
             {/* Create Episode Modal */}
             {showCreateModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-lg bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Create New Episode</h3>
                             <button onClick={() => setShowCreateModal(false)} className="p-2 text-gray-500 hover:text-white">

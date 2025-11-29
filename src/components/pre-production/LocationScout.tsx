@@ -95,10 +95,10 @@ export default function LocationScout({ projectId }: LocationScoutProps) {
         : locations.filter(l => (l.definition as any)?.type === filter);
 
     return (
-        <div className="p-8 h-full bg-[#0a0a0a]">
+        <div className="p-8 h-full bg-gray-50 dark:bg-[#0a0a0a]">
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h2 className="text-2xl font-bold text-white">Locations</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Locations</h2>
                     <p className="text-gray-400 text-sm">Scout environments for your scenes</p>
                 </div>
                 <div className="flex gap-4">
@@ -137,7 +137,7 @@ export default function LocationScout({ projectId }: LocationScoutProps) {
             {/* Modal */}
             {isModalOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-                    <div className="bg-[#121212] border border-white/10 rounded-xl p-6 w-full max-w-md space-y-4">
+                    <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-xl p-6 w-full max-w-md space-y-4">
                         <h3 className="text-xl font-bold text-white">Scout New Location</h3>
 
                         <div className="space-y-3">

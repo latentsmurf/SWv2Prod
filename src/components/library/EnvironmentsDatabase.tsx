@@ -295,7 +295,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search environments..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
                     />
                 </div>
                 <select
@@ -465,7 +465,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     value={form.name}
                                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                                     placeholder="e.g., Sarah's Apartment - Living Room"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                 />
                             </div>
 
@@ -475,7 +475,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     <select
                                         value={form.type}
                                         onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         {Object.entries(TYPE_CONFIG).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -487,7 +487,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     <select
                                         value={form.category}
                                         onChange={(e) => setForm({ ...form, category: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         {Object.entries(CATEGORIES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -499,7 +499,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     <select
                                         value={form.time_of_day}
                                         onChange={(e) => setForm({ ...form, time_of_day: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         {Object.entries(TIME_CONFIG).map(([key, config]) => (
                                             <option key={key} value={key}>{config.label}</option>
@@ -514,7 +514,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     value={form.description}
                                     onChange={(e) => setForm({ ...form, description: e.target.value })}
                                     rows={2}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white resize-none"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white resize-none"
                                 />
                             </div>
 
@@ -524,7 +524,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     <select
                                         value={form.location_type}
                                         onChange={(e) => setForm({ ...form, location_type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         <option value="studio">Studio Build</option>
                                         <option value="practical">Practical Location</option>
@@ -538,7 +538,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                         type="text"
                                         value={form.real_location}
                                         onChange={(e) => setForm({ ...form, real_location: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                             </div>
@@ -550,7 +550,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     value={form.features}
                                     onChange={(e) => setForm({ ...form, features: e.target.value })}
                                     placeholder="e.g., Large windows, High ceilings, Hardwood floors"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                 />
                             </div>
 
@@ -561,7 +561,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     value={form.image_url}
                                     onChange={(e) => setForm({ ...form, image_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                 />
                             </div>
 
@@ -572,7 +572,7 @@ export default function EnvironmentsDatabase({ projectId, onSelect, selectionMod
                                     value={form.mood_keywords}
                                     onChange={(e) => setForm({ ...form, mood_keywords: e.target.value })}
                                     placeholder="e.g., Cozy, Warm, Intimate"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                 />
                             </div>
                         </div>

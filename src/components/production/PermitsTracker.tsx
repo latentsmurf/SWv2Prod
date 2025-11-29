@@ -197,7 +197,7 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <FileCheck className="text-yellow-500" />
                         Permits & Clearances
                     </h2>
@@ -217,23 +217,23 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
 
             {/* Stats */}
             <div className="grid grid-cols-5 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Permits</p>
-                    <p className="text-2xl font-bold text-white">{stats.total}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Approved</p>
                     <p className="text-2xl font-bold text-green-400">{stats.approved}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Pending</p>
                     <p className="text-2xl font-bold text-yellow-400">{stats.pending}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Expiring Soon</p>
                     <p className="text-2xl font-bold text-orange-400">{stats.expiring_soon}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Fees</p>
                     <p className="text-2xl font-bold text-blue-400">${stats.total_fees.toLocaleString()}</p>
                 </div>
@@ -294,7 +294,7 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
             ) : (
                 <div className="grid gap-4">
                     {filteredPermits.length === 0 ? (
-                        <div className="bg-[#121212] border border-white/5 rounded-xl p-8 text-center text-gray-500">
+                        <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-8 text-center text-gray-500">
                             No permits found
                         </div>
                     ) : (
@@ -423,7 +423,7 @@ export default function PermitsTracker({ projectId }: PermitsTrackerProps) {
             {/* Add Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-lg bg-[#121212] border border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+                    <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
                             <h3 className="text-lg font-bold text-white">Add Permit</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">

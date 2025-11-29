@@ -400,7 +400,7 @@ export default function BlockingDiagram({ projectId, sceneId, shotId }: Blocking
     };
 
     return (
-        <div className="h-full flex flex-col bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Toolbar */}
             <div className="flex items-center justify-between p-4 border-b border-white/5 bg-[#121212]">
                 <div className="flex items-center gap-4">

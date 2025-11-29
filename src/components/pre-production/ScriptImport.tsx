@@ -84,7 +84,7 @@ export default function ScriptImport({ projectId, onImport, onClose }: ScriptImp
 
     return (
         <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-            <div className="w-full max-w-3xl bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden">
+            <div className="w-full max-w-3xl bg-gray-50 dark:bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden">
                 {/* Header */}
                 <div className="flex items-center justify-between p-6 border-b border-white/5">
                     <div className="flex items-center gap-3">
@@ -215,7 +215,7 @@ export default function ScriptImport({ projectId, onImport, onClose }: ScriptImp
                             </div>
 
                             {/* Preview content */}
-                            <div className="bg-[#121212] border border-white/5 rounded-xl max-h-80 overflow-y-auto">
+                            <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl max-h-80 overflow-y-auto">
                                 {previewMode === 'structured' ? (
                                     <div className="divide-y divide-white/5">
                                         {parsed.scenes.map((scene, index) => (
@@ -258,11 +258,11 @@ export default function ScriptImport({ projectId, onImport, onClose }: ScriptImp
                             <div className="grid grid-cols-2 gap-4 mt-4">
                                 <div className="p-4 bg-white/5 rounded-xl">
                                     <p className="text-xs text-gray-500 mb-2">Detected Scenes</p>
-                                    <p className="text-2xl font-bold text-white">{parsed.scenes.length}</p>
+                                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{parsed.scenes.length}</p>
                                 </div>
                                 <div className="p-4 bg-white/5 rounded-xl">
                                     <p className="text-xs text-gray-500 mb-2">Detected Characters</p>
-                                    <p className="text-2xl font-bold text-white">{parsed.characters.length}</p>
+                                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{parsed.characters.length}</p>
                                 </div>
                             </div>
                         </div>

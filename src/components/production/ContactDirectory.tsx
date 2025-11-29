@@ -224,7 +224,7 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Users className="text-yellow-500" />
                         Contact Directory
                     </h2>
@@ -257,19 +257,19 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
 
             {/* Stats */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Contacts</p>
-                    <p className="text-2xl font-bold text-white">{contacts.length}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{contacts.length}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Departments</p>
                     <p className="text-2xl font-bold text-blue-400">{departments.length}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Key Contacts</p>
                     <p className="text-2xl font-bold text-yellow-400">{keyContacts.length}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Cast</p>
                     <p className="text-2xl font-bold text-purple-400">
                         {contacts.filter(c => c.department === 'Cast').length}
@@ -343,7 +343,7 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
                                 {department}
                                 <span className="text-sm text-gray-500 font-normal">({deptContacts.length})</span>
                             </h3>
-                            <div className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden">
+                            <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden">
                                 <table className="w-full">
                                     <thead>
                                         <tr className="border-b border-white/5">
@@ -440,7 +440,7 @@ export default function ContactDirectory({ projectId }: ContactDirectoryProps) {
             {/* Add/Edit Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-lg bg-[#121212] border border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+                    <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
                             <h3 className="text-lg font-bold text-white">
                                 {editingContact ? 'Edit Contact' : 'Add Contact'}

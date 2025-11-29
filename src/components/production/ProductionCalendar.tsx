@@ -202,7 +202,7 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Calendar className="text-yellow-500" />
                         Production Schedule
                     </h2>
@@ -229,7 +229,7 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
             </div>
 
             {/* Calendar Navigation */}
-            <div className="flex items-center justify-between bg-[#121212] border border-white/5 rounded-xl p-4">
+            <div className="flex items-center justify-between bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                 <button
                     onClick={goToPrevMonth}
                     className="p-2 hover:bg-white/5 rounded-lg text-gray-400 hover:text-white"
@@ -246,7 +246,7 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
             </div>
 
             {/* Calendar Grid */}
-            <div className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden">
+            <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden">
                 {/* Day Headers */}
                 <div className="grid grid-cols-7 border-b border-white/5">
                     {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
@@ -326,7 +326,7 @@ export default function ProductionCalendar({ projectId }: ProductionCalendarProp
             {/* Event Modal */}
             {showEventModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="bg-[#121212] border border-white/10 rounded-2xl w-full max-w-lg overflow-hidden">
+                    <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl w-full max-w-lg overflow-hidden">
                         <div className="flex items-center justify-between p-6 border-b border-white/5">
                             <h3 className="text-lg font-bold text-white">
                                 {selectedEvent ? 'Edit Event' : 'New Event'}

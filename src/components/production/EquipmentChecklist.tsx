@@ -199,7 +199,7 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Box className="text-yellow-500" />
                         Equipment Checklist
                     </h2>
@@ -225,19 +225,19 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
 
             {/* Stats */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Items</p>
-                    <p className="text-2xl font-bold text-white">{totalItems}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalItems}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">In Use</p>
                     <p className="text-2xl font-bold text-yellow-400">{inUseItems}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Maintenance</p>
                     <p className="text-2xl font-bold text-red-400">{maintenanceItems}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Daily Rate Total</p>
                     <p className="text-2xl font-bold text-green-400">${totalDailyRate.toLocaleString()}</p>
                 </div>
@@ -283,7 +283,7 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
                     <Loader2 className="animate-spin text-yellow-500" size={32} />
                 </div>
             ) : (
-                <div className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden">
                     <table className="w-full">
                         <thead>
                             <tr className="border-b border-white/5">
@@ -374,7 +374,7 @@ export default function EquipmentChecklist({ projectId }: EquipmentChecklistProp
             {/* Add Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-md bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Add Equipment</h3>
                             <button

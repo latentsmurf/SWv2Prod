@@ -191,7 +191,7 @@ export default function RenderQueue({ projectId, compact = false }: RenderQueueP
     }
 
     return (
-        <div className="h-full flex flex-col bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Header */}
             <div className="p-6 border-b border-white/5">
                 <div className="flex items-center justify-between mb-4">
@@ -291,7 +291,7 @@ export default function RenderQueue({ projectId, compact = false }: RenderQueueP
                             return (
                                 <div
                                     key={job.id}
-                                    className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden"
+                                    className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden"
                                 >
                                     <div className="p-4">
                                         <div className="flex items-center gap-4">

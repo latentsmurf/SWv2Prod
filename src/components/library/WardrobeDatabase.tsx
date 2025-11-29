@@ -229,7 +229,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Shirt className="text-yellow-500" />
                         Wardrobe Database
                     </h2>
@@ -249,19 +249,19 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
 
             {/* Stats */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Items</p>
-                    <p className="text-2xl font-bold text-white">{stats.total}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Hero Costumes</p>
                     <p className="text-2xl font-bold text-yellow-400">{stats.hero}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Still Needed</p>
                     <p className="text-2xl font-bold text-red-400">{stats.needed}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Cost</p>
                     <p className="text-2xl font-bold text-green-400">${stats.total_cost.toLocaleString()}</p>
                 </div>
@@ -276,7 +276,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search wardrobe..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
                     />
                 </div>
                 <select
@@ -311,7 +311,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
             ) : (
                 <div className="grid grid-cols-4 gap-4">
                     {filteredItems.length === 0 ? (
-                        <div className="col-span-4 bg-[#121212] border border-white/5 rounded-xl p-8 text-center text-gray-500">
+                        <div className="col-span-4 bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-8 text-center text-gray-500">
                             No wardrobe items found
                         </div>
                     ) : (
@@ -322,7 +322,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                             return (
                                 <div
                                     key={item.id}
-                                    className={`bg-[#121212] border border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors ${
+                                    className={`bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors ${
                                         selectionMode ? 'cursor-pointer' : ''
                                     }`}
                                     onClick={() => selectionMode && onSelect?.(item)}
@@ -375,7 +375,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                                 {categoryConfig.label}
                                             </span>
                                         </div>
-                                        <h3 className="text-white font-bold truncate">{item.name}</h3>
+                                        <h3 className="text-gray-900 dark:text-white font-bold truncate">{item.name}</h3>
                                         {item.character_name && (
                                             <p className="text-sm text-yellow-500 flex items-center gap-1">
                                                 <User size={12} />
@@ -439,7 +439,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
             {/* Add Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-2xl bg-[#121212] border border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+                    <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
                             <h3 className="text-lg font-bold text-white">Add Wardrobe Item</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
@@ -456,7 +456,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                                         placeholder="e.g., Blue Silk Dress"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -464,7 +464,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                     <select
                                         value={form.category}
                                         onChange={(e) => setForm({ ...form, category: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         {Object.entries(CATEGORIES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.icon} {config.label}</option>
@@ -481,7 +481,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                         value={form.character_name}
                                         onChange={(e) => setForm({ ...form, character_name: e.target.value })}
                                         placeholder="Character name"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -491,7 +491,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                         value={form.size}
                                         onChange={(e) => setForm({ ...form, size: e.target.value })}
                                         placeholder="e.g., M, 10, 32x30"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                             </div>
@@ -503,7 +503,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                         type="text"
                                         value={form.color}
                                         onChange={(e) => setForm({ ...form, color: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -512,7 +512,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                         type="text"
                                         value={form.brand}
                                         onChange={(e) => setForm({ ...form, brand: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -522,7 +522,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                         value={form.era}
                                         onChange={(e) => setForm({ ...form, era: e.target.value })}
                                         placeholder="e.g., 1920s"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                             </div>
@@ -533,7 +533,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                     <select
                                         value={form.source}
                                         onChange={(e) => setForm({ ...form, source: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         <option value="purchased">Purchased</option>
                                         <option value="rented">Rented</option>
@@ -547,7 +547,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                     <select
                                         value={form.condition}
                                         onChange={(e) => setForm({ ...form, condition: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         <option value="new">New</option>
                                         <option value="excellent">Excellent</option>
@@ -565,7 +565,7 @@ export default function WardrobeDatabase({ projectId, characterId, onSelect, sel
                                     value={form.image_url}
                                     onChange={(e) => setForm({ ...form, image_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                 />
                             </div>
 

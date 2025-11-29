@@ -168,7 +168,7 @@ export default function ShotPriorityQueue({
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <ListOrdered className="text-yellow-500" />
                         Shot Priority Queue
                     </h2>
@@ -195,21 +195,21 @@ export default function ShotPriorityQueue({
 
             {/* Stats */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Shots</p>
-                    <p className="text-2xl font-bold text-white">{shots.length}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{shots.length}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Completed</p>
                     <p className="text-2xl font-bold text-green-400">{completedShots}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Blocked</p>
                     <p className="text-2xl font-bold text-red-400">{blockedCount}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Est. Time</p>
-                    <p className="text-2xl font-bold text-white">{Math.round(totalTime / 60)}h</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{Math.round(totalTime / 60)}h</p>
                 </div>
             </div>
 
@@ -245,7 +245,7 @@ export default function ShotPriorityQueue({
                     <Loader2 className="animate-spin text-yellow-500" size={32} />
                 </div>
             ) : (
-                <div className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden">
                     <div className="divide-y divide-white/5">
                         {filteredShots.map((shot, index) => {
                             const priorityConfig = getPriorityConfig(shot.priority);

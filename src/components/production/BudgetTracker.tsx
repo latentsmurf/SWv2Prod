@@ -231,7 +231,7 @@ export default function BudgetTracker({ projectId }: BudgetTrackerProps) {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <DollarSign className="text-yellow-500" />
                         Budget Tracker
                     </h2>
@@ -250,15 +250,15 @@ export default function BudgetTracker({ projectId }: BudgetTrackerProps) {
 
             {/* Summary Cards */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-6">
                     <p className="text-sm text-gray-500 mb-1">Total Budget</p>
                     <p className="text-3xl font-bold text-white">{formatCurrency(totalBudgeted)}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-6">
                     <p className="text-sm text-gray-500 mb-1">Actual Spent</p>
                     <p className="text-3xl font-bold text-white">{formatCurrency(totalActual)}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-6">
                     <p className="text-sm text-gray-500 mb-1">Variance</p>
                     <p className={`text-3xl font-bold flex items-center gap-2 ${
                         variance >= 0 ? 'text-green-400' : 'text-red-400'
@@ -267,7 +267,7 @@ export default function BudgetTracker({ projectId }: BudgetTrackerProps) {
                         {formatCurrency(Math.abs(variance))}
                     </p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-6">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-6">
                     <p className="text-sm text-gray-500 mb-1">Budget Used</p>
                     <p className="text-3xl font-bold text-white">
                         {totalBudgeted > 0 ? ((totalActual / totalBudgeted) * 100).toFixed(0) : 0}%
@@ -290,7 +290,7 @@ export default function BudgetTracker({ projectId }: BudgetTrackerProps) {
                     <Loader2 className="animate-spin text-yellow-500" size={32} />
                 </div>
             ) : (
-                <div className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden">
                     {/* Table Header */}
                     <div className="grid grid-cols-12 gap-4 p-4 border-b border-white/5 text-sm font-medium text-gray-500">
                         <div className="col-span-5">Category / Item</div>

@@ -162,7 +162,7 @@ export default function DayOutOfDays({ projectId }: DayOutOfDaysProps) {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Calendar className="text-yellow-500" />
                         Day Out of Days
                     </h2>
@@ -244,7 +244,7 @@ export default function DayOutOfDays({ projectId }: DayOutOfDaysProps) {
                     <Loader2 className="animate-spin text-yellow-500" size={32} />
                 </div>
             ) : (
-                <div className="bg-[#121212] border border-white/5 rounded-xl overflow-x-auto">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-x-auto">
                     <table className="w-full">
                         <thead>
                             <tr className="border-b border-white/5">
@@ -312,21 +312,21 @@ export default function DayOutOfDays({ projectId }: DayOutOfDaysProps) {
 
             {/* Summary */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Shoot Days</p>
-                    <p className="text-2xl font-bold text-white">{shootDays.length}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{shootDays.length}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Cast Members</p>
-                    <p className="text-2xl font-bold text-white">{entries.length}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{entries.length}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Work Days</p>
                     <p className="text-2xl font-bold text-blue-400">
                         {entries.reduce((sum, e) => sum + e.total_work_days, 0)}
                     </p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Hold Days</p>
                     <p className="text-2xl font-bold text-orange-400">
                         {entries.reduce((sum, e) => sum + e.total_hold_days, 0)}

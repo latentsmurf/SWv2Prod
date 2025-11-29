@@ -259,7 +259,7 @@ export default function ShareReviewModal({ projectId, projectName, onClose }: Sh
                                 {links.map((link) => (
                                     <div
                                         key={link.id}
-                                        className="bg-[#121212] border border-white/5 rounded-xl p-4"
+                                        className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4"
                                     >
                                         <div className="flex items-start justify-between gap-4">
                                             <div className="flex-1 min-w-0">

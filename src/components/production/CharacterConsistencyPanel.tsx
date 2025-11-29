@@ -560,7 +560,7 @@ export default function CharacterConsistencyPanel({
             {/* Add Character Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-md bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Add Character</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">

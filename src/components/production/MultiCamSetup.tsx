@@ -132,7 +132,7 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Grid className="text-yellow-500" />
                         Multi-Cam Setup
                     </h2>
@@ -164,7 +164,7 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
             {activeSetup ? (
                 <div className="space-y-6">
                     {/* Setup Info */}
-                    <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                    <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                         <div className="flex items-center justify-between mb-4">
                             <div>
                                 <h3 className="text-white font-bold text-lg">{activeSetup.name}</h3>
@@ -250,7 +250,7 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
 
                     {/* Sync Diagram */}
                     {activeSetup.cameras.length > 1 && (
-                        <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                        <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                             <h4 className="text-white font-medium mb-3">Sync Configuration</h4>
                             <div className="flex items-center justify-center gap-8">
                                 {activeSetup.cameras.map((cam, i) => (
@@ -277,7 +277,7 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
                     )}
                 </div>
             ) : (
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-8 text-center text-gray-500">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-8 text-center text-gray-500">
                     Select or create a multi-cam setup
                 </div>
             )}
@@ -285,7 +285,7 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
             {/* Add Setup Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-md bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">New Multi-Cam Setup</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white"><X size={20} /></button>
@@ -310,7 +310,7 @@ export default function MultiCamSetup({ projectId, sceneId }: MultiCamSetupProps
             {/* Add Camera Modal */}
             {showCameraModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-md bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Add Camera</h3>
                             <button onClick={() => setShowCameraModal(false)} className="p-2 text-gray-500 hover:text-white"><X size={20} /></button>

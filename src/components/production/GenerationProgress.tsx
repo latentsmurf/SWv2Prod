@@ -208,7 +208,7 @@ export default function GenerationProgress({
     }
 
     return (
-        <div className="fixed bottom-4 right-4 w-96 bg-[#121212] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
+        <div className="fixed bottom-4 right-4 w-96 bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50">
             {/* Header */}
             <div 
                 className="p-4 border-b border-white/5 cursor-pointer hover:bg-white/5 transition-colors"

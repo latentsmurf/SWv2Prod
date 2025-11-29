@@ -199,7 +199,7 @@ export default function ScriptBreakdown({ projectId }: ScriptBreakdownProps) {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Tag className="text-yellow-500" />
                         Script Breakdown
                     </h2>
@@ -281,7 +281,7 @@ export default function ScriptBreakdown({ projectId }: ScriptBreakdownProps) {
                     {breakdowns.map((scene) => (
                         <div
                             key={scene.scene_id}
-                            className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden"
+                            className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden"
                         >
                             <button
                                 onClick={() => toggleScene(scene.scene_id)}
@@ -359,7 +359,7 @@ export default function ScriptBreakdown({ projectId }: ScriptBreakdownProps) {
                         return (
                             <div
                                 key={type}
-                                className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden"
+                                className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden"
                             >
                                 <div className={`p-4 border-b border-white/5 ${color.split(' ')[1]}`}>
                                     <h3 className={`font-medium flex items-center gap-2 ${color.split(' ')[0]}`}>
@@ -406,7 +406,7 @@ export default function ScriptBreakdown({ projectId }: ScriptBreakdownProps) {
             {/* Add Element Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-md bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Add Element</h3>
                             <button

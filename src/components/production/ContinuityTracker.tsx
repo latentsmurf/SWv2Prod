@@ -283,7 +283,7 @@ export default function ContinuityTracker({ projectId }: ContinuityTrackerProps)
                             )}
                             <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <h3 className="text-2xl font-bold text-white">{selectedItem.name}</h3>
+                                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{selectedItem.name}</h3>
                                     <span className={`px-2 py-1 rounded text-xs ${
                                         selectedItem.status === 'consistent'
                                             ? 'bg-green-500/10 text-green-400'

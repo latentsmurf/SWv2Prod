@@ -132,7 +132,7 @@ export default function SFXDatabase({ projectId }: SFXDatabaseProps) {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Flame className="text-yellow-500" />
                         Special Effects (SFX)
                     </h2>
@@ -154,15 +154,15 @@ export default function SFXDatabase({ projectId }: SFXDatabaseProps) {
             )}
 
             <div className="grid grid-cols-3 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Effects</p>
-                    <p className="text-2xl font-bold text-white">{stats.total}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Pyrotechnics</p>
                     <p className="text-2xl font-bold text-red-400">{stats.pyro}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">High Risk</p>
                     <p className="text-2xl font-bold text-orange-400">{stats.highRisk}</p>
                 </div>
@@ -213,13 +213,13 @@ export default function SFXDatabase({ projectId }: SFXDatabaseProps) {
 
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-lg bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Add SFX Effect</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white"><X size={20} /></button>
                         </div>
                         <div className="p-6 space-y-4">
-                            <input type="text" value={form.name} onChange={(e) => setForm({...form, name: e.target.value})} placeholder="Effect name" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white" />
+                            <input type="text" value={form.name} onChange={(e) => setForm({...form, name: e.target.value})} placeholder="Effect name" className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white" />
                             <div className="grid grid-cols-2 gap-4">
                                 <select value={form.type} onChange={(e) => setForm({...form, type: e.target.value as any})} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white">
                                     {Object.entries(SFX_TYPES).map(([k, v]) => <option key={k} value={k}>{v.icon} {v.label}</option>)}
@@ -228,7 +228,7 @@ export default function SFXDatabase({ projectId }: SFXDatabaseProps) {
                                     {Object.entries(RISK_LEVELS).map(([k, v]) => <option key={k} value={k}>{v.label}</option>)}
                                 </select>
                             </div>
-                            <textarea value={form.description} onChange={(e) => setForm({...form, description: e.target.value})} placeholder="Description" rows={2} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white resize-none" />
+                            <textarea value={form.description} onChange={(e) => setForm({...form, description: e.target.value})} placeholder="Description" rows={2} className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white resize-none" />
                             <div className="flex gap-4">
                                 <label className="flex items-center gap-2"><input type="checkbox" checked={form.permits_required} onChange={(e) => setForm({...form, permits_required: e.target.checked})} /><span className="text-sm text-gray-400">Permits Required</span></label>
                                 <label className="flex items-center gap-2"><input type="checkbox" checked={form.fire_marshal_required} onChange={(e) => setForm({...form, fire_marshal_required: e.target.checked})} /><span className="text-sm text-red-400">Fire Marshal</span></label>

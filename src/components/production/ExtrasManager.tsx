@@ -257,7 +257,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Users className="text-yellow-500" />
                         Extras / Background
                     </h2>
@@ -292,19 +292,19 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
 
             {/* Stats */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Booked</p>
-                    <p className="text-2xl font-bold text-white">{stats.total}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Checked In</p>
                     <p className="text-2xl font-bold text-green-400">{stats.checkedIn}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Wrapped</p>
                     <p className="text-2xl font-bold text-purple-400">{stats.wrapped}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Cost</p>
                     <p className="text-2xl font-bold text-yellow-400">${stats.totalCost.toLocaleString()}</p>
                 </div>
@@ -328,7 +328,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
                     <Loader2 className="animate-spin text-yellow-500" size={32} />
                 </div>
             ) : (
-                <div className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden">
                     <table className="w-full">
                         <thead>
                             <tr className="border-b border-white/5">
@@ -429,7 +429,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
             {/* Add Single Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-lg bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Add Extra</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
@@ -523,7 +523,7 @@ export default function ExtrasManager({ projectId, date }: ExtrasManagerProps) {
             {/* Bulk Add Modal */}
             {showBulkModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-lg bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-lg bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Bulk Add Extras</h3>
                             <button onClick={() => setShowBulkModal(false)} className="p-2 text-gray-500 hover:text-white">

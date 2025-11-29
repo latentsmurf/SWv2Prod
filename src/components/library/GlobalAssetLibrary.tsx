@@ -213,7 +213,7 @@ export default function GlobalAssetLibrary({
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search by name, description, or tags..."
-                            className="w-full bg-white/5 border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-white placeholder:text-gray-600 focus:outline-none focus:border-yellow-500/50"
+                            className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-white placeholder:text-gray-600 focus:outline-none focus:border-yellow-500/50"
                         />
                     </div>
 
@@ -579,7 +579,7 @@ function CreateAssetModal({
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder={`e.g., ${category === 'cast' ? 'John Smith' : category === 'location' ? 'Modern Loft' : category === 'wardrobe' ? 'Casual Friday' : 'Vintage Camera'}`}
-                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder:text-gray-600 focus:outline-none focus:border-yellow-500/50"
+                            className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-white placeholder:text-gray-600 focus:outline-none focus:border-yellow-500/50"
                         />
                     </div>
 
@@ -591,7 +591,7 @@ function CreateAssetModal({
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder={`Describe the ${category} you want to create...`}
                             rows={4}
-                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder:text-gray-600 focus:outline-none focus:border-yellow-500/50 resize-none"
+                            className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-lg px-4 py-2.5 text-white placeholder:text-gray-600 focus:outline-none focus:border-yellow-500/50 resize-none"
                         />
                     </div>
                 </div>

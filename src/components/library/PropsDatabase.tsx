@@ -162,7 +162,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Package className="text-yellow-500" />
                         Props Database
                     </h2>
@@ -179,19 +179,19 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
 
             {/* Stats */}
             <div className="grid grid-cols-4 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Props</p>
-                    <p className="text-2xl font-bold text-white">{stats.total}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Hero Props</p>
                     <p className="text-2xl font-bold text-yellow-400">{stats.hero}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Still Needed</p>
                     <p className="text-2xl font-bold text-red-400">{stats.needed}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Value</p>
                     <p className="text-2xl font-bold text-green-400">${stats.total_value.toLocaleString()}</p>
                 </div>
@@ -206,7 +206,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search props..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
                     />
                 </div>
                 <select
@@ -253,7 +253,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
             ) : (
                 <div className={viewMode === 'grid' ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4' : 'space-y-2'}>
                     {filteredProps.length === 0 ? (
-                        <div className="col-span-full bg-[#121212] border border-white/5 rounded-xl p-8 text-center">
+                        <div className="col-span-full bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-8 text-center">
                             <Package size={40} className="mx-auto text-gray-600 mb-3" />
                             <p className="text-white font-medium mb-1">No props found</p>
                             <p className="text-sm text-gray-500">Try adjusting your search or add a new prop</p>
@@ -265,7 +265,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                             return (
                                 <div
                                     key={prop.id}
-                                    className={`bg-[#121212] border border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors ${selectionMode ? 'cursor-pointer' : ''}`}
+                                    className={`bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors ${selectionMode ? 'cursor-pointer' : ''}`}
                                     onClick={() => selectionMode && onSelect?.(prop)}
                                 >
                                     {/* Image */}
@@ -295,7 +295,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
 
                                     {/* Info */}
                                     <div className="p-4">
-                                        <h3 className="text-white font-bold truncate">{prop.name}</h3>
+                                        <h3 className="text-gray-900 dark:text-white font-bold truncate">{prop.name}</h3>
                                         {prop.description && <p className="text-sm text-gray-500 truncate">{prop.description}</p>}
                                         <div className="flex items-center gap-2 mt-2 text-xs text-gray-500">
                                             {(prop.purchase_cost || prop.rental_cost) ? (
@@ -350,7 +350,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                             return (
                                 <div
                                     key={prop.id}
-                                    className="flex items-center gap-4 p-3 bg-[#121212] border border-white/5 rounded-xl hover:border-white/20 transition-colors"
+                                    className="flex items-center gap-4 p-3 bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl hover:border-white/20 transition-colors"
                                 >
                                     <div className="w-16 h-16 rounded-lg overflow-hidden bg-white/5 flex-shrink-0">
                                         {prop.image_url ? (
@@ -387,7 +387,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
             {/* Add Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-2xl bg-[#121212] border border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+                    <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
                             <h3 className="text-lg font-bold text-white">Add Prop</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
@@ -402,7 +402,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                         type="text"
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -410,7 +410,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                     <select
                                         value={form.category}
                                         onChange={(e) => setForm({ ...form, category: e.target.value as Prop['category'] })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         {Object.entries(CATEGORIES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.icon} {config.label}</option>
@@ -424,7 +424,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                     value={form.description}
                                     onChange={(e) => setForm({ ...form, description: e.target.value })}
                                     rows={2}
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white resize-none"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white resize-none"
                                 />
                             </div>
                             <div className="grid grid-cols-4 gap-4">
@@ -435,7 +435,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                         value={form.quantity}
                                         onChange={(e) => setForm({ ...form, quantity: parseInt(e.target.value) || 1 })}
                                         min="1"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -443,7 +443,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                     <select
                                         value={form.condition}
                                         onChange={(e) => setForm({ ...form, condition: e.target.value as Prop['condition'] })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         <option value="new">New</option>
                                         <option value="good">Good</option>
@@ -456,7 +456,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                     <select
                                         value={form.source}
                                         onChange={(e) => setForm({ ...form, source: e.target.value as Prop['source'] })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         <option value="owned">Owned</option>
                                         <option value="rented">Rented</option>
@@ -471,7 +471,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                         type="number"
                                         value={form.purchase_cost}
                                         onChange={(e) => setForm({ ...form, purchase_cost: parseInt(e.target.value) || 0 })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                             </div>
@@ -482,7 +482,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                         type="text"
                                         value={form.vendor}
                                         onChange={(e) => setForm({ ...form, vendor: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -491,7 +491,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                         type="text"
                                         value={form.storage_location}
                                         onChange={(e) => setForm({ ...form, storage_location: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                             </div>
@@ -502,7 +502,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
                                     value={form.image_url}
                                     onChange={(e) => setForm({ ...form, image_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                 />
                             </div>
                             <div className="flex items-center gap-6">
@@ -545,7 +545,7 @@ export default function PropsDatabase({ projectId, onSelect, selectionMode }: Pr
             {/* Detail Modal */}
             {selectedProp && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4" onClick={() => setSelectedProp(null)}>
-                    <div className="w-full max-w-2xl bg-[#121212] border border-white/10 rounded-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+                    <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
                         <div className="flex">
                             <div className="w-1/2 aspect-square bg-white/5">
                                 {selectedProp.image_url ? (

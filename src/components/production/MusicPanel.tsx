@@ -193,7 +193,7 @@ export default function MusicPanel({ projectId, scenes, onTrackSelect }: MusicPa
     const currentTrack = tracks.find(t => t.id === playingTrackId);
 
     return (
-        <div className="h-full flex flex-col bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-50 dark:bg-[#0a0a0a]">
             {/* Hidden Audio Element */}
             <audio
                 ref={audioRef}
@@ -225,7 +225,7 @@ export default function MusicPanel({ projectId, scenes, onTrackSelect }: MusicPa
 
                 {/* Generator Panel */}
                 {showGenerator && (
-                    <div className="bg-[#121212] border border-white/5 rounded-xl p-4 space-y-4">
+                    <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4 space-y-4">
                         {/* Genre Selection */}
                         <div>
                             <label className="text-xs text-gray-500 block mb-2">Genre</label>
@@ -356,7 +356,7 @@ export default function MusicPanel({ projectId, scenes, onTrackSelect }: MusicPa
                                 className={`flex items-center gap-4 p-3 rounded-xl transition-all ${
                                     isPlaying 
                                         ? 'bg-green-500/10 border border-green-500/30' 
-                                        : 'bg-[#121212] border border-white/5 hover:border-white/20'
+                                        : 'bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 hover:border-white/20'
                                 }`}
                             >
                                 {/* Play Button */}

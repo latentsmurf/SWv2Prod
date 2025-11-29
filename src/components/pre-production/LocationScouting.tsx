@@ -334,7 +334,7 @@ export default function LocationScouting({ projectId }: LocationScoutingProps) {
                         {/* Header */}
                         <div className="flex items-start justify-between mb-6">
                             <div>
-                                <h3 className="text-2xl font-bold text-white mb-2">{selectedLocation.name}</h3>
+                                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{selectedLocation.name}</h3>
                                 <p className="text-gray-400 flex items-center gap-2 mb-2">
                                     <MapPin size={16} />
                                     {selectedLocation.address}
@@ -403,7 +403,7 @@ export default function LocationScouting({ projectId }: LocationScoutingProps) {
                             {selectedLocation.cost_estimate && (
                                 <div className="p-4 bg-white/5 rounded-xl">
                                     <h4 className="text-sm font-medium text-gray-400 mb-3">Estimated Cost</h4>
-                                    <p className="text-2xl font-bold text-white flex items-center gap-1">
+                                    <p className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-1">
                                         <DollarSign size={20} />
                                         {selectedLocation.cost_estimate.toLocaleString()}
                                     </p>
@@ -467,7 +467,7 @@ export default function LocationScouting({ projectId }: LocationScoutingProps) {
             {/* Editor Modal */}
             {showEditor && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-2xl bg-[#121212] border border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+                    <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">
                                 {selectedLocation ? 'Edit Location' : 'Add Location'}

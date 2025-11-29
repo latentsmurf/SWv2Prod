@@ -207,7 +207,7 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <HardDrive className="text-yellow-500" />
                         Media Management
                     </h2>
@@ -227,29 +227,29 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
 
             {/* Stats */}
             <div className="grid grid-cols-6 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Cards</p>
-                    <p className="text-2xl font-bold text-white">{stats.total_cards}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total_cards}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Clips</p>
                     <p className="text-2xl font-bold text-blue-400">{stats.total_clips}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Data</p>
                     <p className="text-2xl font-bold text-purple-400">{stats.total_data.toFixed(1)} GB</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Duration</p>
                     <p className="text-2xl font-bold text-green-400">{formatDuration(stats.total_duration)}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Needs Backup</p>
                     <p className={`text-2xl font-bold ${stats.needs_backup > 0 ? 'text-red-400' : 'text-gray-500'}`}>
                         {stats.needs_backup}
                     </p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Not Verified</p>
                     <p className={`text-2xl font-bold ${stats.not_verified > 0 ? 'text-yellow-400' : 'text-gray-500'}`}>
                         {stats.not_verified}
@@ -315,7 +315,7 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
                     <Loader2 className="animate-spin text-yellow-500" size={32} />
                 </div>
             ) : (
-                <div className="bg-[#121212] border border-white/5 rounded-xl overflow-hidden">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden">
                     <table className="w-full">
                         <thead>
                             <tr className="border-b border-white/5">
@@ -435,7 +435,7 @@ export default function MediaManagement({ projectId }: MediaManagementProps) {
             {/* Add Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-md bg-[#121212] border border-white/10 rounded-2xl overflow-hidden">
+                    <div className="w-full max-w-md bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-white">Add Media Card</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">

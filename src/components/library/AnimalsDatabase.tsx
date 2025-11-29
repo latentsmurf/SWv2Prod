@@ -234,7 +234,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
                         <Dog className="text-yellow-500" />
                         Animals & Creatures
                     </h2>
@@ -263,15 +263,15 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4">
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Total Animals</p>
-                    <p className="text-2xl font-bold text-white">{stats.total}</p>
+                    <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.total}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">Booked/On Set</p>
                     <p className="text-2xl font-bold text-green-400">{stats.booked}</p>
                 </div>
-                <div className="bg-[#121212] border border-white/5 rounded-xl p-4">
+                <div className="bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-4">
                     <p className="text-sm text-gray-500">With Handler</p>
                     <p className="text-2xl font-bold text-blue-400">{stats.with_handler}</p>
                 </div>
@@ -286,7 +286,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search animals..."
-                        className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
+                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-white"
                     />
                 </div>
                 <select
@@ -309,7 +309,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
             ) : (
                 <div className="grid grid-cols-4 gap-4">
                     {filteredAnimals.length === 0 ? (
-                        <div className="col-span-4 bg-[#121212] border border-white/5 rounded-xl p-8 text-center text-gray-500">
+                        <div className="col-span-4 bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl p-8 text-center text-gray-500">
                             No animals found
                         </div>
                     ) : (
@@ -320,7 +320,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                             return (
                                 <div
                                     key={animal.id}
-                                    className={`bg-[#121212] border border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors ${
+                                    className={`bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:border-white/20 transition-colors ${
                                         selectionMode ? 'cursor-pointer' : ''
                                     }`}
                                     onClick={() => selectionMode && onSelect?.(animal)}
@@ -426,7 +426,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
             {/* Add Modal */}
             {showAddModal && (
                 <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-                    <div className="w-full max-w-2xl bg-[#121212] border border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+                    <div className="w-full max-w-2xl bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
                         <div className="p-6 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#121212]">
                             <h3 className="text-lg font-bold text-white">Add Animal</h3>
                             <button onClick={() => setShowAddModal(false)} className="p-2 text-gray-500 hover:text-white">
@@ -443,7 +443,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                                         value={form.name}
                                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                                         placeholder="Animal's name"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -451,7 +451,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                                     <select
                                         value={form.type}
                                         onChange={(e) => setForm({ ...form, type: e.target.value as any })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     >
                                         {Object.entries(ANIMAL_TYPES).map(([key, config]) => (
                                             <option key={key} value={key}>{config.emoji} {config.label}</option>
@@ -468,7 +468,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                                         value={form.species}
                                         onChange={(e) => setForm({ ...form, species: e.target.value })}
                                         placeholder="e.g., Dog, Cat, Horse"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -478,7 +478,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                                         value={form.breed}
                                         onChange={(e) => setForm({ ...form, breed: e.target.value })}
                                         placeholder="e.g., Golden Retriever"
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                             </div>
@@ -490,7 +490,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                                     value={form.trained_behaviors}
                                     onChange={(e) => setForm({ ...form, trained_behaviors: e.target.value })}
                                     placeholder="e.g., Sit, Stay, Bark on cue, Fetch"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                 />
                             </div>
 
@@ -501,7 +501,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                                         type="text"
                                         value={form.handler_name}
                                         onChange={(e) => setForm({ ...form, handler_name: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                                 <div>
@@ -510,7 +510,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                                         type="text"
                                         value={form.handler_phone}
                                         onChange={(e) => setForm({ ...form, handler_phone: e.target.value })}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                        className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                     />
                                 </div>
                             </div>
@@ -522,7 +522,7 @@ export default function AnimalsDatabase({ projectId, onSelect, selectionMode }: 
                                     value={form.image_url}
                                     onChange={(e) => setForm({ ...form, image_url: e.target.value })}
                                     placeholder="https://..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white"
+                                    className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-white"
                                 />
                             </div>
 
