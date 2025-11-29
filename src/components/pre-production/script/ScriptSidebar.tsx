@@ -274,39 +274,39 @@ export default function ScriptSidebar({ editor, projectId, onScenesSync }: Scrip
     const allCharacters = Array.from(new Set(scenes.flatMap(s => s.characters)));
 
     return (
-        <div className="w-80 border-l border-white/5 bg-black/20 backdrop-blur-md flex flex-col h-full">
+        <div className="w-80 border-l border-gray-200 dark:border-white/5 bg-white dark:bg-black/20 backdrop-blur-md flex flex-col h-full">
             {/* Context Panel */}
-            <div className="p-6 border-b border-white/5">
+            <div className="p-6 border-b border-gray-200 dark:border-white/5">
                 <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Context</h3>
 
                 {activeContext.type === 'location' && (
-                    <div className="bg-blue-900/20 border border-blue-500/30 p-4 rounded-lg">
-                        <div className="flex items-center gap-2 mb-2 text-blue-400">
+                    <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-500/30 p-4 rounded-lg">
+                        <div className="flex items-center gap-2 mb-2 text-blue-600 dark:text-blue-400">
                             <MapPin size={16} />
                             <span className="font-bold text-sm">Location Detected</span>
                         </div>
-                        <p className="text-white font-medium">{activeContext.name || "Unnamed Location"}</p>
-                        <button className="mt-3 w-full py-1.5 text-xs bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 rounded transition-colors">
+                        <p className="text-gray-900 dark:text-white font-medium">{activeContext.name || "Unnamed Location"}</p>
+                        <button className="mt-3 w-full py-1.5 text-xs bg-blue-100 dark:bg-blue-500/20 hover:bg-blue-200 dark:hover:bg-blue-500/30 text-blue-600 dark:text-blue-300 rounded transition-colors">
                             Generate Location Asset
                         </button>
                     </div>
                 )}
 
                 {activeContext.type === 'character' && (
-                    <div className="bg-purple-900/20 border border-purple-500/30 p-4 rounded-lg">
-                        <div className="flex items-center gap-2 mb-2 text-purple-400">
+                    <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-500/30 p-4 rounded-lg">
+                        <div className="flex items-center gap-2 mb-2 text-purple-600 dark:text-purple-400">
                             <User size={16} />
                             <span className="font-bold text-sm">Character Detected</span>
                         </div>
-                        <p className="text-white font-medium">{activeContext.name || "Unnamed Character"}</p>
-                        <button className="mt-3 w-full py-1.5 text-xs bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 rounded transition-colors">
+                        <p className="text-gray-900 dark:text-white font-medium">{activeContext.name || "Unnamed Character"}</p>
+                        <button className="mt-3 w-full py-1.5 text-xs bg-purple-100 dark:bg-purple-500/20 hover:bg-purple-200 dark:hover:bg-purple-500/30 text-purple-600 dark:text-purple-300 rounded transition-colors">
                             Cast Actor
                         </button>
                     </div>
                 )}
 
                 {!activeContext.type && (
-                    <div className="text-gray-600 text-sm italic text-center py-4">
+                    <div className="text-gray-500 dark:text-gray-600 text-sm italic text-center py-4">
                         Select a Scene Heading or Character to see context.
                     </div>
                 )}
@@ -314,7 +314,7 @@ export default function ScriptSidebar({ editor, projectId, onScenesSync }: Scrip
 
             {/* Characters Panel */}
             {allCharacters.length > 0 && (
-                <div className="p-6 border-b border-white/5">
+                <div className="p-6 border-b border-gray-200 dark:border-white/5">
                     <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
                         <Users size={14} />
                         Characters ({allCharacters.length})
@@ -323,7 +323,7 @@ export default function ScriptSidebar({ editor, projectId, onScenesSync }: Scrip
                         {allCharacters.slice(0, 8).map((char, i) => (
                             <span 
                                 key={i} 
-                                className="px-2 py-1 text-xs bg-purple-500/10 text-purple-400 rounded-lg border border-purple-500/20"
+                                className="px-2 py-1 text-xs bg-purple-100 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-lg border border-purple-200 dark:border-purple-500/20"
                             >
                                 {char}
                             </span>
@@ -351,8 +351,8 @@ export default function ScriptSidebar({ editor, projectId, onScenesSync }: Scrip
                             disabled={isSyncing || syncStatus === 'synced'}
                             className={`flex items-center gap-1 px-2 py-1 text-xs rounded transition-colors ${
                                 syncStatus === 'synced' 
-                                    ? 'bg-green-500/10 text-green-400' 
-                                    : 'bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20'
+                                    ? 'bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400' 
+                                    : 'bg-yellow-100 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 hover:bg-yellow-200 dark:hover:bg-yellow-500/20'
                             }`}
                         >
                             {isSyncing ? (
@@ -372,23 +372,23 @@ export default function ScriptSidebar({ editor, projectId, onScenesSync }: Scrip
                         <div 
                             key={index} 
                             className={`group relative rounded-lg transition-all ${
-                                scene.synced ? 'bg-green-500/5 border border-green-500/10' : 'hover:bg-white/5'
+                                scene.synced ? 'bg-green-50 dark:bg-green-500/5 border border-green-200 dark:border-green-500/10' : 'hover:bg-gray-100 dark:hover:bg-white/5'
                             }`}
                         >
                             <button
                                 onClick={() => scrollToScene(scene.pos)}
-                                className="w-full text-left px-3 py-2.5 text-sm text-gray-400 hover:text-white transition-colors"
+                                className="w-full text-left px-3 py-2.5 text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                             >
                                 <div className="flex items-center gap-2">
-                                    <span className="text-gray-600 font-mono text-xs">{index + 1}</span>
+                                    <span className="text-gray-500 dark:text-gray-600 font-mono text-xs">{index + 1}</span>
                                     {scene.synced && <Check size={12} className="text-green-500" />}
                                 </div>
-                                <p className="truncate mt-0.5 text-white/80 text-xs">
+                                <p className="truncate mt-0.5 text-gray-700 dark:text-white/80 text-xs">
                                     {scene.text || "Untitled Scene"}
                                 </p>
                                 {scene.characters.length > 0 && (
                                     <div className="flex items-center gap-1 mt-1">
-                                        <Users size={10} className="text-purple-400" />
+                                        <Users size={10} className="text-purple-500 dark:text-purple-400" />
                                         <span className="text-[10px] text-gray-500">
                                             {scene.characters.slice(0, 3).join(', ')}
                                             {scene.characters.length > 3 && ` +${scene.characters.length - 3}`}
@@ -416,7 +416,7 @@ export default function ScriptSidebar({ editor, projectId, onScenesSync }: Scrip
                         </div>
                     ))}
                     {scenes.length === 0 && (
-                        <div className="text-gray-600 text-sm italic text-center py-8">
+                        <div className="text-gray-500 dark:text-gray-600 text-sm italic text-center py-8">
                             <p>No scenes detected.</p>
                             <p className="text-xs mt-2">Start typing a Scene Heading</p>
                             <p className="text-xs text-gray-500 mt-1">(e.g. INT. ROOM - DAY)</p>
@@ -427,7 +427,7 @@ export default function ScriptSidebar({ editor, projectId, onScenesSync }: Scrip
             
             {/* Action Footer */}
             {scenes.length > 0 && (
-                <div className="p-4 border-t border-white/5">
+                <div className="p-4 border-t border-gray-200 dark:border-white/5">
                     <button
                         onClick={() => {
                             handleSyncScenes().then(() => {

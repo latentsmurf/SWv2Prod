@@ -218,15 +218,15 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
     const selectedItemData = board.items.find(i => i.id === selectedItem);
 
     return (
-        <div className="h-full flex flex-col bg-gray-50 dark:bg-gray-50 dark:bg-[#0a0a0a]">
+        <div className="h-full flex flex-col bg-gray-100 dark:bg-[#0a0a0a]">
             {/* Toolbar */}
-            <div className="flex items-center justify-between p-4 border-b border-white/5">
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-white/5 bg-white dark:bg-transparent">
                 <div className="flex items-center gap-4">
                     <input
                         type="text"
                         value={board.name}
                         onChange={(e) => setBoard(prev => ({ ...prev, name: e.target.value }))}
-                        className="bg-transparent text-xl font-bold text-white focus:outline-none"
+                        className="bg-transparent text-xl font-bold text-gray-900 dark:text-white focus:outline-none"
                     />
                 </div>
 
@@ -235,17 +235,17 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
                     <div className="relative">
                         <button
                             onClick={() => setShowAddMenu(!showAddMenu)}
-                            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 rounded-lg text-white"
+                            className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg text-gray-700 dark:text-white"
                         >
                             <Plus size={16} />
                             Add
                             <ChevronDown size={14} />
                         </button>
                         {showAddMenu && (
-                            <div className="absolute top-full right-0 mt-2 w-48 bg-[#1a1a1a] border border-white/10 rounded-xl overflow-hidden z-10">
-                                <label className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 cursor-pointer">
+                            <div className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-[#1a1a1a] border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden z-10 shadow-lg">
+                                <label className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer">
                                     <Image size={16} className="text-blue-400" />
-                                    <span className="text-sm text-white">Upload Image</span>
+                                    <span className="text-sm text-gray-900 dark:text-white">Upload Image</span>
                                     <input
                                         type="file"
                                         accept="image/*"
@@ -258,21 +258,21 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
                                         const url = window.prompt('Enter image URL:');
                                         if (url) addItem('image', url);
                                     }}
-                                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/5"
+                                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-100 dark:hover:bg-white/5"
                                 >
                                     <Link size={16} className="text-green-400" />
-                                    <span className="text-sm text-white">Add URL</span>
+                                    <span className="text-sm text-gray-900 dark:text-white">Add URL</span>
                                 </button>
                                 <button
                                     onClick={() => addItem('text', 'Double-click to edit')}
-                                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/5"
+                                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-100 dark:hover:bg-white/5"
                                 >
                                     <Type size={16} className="text-purple-400" />
-                                    <span className="text-sm text-white">Add Text</span>
+                                    <span className="text-sm text-gray-900 dark:text-white">Add Text</span>
                                 </button>
                                 <button
                                     onClick={() => addItem('color', '#FFD700', { color: '#FFD700' })}
-                                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-white/5"
+                                    className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-100 dark:hover:bg-white/5"
                                 >
                                     <Palette size={16} className="text-yellow-400" />
                                     <span className="text-sm text-white">Add Color</span>
@@ -296,17 +296,17 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
                     </button>
 
                     {/* Zoom */}
-                    <div className="flex items-center gap-1 bg-white/5 rounded-lg">
+                    <div className="flex items-center gap-1 bg-gray-100 dark:bg-white/5 rounded-lg">
                         <button
                             onClick={() => setZoom(Math.max(0.25, zoom - 0.25))}
-                            className="p-2 text-gray-400 hover:text-white"
+                            className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                         >
                             <ZoomOut size={16} />
                         </button>
-                        <span className="text-xs text-gray-400 w-12 text-center">{Math.round(zoom * 100)}%</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400 w-12 text-center">{Math.round(zoom * 100)}%</span>
                         <button
                             onClick={() => setZoom(Math.min(2, zoom + 0.25))}
-                            className="p-2 text-gray-400 hover:text-white"
+                            className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                         >
                             <ZoomIn size={16} />
                         </button>
@@ -416,12 +416,12 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
             {/* Properties Panel */}
             {selectedItemData && (
                 <div className="absolute right-4 top-20 w-64 bg-white dark:bg-[#121212] border border-gray-200 dark:border-white/10 rounded-xl p-4 shadow-xl">
-                    <h4 className="text-sm font-medium text-white mb-4">Properties</h4>
+                    <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-4">Properties</h4>
                     
                     {selectedItemData.type === 'color' && (
                         <div className="space-y-3">
                             <label className="block">
-                                <span className="text-xs text-gray-400">Color</span>
+                                <span className="text-xs text-gray-500 dark:text-gray-400">Color</span>
                                 <input
                                     type="color"
                                     value={selectedItemData.metadata?.color || selectedItemData.content}
@@ -437,21 +437,21 @@ export default function MoodBoardBuilder({ projectId, boardId, onSave }: MoodBoa
 
                     <div className="grid grid-cols-2 gap-3 mt-3">
                         <label className="block">
-                            <span className="text-xs text-gray-400">Width</span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400">Width</span>
                             <input
                                 type="number"
                                 value={selectedItemData.width}
                                 onChange={(e) => updateItem(selectedItemData.id, { width: Number(e.target.value) })}
-                                className="w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-sm text-white"
+                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded px-2 py-1 text-sm text-gray-900 dark:text-white"
                             />
                         </label>
                         <label className="block">
-                            <span className="text-xs text-gray-400">Height</span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400">Height</span>
                             <input
                                 type="number"
                                 value={selectedItemData.height}
                                 onChange={(e) => updateItem(selectedItemData.id, { height: Number(e.target.value) })}
-                                className="w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-sm text-white"
+                                className="w-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded px-2 py-1 text-sm text-gray-900 dark:text-white"
                             />
                         </label>
                     </div>
