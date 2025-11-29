@@ -8,7 +8,7 @@ import {
     Download, Archive, Eraser, Video, Type, Music, Subtitles, ImageIcon,
     Sticker, FolderOpen, Layout, Home, Search, Bell, HelpCircle,
     Keyboard, Command, FileText, Users, MapPin, Package, Camera,
-    Layers, Grid3X3, Zap, Sparkles, Plus
+    Layers, Grid3X3, Zap, Sparkles, Plus, Lock, Crown
 } from 'lucide-react';
 import GenerationStatus from '@/components/notifications/GenerationStatus';
 import OfflineBanner from '@/components/ui/OfflineBanner';
@@ -16,6 +16,10 @@ import OnboardingWizard from '@/components/onboarding/OnboardingWizard';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import CommandPalette from '@/components/ui/CommandPalette';
 import QuickThemePicker from '@/components/ui/QuickThemePicker';
+import { useSubscription } from '@/contexts/SubscriptionContext';
+import { getPlanInfo } from '@/config/featurePermissions';
+import UpgradeModal from '@/components/subscription/UpgradeModal';
+import PlanSelector from '@/components/subscription/PlanSelector';
 
 // Context for editor panel selection
 type EditorPanelType = 'video' | 'text' | 'audio' | 'caption' | 'image' | 'sticker' | 'uploads' | 'templates' | 'settings' | null;
@@ -52,7 +56,11 @@ const SidebarItem = ({
     href, 
     isActive, 
     collapsed,
-    badge
+    badge,
+    featureId,
+    locked,
+    requiredPlan,
+    onLockedClick
 }: { 
     icon: any; 
     label: string; 
@@ -60,37 +68,70 @@ const SidebarItem = ({
     isActive: boolean; 
     collapsed: boolean;
     badge?: string | number;
-}) => (
-    <Link
-        href={href}
-        className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group relative
-            ${isActive
-                ? 'bg-yellow-500/10 text-yellow-400 border-l-2 border-yellow-500'
-                : 'text-gray-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
-            }`}
-    >
-        <Icon size={18} className={isActive ? 'text-yellow-400' : 'text-gray-500 group-hover:text-gray-300'} />
-        {!collapsed && (
-            <>
-                <span className="text-sm font-medium flex-1">{label}</span>
-                {badge !== undefined && (
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
-                        isActive ? 'bg-yellow-500/20 text-yellow-400' : 'bg-white/10 text-gray-500'
-                    }`}>
-                        {badge}
-                    </span>
+    featureId?: string;
+    locked?: boolean;
+    requiredPlan?: string;
+    onLockedClick?: () => void;
+}) => {
+    if (locked) {
+        return (
+            <button
+                onClick={onLockedClick}
+                className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group relative w-full text-left text-gray-500 hover:bg-white/5 border-l-2 border-transparent opacity-60"
+            >
+                <Icon size={18} className="text-gray-600" />
+                {!collapsed && (
+                    <>
+                        <span className="text-sm font-medium flex-1">{label}</span>
+                        <span className="flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-bold uppercase bg-purple-500/20 text-purple-400">
+                            <Lock size={8} />
+                            {requiredPlan}
+                        </span>
+                    </>
                 )}
-            </>
-        )}
-        
-        {/* Tooltip for collapsed mode */}
-        {collapsed && (
-            <div className="absolute left-full ml-2 px-2 py-1 bg-[#1a1a1a] text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-white/10">
-                {label}
-            </div>
-        )}
-    </Link>
-);
+                
+                {/* Tooltip for collapsed mode */}
+                {collapsed && (
+                    <div className="absolute left-full ml-2 px-2 py-1 bg-[#1a1a1a] text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-white/10">
+                        {label} <span className="text-purple-400">({requiredPlan})</span>
+                    </div>
+                )}
+            </button>
+        );
+    }
+    
+    return (
+        <Link
+            href={href}
+            className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group relative
+                ${isActive
+                    ? 'bg-yellow-500/10 text-yellow-400 border-l-2 border-yellow-500'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
+                }`}
+        >
+            <Icon size={18} className={isActive ? 'text-yellow-400' : 'text-gray-500 group-hover:text-gray-300'} />
+            {!collapsed && (
+                <>
+                    <span className="text-sm font-medium flex-1">{label}</span>
+                    {badge !== undefined && (
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                            isActive ? 'bg-yellow-500/20 text-yellow-400' : 'bg-white/10 text-gray-500'
+                        }`}>
+                            {badge}
+                        </span>
+                    )}
+                </>
+            )}
+            
+            {/* Tooltip for collapsed mode */}
+            {collapsed && (
+                <div className="absolute left-full ml-2 px-2 py-1 bg-[#1a1a1a] text-white text-xs rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap z-50 border border-white/10">
+                    {label}
+                </div>
+            )}
+        </Link>
+    );
+};
 
 const EditorToolButton = ({ icon: Icon, label, isActive, collapsed, onClick }: { 
     icon: any; 
@@ -132,6 +173,9 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
     const [showOnboarding, setShowOnboarding] = useState(false);
     const pathname = usePathname();
     const isPostProduction = pathname === '/production/post';
+    
+    // Subscription context
+    const { canAccess, showUpgradeModal, subscription, currentPlan, getRequiredPlanForFeature } = useSubscription();
 
     // Check if user needs onboarding
     useEffect(() => {
@@ -165,25 +209,33 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, []);
 
-    // Navigation structure - organized by workflow phase
+    // Navigation structure - organized by workflow phase with feature IDs
     const mainNavItems = [
-        { icon: Home, label: 'Dashboard', href: '/dashboard' },
+        { icon: Home, label: 'Dashboard', href: '/dashboard', featureId: 'nav-dashboard' },
     ];
 
     const productionPhases = [
-        { icon: Clapperboard, label: 'Pre-Production', href: '/production/pre-production' },
-        { icon: Film, label: 'Production', href: '/production' },
-        { icon: Scissors, label: 'Post-Production', href: '/production/post' },
+        { icon: Clapperboard, label: 'Pre-Production', href: '/production/pre-production', featureId: 'nav-pre-production' },
+        { icon: Film, label: 'Production', href: '/production', featureId: 'nav-production' },
+        { icon: Scissors, label: 'Post-Production', href: '/production/post', featureId: 'nav-post-production' },
     ];
 
     const toolsItems = [
-        { icon: Eraser, label: 'Repair Studio', href: '/production/repair' },
-        { icon: Archive, label: 'Asset Vault', href: '/production/library' },
+        { icon: Eraser, label: 'Repair Studio', href: '/production/repair', featureId: 'nav-repair-studio' },
+        { icon: Archive, label: 'Asset Vault', href: '/production/library', featureId: 'nav-asset-vault' },
     ];
 
     const systemItems = [
-        { icon: Settings, label: 'Settings', href: '/settings/engine' },
+        { icon: Settings, label: 'Settings', href: '/settings/engine', featureId: 'nav-settings' },
     ];
+    
+    // Helper to get plan name for locked features
+    const getPlanName = (featureId: string) => {
+        const requiredPlan = getRequiredPlanForFeature(featureId);
+        if (!requiredPlan) return '';
+        const planInfo = getPlanInfo(requiredPlan);
+        return planInfo?.name || requiredPlan;
+    };
 
     const editorTools = [
         { icon: Video, label: 'Video', panel: 'video' as EditorPanelType },
@@ -245,6 +297,9 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                                     {...item}
                                     isActive={isActive(item.href)}
                                     collapsed={collapsed}
+                                    locked={!canAccess(item.featureId)}
+                                    requiredPlan={getPlanName(item.featureId)}
+                                    onLockedClick={() => showUpgradeModal(item.featureId)}
                                 />
                             ))}
                         </SidebarSection>
@@ -257,6 +312,9 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                                     {...item}
                                     isActive={isActive(item.href)}
                                     collapsed={collapsed}
+                                    locked={!canAccess(item.featureId)}
+                                    requiredPlan={getPlanName(item.featureId)}
+                                    onLockedClick={() => showUpgradeModal(item.featureId)}
                                 />
                             ))}
                         </SidebarSection>
@@ -269,6 +327,9 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                                     {...item}
                                     isActive={isActive(item.href)}
                                     collapsed={collapsed}
+                                    locked={!canAccess(item.featureId)}
+                                    requiredPlan={getPlanName(item.featureId)}
+                                    onLockedClick={() => showUpgradeModal(item.featureId)}
                                 />
                             ))}
                         </SidebarSection>
@@ -297,6 +358,9 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                                     {...item}
                                     isActive={isActive(item.href)}
                                     collapsed={collapsed}
+                                    locked={!canAccess(item.featureId)}
+                                    requiredPlan={getPlanName(item.featureId)}
+                                    onLockedClick={() => showUpgradeModal(item.featureId)}
                                 />
                             ))}
                         </SidebarSection>
@@ -316,18 +380,23 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
                             </button>
                         )}
                         
-                        {/* User */}
-                        <div className={`flex items-center gap-2 p-2 mt-1 rounded-lg bg-white/5 ${collapsed ? 'justify-center' : ''}`}>
-                            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                                <span className="text-[10px] font-bold text-white">JD</span>
-                            </div>
-                            {!collapsed && (
-                                <div className="flex flex-col min-w-0">
-                                    <span className="text-xs font-medium text-white truncate">John Doe</span>
-                                    <span className="text-[10px] text-gray-500">Pro Plan</span>
+                        {/* Plan Selector / User Info */}
+                        {collapsed ? (
+                            <div className="flex items-center justify-center p-2 mt-1 rounded-lg bg-white/5">
+                                <div 
+                                    className="w-7 h-7 rounded-full flex items-center justify-center text-sm cursor-pointer"
+                                    style={{ backgroundColor: `${currentPlan.color}30` }}
+                                    onClick={() => showUpgradeModal()}
+                                    title={`${currentPlan.name} Plan - Click to upgrade`}
+                                >
+                                    {currentPlan.icon}
                                 </div>
-                            )}
-                        </div>
+                            </div>
+                        ) : (
+                            <div className="mt-1">
+                                <PlanSelector variant="dropdown" showCredits={true} />
+                            </div>
+                        )}
                     </div>
                 </aside>
 
@@ -484,6 +553,9 @@ export default function ProductionLayout({ children, projectName = "Untitled Pro
 
                 {/* Offline Banner */}
                 <OfflineBanner />
+                
+                {/* Upgrade Modal */}
+                <UpgradeModal />
             </div>
         </EditorPanelContext.Provider>
     );

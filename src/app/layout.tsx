@@ -4,6 +4,7 @@ import "./globals.css";
 import { NotificationProvider } from "@/contexts/NotificationContext";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeCustomizationProvider } from "@/contexts/ThemeCustomizationContext";
+import { SubscriptionProvider } from "@/contexts/SubscriptionContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,9 +45,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ThemeCustomizationProvider>
-            <NotificationProvider>
-              {children}
-            </NotificationProvider>
+            <SubscriptionProvider>
+              <NotificationProvider>
+                {children}
+              </NotificationProvider>
+            </SubscriptionProvider>
           </ThemeCustomizationProvider>
         </ThemeProvider>
       </body>
