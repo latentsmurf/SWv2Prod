@@ -43,6 +43,7 @@ const navSections = [
         title: "Marketing",
         items: [
             { icon: Mail, label: "Email & Newsletters", href: "/admin/email" },
+            { icon: FileText, label: "Blog", href: "/admin/blog" },
         ]
     },
     {
