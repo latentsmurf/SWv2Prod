@@ -33,18 +33,17 @@ export default function OverviewTab({ campaigns, subscriberStats, subscriberCoun
                 {stats.map((stat, index) => (
                     <div
                         key={index}
-                        className="p-6 rounded-xl border"
-                        style={{ backgroundColor: 'var(--sw-background-secondary)', borderColor: 'var(--sw-border)' }}
+                        className="p-6 rounded-xl border bg-[#0a0a0a] border-white/10"
                     >
                         <div className="flex items-center justify-between mb-4">
                             <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center`}>
                                 <stat.icon size={20} className="text-white" />
                             </div>
                         </div>
-                        <div className="text-2xl font-bold" style={{ color: 'var(--sw-foreground)' }}>
+                        <div className="text-2xl font-bold text-white">
                             {stat.value}
                         </div>
-                        <div className="text-sm" style={{ color: 'var(--sw-foreground-muted)' }}>
+                        <div className="text-sm text-gray-500">
                             {stat.label}
                         </div>
                     </div>
@@ -52,32 +51,32 @@ export default function OverviewTab({ campaigns, subscriberStats, subscriberCoun
             </div>
 
             {/* Recent Campaigns */}
-            <div className="rounded-xl border" style={{ backgroundColor: 'var(--sw-background-secondary)', borderColor: 'var(--sw-border)' }}>
-                <div className="p-4 border-b" style={{ borderColor: 'var(--sw-border)' }}>
-                    <h3 className="font-semibold" style={{ color: 'var(--sw-foreground)' }}>Recent Campaigns</h3>
+            <div className="rounded-xl border bg-[#0a0a0a] border-white/10">
+                <div className="p-4 border-b border-white/5">
+                    <h3 className="font-semibold text-white">Recent Campaigns</h3>
                 </div>
-                <div className="divide-y" style={{ borderColor: 'var(--sw-border)' }}>
+                <div className="divide-y divide-white/5">
                     {campaigns.slice(0, 5).map(campaign => (
                         <div key={campaign.id} className="p-4 flex items-center justify-between">
                             <div className="flex items-center gap-4">
                                 <StatusBadge status={campaign.status} />
                                 <div>
-                                    <div className="font-medium" style={{ color: 'var(--sw-foreground)' }}>
+                                    <div className="font-medium text-white">
                                         {campaign.name}
                                     </div>
-                                    <div className="text-sm" style={{ color: 'var(--sw-foreground-muted)' }}>
+                                    <div className="text-sm text-gray-500">
                                         {campaign.subject}
                                     </div>
                                 </div>
                             </div>
                             <div className="text-right">
                                 {campaign.status === 'sent' && (
-                                    <div className="text-sm" style={{ color: 'var(--sw-foreground-muted)' }}>
+                                    <div className="text-sm text-gray-400">
                                         {campaign.openCount} opens · {campaign.clickCount} clicks
                                     </div>
                                 )}
                                 {campaign.status === 'scheduled' && campaign.scheduledFor && (
-                                    <div className="text-sm flex items-center gap-1" style={{ color: 'var(--sw-foreground-muted)' }}>
+                                    <div className="text-sm flex items-center gap-1 text-gray-500">
                                         <Clock size={14} />
                                         {new Date(campaign.scheduledFor).toLocaleDateString()}
                                     </div>
@@ -85,6 +84,11 @@ export default function OverviewTab({ campaigns, subscriberStats, subscriberCoun
                             </div>
                         </div>
                     ))}
+                    {campaigns.length === 0 && (
+                        <div className="p-8 text-center text-gray-500">
+                            No campaigns yet
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

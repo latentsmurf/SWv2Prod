@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { X } from 'lucide-react';
 import { EmailTemplate } from '@/lib/email';
 
 interface CreateCampaignModalProps {
@@ -35,19 +36,21 @@ export default function CreateCampaignModal({ templates, onClose, onCreated }: C
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={onClose}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={onClose}>
             <div 
-                className="w-full max-w-lg rounded-xl p-6"
-                style={{ backgroundColor: 'var(--sw-background-secondary)', border: '1px solid var(--sw-border)' }}
+                className="w-full max-w-lg rounded-xl bg-[#121212] border border-white/10"
                 onClick={e => e.stopPropagation()}
             >
-                <h2 className="text-lg font-bold mb-4" style={{ color: 'var(--sw-foreground)' }}>
-                    Create Campaign
-                </h2>
+                <div className="p-6 border-b border-white/5 flex items-center justify-between">
+                    <h2 className="text-lg font-bold text-white">Create Campaign</h2>
+                    <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-lg text-gray-400">
+                        <X size={16} />
+                    </button>
+                </div>
                 
-                <div className="space-y-4">
+                <div className="p-6 space-y-4">
                     <div>
-                        <label className="block text-sm font-medium mb-1" style={{ color: 'var(--sw-foreground)' }}>
+                        <label className="block text-sm font-medium mb-2 text-gray-400">
                             Campaign Name
                         </label>
                         <input
@@ -55,13 +58,12 @@ export default function CreateCampaignModal({ templates, onClose, onCreated }: C
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="e.g., March Newsletter"
-                            className="w-full px-3 py-2 rounded-lg"
-                            style={{ backgroundColor: 'var(--sw-background)', border: '1px solid var(--sw-border)', color: 'var(--sw-foreground)' }}
+                            className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500"
                         />
                     </div>
                     
                     <div>
-                        <label className="block text-sm font-medium mb-1" style={{ color: 'var(--sw-foreground)' }}>
+                        <label className="block text-sm font-medium mb-2 text-gray-400">
                             Subject Line
                         </label>
                         <input
@@ -69,20 +71,18 @@ export default function CreateCampaignModal({ templates, onClose, onCreated }: C
                             value={subject}
                             onChange={(e) => setSubject(e.target.value)}
                             placeholder="e.g., 🚀 New Features This Month"
-                            className="w-full px-3 py-2 rounded-lg"
-                            style={{ backgroundColor: 'var(--sw-background)', border: '1px solid var(--sw-border)', color: 'var(--sw-foreground)' }}
+                            className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500"
                         />
                     </div>
                     
                     <div>
-                        <label className="block text-sm font-medium mb-1" style={{ color: 'var(--sw-foreground)' }}>
+                        <label className="block text-sm font-medium mb-2 text-gray-400">
                             Template
                         </label>
                         <select
                             value={templateId}
                             onChange={(e) => setTemplateId(e.target.value)}
-                            className="w-full px-3 py-2 rounded-lg"
-                            style={{ backgroundColor: 'var(--sw-background)', border: '1px solid var(--sw-border)', color: 'var(--sw-foreground)' }}
+                            className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white"
                         >
                             <option value="">Select a template</option>
                             {templates.map(t => (
@@ -92,19 +92,17 @@ export default function CreateCampaignModal({ templates, onClose, onCreated }: C
                     </div>
                 </div>
 
-                <div className="flex justify-end gap-3 mt-6">
+                <div className="p-6 border-t border-white/5 flex justify-end gap-3">
                     <button
                         onClick={onClose}
-                        className="px-4 py-2 rounded-lg"
-                        style={{ color: 'var(--sw-foreground-muted)' }}
+                        className="px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleCreate}
                         disabled={!name || !subject || !templateId || saving}
-                        className="px-4 py-2 rounded-lg font-medium disabled:opacity-50"
-                        style={{ backgroundColor: 'var(--sw-accent)', color: 'var(--sw-accent-foreground)' }}
+                        className="px-4 py-2 rounded-lg font-medium disabled:opacity-50 bg-yellow-500 hover:bg-yellow-400 text-black"
                     >
                         {saving ? 'Creating...' : 'Create Campaign'}
                     </button>

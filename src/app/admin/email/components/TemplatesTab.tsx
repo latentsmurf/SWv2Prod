@@ -27,13 +27,12 @@ export default function TemplatesTab({ templates, onRefresh }: TemplatesTabProps
         <div className="space-y-4">
             {/* Actions Bar */}
             <div className="flex items-center justify-between">
-                <div className="text-sm" style={{ color: 'var(--sw-foreground-muted)' }}>
+                <div className="text-sm text-gray-500">
                     {templates.length} templates
                 </div>
                 <button
                     onClick={() => setShowCreateModal(true)}
-                    className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors"
-                    style={{ backgroundColor: 'var(--sw-accent)', color: 'var(--sw-accent-foreground)' }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors bg-yellow-500 hover:bg-yellow-400 text-black"
                 >
                     <Plus size={16} />
                     New Template
@@ -45,8 +44,7 @@ export default function TemplatesTab({ templates, onRefresh }: TemplatesTabProps
                 {templates.map(template => (
                     <div
                         key={template.id}
-                        className="rounded-xl border overflow-hidden"
-                        style={{ backgroundColor: 'var(--sw-background-secondary)', borderColor: 'var(--sw-border)' }}
+                        className="rounded-xl border overflow-hidden bg-[#0a0a0a] border-white/10"
                     >
                         {/* Preview Header */}
                         <div 
@@ -59,10 +57,10 @@ export default function TemplatesTab({ templates, onRefresh }: TemplatesTabProps
                         
                         {/* Content */}
                         <div className="p-4">
-                            <h3 className="font-semibold mb-1" style={{ color: 'var(--sw-foreground)' }}>
+                            <h3 className="font-semibold mb-1 text-white">
                                 {template.name}
                             </h3>
-                            <p className="text-sm mb-3 line-clamp-2" style={{ color: 'var(--sw-foreground-muted)' }}>
+                            <p className="text-sm mb-3 line-clamp-2 text-gray-500">
                                 {template.description || template.subject}
                             </p>
                             
@@ -72,14 +70,13 @@ export default function TemplatesTab({ templates, onRefresh }: TemplatesTabProps
                                     {template.variables.slice(0, 3).map((v, i) => (
                                         <span 
                                             key={i}
-                                            className="px-2 py-0.5 rounded text-xs font-mono"
-                                            style={{ backgroundColor: 'var(--sw-background-tertiary)', color: 'var(--sw-foreground-muted)' }}
+                                            className="px-2 py-0.5 rounded text-xs font-mono bg-white/5 text-gray-400"
                                         >
                                             {v}
                                         </span>
                                     ))}
                                     {template.variables.length > 3 && (
-                                        <span className="text-xs" style={{ color: 'var(--sw-foreground-muted)' }}>
+                                        <span className="text-xs text-gray-500">
                                             +{template.variables.length - 3} more
                                         </span>
                                     )}
@@ -90,16 +87,14 @@ export default function TemplatesTab({ templates, onRefresh }: TemplatesTabProps
                             <div className="flex items-center gap-2">
                                 <button
                                     onClick={() => setPreviewTemplate(template)}
-                                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors"
-                                    style={{ backgroundColor: 'var(--sw-background-tertiary)', color: 'var(--sw-foreground)' }}
+                                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors bg-white/5 hover:bg-white/10 text-white"
                                 >
                                     <Eye size={14} />
                                     Preview
                                 </button>
                                 <button
                                     onClick={() => setEditingTemplate(template)}
-                                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors"
-                                    style={{ backgroundColor: 'var(--sw-background-tertiary)', color: 'var(--sw-foreground)' }}
+                                    className="flex-1 flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors bg-white/5 hover:bg-white/10 text-white"
                                 >
                                     <Edit size={14} />
                                     Edit
@@ -108,6 +103,11 @@ export default function TemplatesTab({ templates, onRefresh }: TemplatesTabProps
                         </div>
                     </div>
                 ))}
+                {templates.length === 0 && (
+                    <div className="col-span-3 p-8 text-center text-gray-500">
+                        No templates yet
+                    </div>
+                )}
             </div>
 
             {/* Preview Modal */}

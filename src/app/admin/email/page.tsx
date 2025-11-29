@@ -68,76 +68,72 @@ export default function EmailManagementPage() {
     ];
 
     return (
-        <div className="min-h-screen p-8" style={{ backgroundColor: 'var(--sw-background)' }}>
-            <div className="max-w-7xl mx-auto">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-8">
-                    <div>
-                        <h1 className="text-2xl font-bold flex items-center gap-3" style={{ color: 'var(--sw-foreground)' }}>
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                                <Mail className="w-5 h-5 text-white" />
-                            </div>
-                            Email Management
-                        </h1>
-                        <p className="text-sm mt-1" style={{ color: 'var(--sw-foreground-muted)' }}>
-                            Manage newsletters, campaigns, and email templates
-                        </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <button
-                            onClick={fetchAllData}
-                            className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors"
-                            style={{ backgroundColor: 'var(--sw-background-secondary)', color: 'var(--sw-foreground-muted)' }}
-                        >
-                            <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
-                            Refresh
-                        </button>
-                        <button
-                            className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors"
-                            style={{ backgroundColor: 'var(--sw-accent)', color: 'var(--sw-accent-foreground)' }}
-                        >
-                            <Plus size={16} />
-                            New Campaign
-                        </button>
-                    </div>
+        <div className="space-y-6">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+                <div>
+                    <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                            <Mail className="w-5 h-5 text-white" />
+                        </div>
+                        Email Management
+                    </h1>
+                    <p className="text-sm text-gray-500 mt-1">
+                        Manage newsletters, campaigns, and email templates
+                    </p>
                 </div>
-
-                {/* Tabs */}
-                <div className="flex items-center gap-1 p-1 rounded-xl mb-6" style={{ backgroundColor: 'var(--sw-background-secondary)' }}>
-                    {tabs.map(tab => (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id as TabType)}
-                            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                            style={{
-                                backgroundColor: activeTab === tab.id ? 'var(--sw-background-tertiary)' : 'transparent',
-                                color: activeTab === tab.id ? 'var(--sw-foreground)' : 'var(--sw-foreground-muted)'
-                            }}
-                        >
-                            <tab.icon size={16} />
-                            {tab.label}
-                        </button>
-                    ))}
+                <div className="flex items-center gap-3">
+                    <button
+                        onClick={fetchAllData}
+                        className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                        <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+                        Refresh
+                    </button>
+                    <button
+                        className="flex items-center gap-2 px-4 py-2 bg-yellow-500 hover:bg-yellow-400 text-black font-semibold rounded-lg text-sm transition-colors"
+                    >
+                        <Plus size={16} />
+                        New Campaign
+                    </button>
                 </div>
-
-                {/* Content */}
-                {activeTab === 'overview' && (
-                    <OverviewTab 
-                        campaigns={campaigns} 
-                        subscriberStats={subscriberStats} 
-                        subscriberCount={subscribers.length}
-                    />
-                )}
-                {activeTab === 'campaigns' && (
-                    <CampaignsTab campaigns={campaigns} templates={templates} onRefresh={fetchAllData} />
-                )}
-                {activeTab === 'templates' && (
-                    <TemplatesTab templates={templates} onRefresh={fetchAllData} />
-                )}
-                {activeTab === 'subscribers' && (
-                    <SubscribersTab subscribers={subscribers} stats={subscriberStats} onRefresh={fetchAllData} />
-                )}
             </div>
+
+            {/* Tabs */}
+            <div className="flex items-center gap-1 p-1 bg-white/5 rounded-xl w-fit">
+                {tabs.map(tab => (
+                    <button
+                        key={tab.id}
+                        onClick={() => setActiveTab(tab.id as TabType)}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                            activeTab === tab.id
+                                ? 'bg-white/10 text-white'
+                                : 'text-gray-400 hover:text-white'
+                        }`}
+                    >
+                        <tab.icon size={16} />
+                        {tab.label}
+                    </button>
+                ))}
+            </div>
+
+            {/* Content */}
+            {activeTab === 'overview' && (
+                <OverviewTab 
+                    campaigns={campaigns} 
+                    subscriberStats={subscriberStats} 
+                    subscriberCount={subscribers.length}
+                />
+            )}
+            {activeTab === 'campaigns' && (
+                <CampaignsTab campaigns={campaigns} templates={templates} onRefresh={fetchAllData} />
+            )}
+            {activeTab === 'templates' && (
+                <TemplatesTab templates={templates} onRefresh={fetchAllData} />
+            )}
+            {activeTab === 'subscribers' && (
+                <SubscribersTab subscribers={subscribers} stats={subscriberStats} onRefresh={fetchAllData} />
+            )}
         </div>
     );
 }
